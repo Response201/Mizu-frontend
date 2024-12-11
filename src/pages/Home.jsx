@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { useGlobalContext } from "../context/GlobalContext";
 import { useFetch } from "../services/useFetch";
+import { ProductCard } from "../components/productCard";
 
 export const Home = () => {
   const { allProducts, setAllProducts } = useGlobalContext();
@@ -17,7 +18,7 @@ export const Home = () => {
 
 
   return (
-    <div>
+    <>
 
       <h1>
         Home
@@ -26,18 +27,33 @@ export const Home = () => {
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam aspernatur quae ipsa animi deleniti nulla molestiae ea eaque dolorum, ut esse non enim quidem, error mollitia quas suscipit dolore voluptatem!</p>
 
 
-      {allProducts && allProducts.map((item, index) => (
-        <section key={index} className="hover-target">
-          <p >
+<section className="ProductCard___container">
+{allProducts && allProducts.map((item, index) => (
+   <ProductCard key={index} item={item} />
+      ))}
+
+
+</section>
+
+
+
+
+      {/* {allProducts && allProducts.map((item, index) => (
+        <section key={index} className="hover-target card"  style={{ '--card-primaryColor': item.primaryColor }}>
+          <p   
+      >
 
             {item.name}
           </p>
 
+
+
+
         </section>
-      ))}
+      ))} */}
 
 
 
-    </div>
+    </>
   )
 }

@@ -3,6 +3,7 @@
 @use 'keyFrames';
 @use 'loading';
 @use 'layout';
+@use 'productCard';
 * {
 
     cursor: url(https://cur.cursors-4u.net/cursors/cur-7/cur686.cur), auto !important;
@@ -11,7 +12,7 @@
     scrollbar-width: none;
     /* Firefox */
 
-
+ 
     background-color: v.$background-secondary;
 }
 
@@ -19,10 +20,10 @@
     display: none;
 }
 
+html, body{  height: 100vh; 
+    min-height: 100%; 
+   }
 
-article {
-    min-height: 100vh;
-}
 
 h1 {
 

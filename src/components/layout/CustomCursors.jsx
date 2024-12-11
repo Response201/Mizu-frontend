@@ -1,14 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 
 const CustomCursor = () => {
-    const cursorRef = useRef(null);  // För att hålla referens till den anpassade cursorn
-    const [hovering, setHovering] = useState(false);  // För att hålla reda på om musen är över ett mål
+    const cursorRef = useRef(null); // För att hålla referens till den anpassade cursorn
+    const [hovering, setHovering] = useState(false); // För att hålla reda på om musen är över ett mål
 
-    /*  Hantera musrörelse */
+    /* Hantera musrörelse */
     const handleMouseMove = (e) => {
         if (cursorRef.current) {
-            cursorRef.current.style.left = `${e.clientX}px`;
-            cursorRef.current.style.top = `${e.clientY}px`;
+            const scrollOffset = {
+                x: window.scrollX,
+                y: window.scrollY,
+            };
+            cursorRef.current.style.left = `${e.clientX + scrollOffset.x}px`;
+            cursorRef.current.style.top = `${e.clientY + scrollOffset.y}px`;
         }
     };
 
@@ -24,7 +28,7 @@ const CustomCursor = () => {
             target.addEventListener('mouseout', handleMouseOut);
         });
 
-        /*  Städar upp när komponenten tas bort */
+        /* Städar upp när komponenten tas bort */
         return () => {
             hoverTargets.forEach(target => {
                 target.removeEventListener('mouseover', handleMouseOver);
@@ -43,11 +47,11 @@ const CustomCursor = () => {
 
     return (
         <>
-
-            {/* Här är själva muspekaren*/}
+            {/* Här är själva muspekaren */}
             <div
                 ref={cursorRef}
                 className={`custom-cursor ${hovering ? 'hovering' : ''}`}
+               
             />
         </>
     );

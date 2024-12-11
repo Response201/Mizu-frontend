@@ -1,4 +1,3 @@
-
 @use "variables" as v;
 
 
@@ -18,9 +17,10 @@
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
 
 
-
+z-index: 9999;
 
 }
+
 /* egen klass eftersom den ska lösas ut separat ifrån huvudklassen ".custom-cursor"  */
 .custom-cursor.hovering {
     transform: scale(5) translateX(-25%) translateY(-25%);
@@ -29,4 +29,22 @@
     border: none;
     background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 0 4px rgba(255, 255, 255, 0.7);
+}
+
+
+
+article {
+
+    height: 100vh;
+    min-height: 100%;
+
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 100vw;
+    padding: 1rem 2rem;
 }
