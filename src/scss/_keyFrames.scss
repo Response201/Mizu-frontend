@@ -1,0 +1,37 @@
+
+
+
+@keyframes Opacity {
+
+    0% {
+        filter: opacity(0%);
+
+    }
+
+    100% {
+
+        filter: opacity(100%);
+
+    }
+
+
+}
+
+
+
+@keyframes Out {
+
+    0% {
+        filter: opacity(100%) blur(0);
+
+    }
+
+    100% {
+
+        filter: opacity(0%) blur(25px);
+        ;
+
+    }
+
+
+}

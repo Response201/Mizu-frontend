@@ -1,0 +1,17 @@
+
+@use "variables" as v;
+
+.loadingContainer{
+
+  
+    height: 100%;
+    width: 100%;
+    background: v.$background-light;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+   
+
+
+
+}

@@ -1,0 +1,42 @@
+@use "variables" as v;
+
+
+
+@mixin devices($breakpoint) {
+  @if $breakpoint ==tablet {
+    @media (min-width: 768px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint ==desktop {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  }
+}
+
+
+
+
+
+
+@mixin article() {
+  height: fit-content;
+  width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  @content;
+
+
+}
+
+
+
+

@@ -1,0 +1,16 @@
+
+body {
+  margin: 0;
+  font-family: Verdana Tahoma, serif;
+  font-size: 12pt;
+/*   cursor: url('./assets/arrow.png'); */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
