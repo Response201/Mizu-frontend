@@ -26,9 +26,9 @@ export const Home = () => {
       </h1>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam aspernatur quae ipsa animi deleniti nulla molestiae ea eaque dolorum, ut esse non enim quidem, error mollitia quas suscipit dolore voluptatem!</p>
 
-
+{allProducts.length >= 1  &&
 <section className="ProductCard___container">
-{allProducts && allProducts.map((item, index) => (
+{allProducts.map((item, index) => (
    <ProductCard key={index} item={item} />
       ))}
 
@@ -36,7 +36,7 @@ export const Home = () => {
 </section>
 
 
-
+}
 
       {/* {allProducts && allProducts.map((item, index) => (
         <section key={index} className="hover-target card"  style={{ '--card-primaryColor': item.primaryColor }}>

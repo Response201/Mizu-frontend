@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 
 export const ProductCard = ({item}) => {
@@ -10,7 +11,7 @@ export const ProductCard = ({item}) => {
                     <div className="imgBox" style={{ '--clr-tag': `${item.primaryColor}` }}>
                         <img src="https://images.unsplash.com/photo-1601049676869-702ea24cfd58?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Trust & Co." />
                     </div>
-                    <div className="icon  " style={{ '--clr': "#fff" }}>
+                    <div className="icon hover-target " style={{ '--clr': "#fff" }}>
                         <a href="#" className="iconBox hover-target" style={{ '--clr-tag': `${item.primaryColor}` }}> <span className="material-symbols-outlined">
                             {/* arrow_outward */}
                         </span></a>
