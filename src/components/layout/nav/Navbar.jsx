@@ -1,7 +1,5 @@
 import { useState } from 'react';
-
 import { Navbar, Nav, Container, Dropdown,  } from "react-bootstrap";
-import {FaUserCircle } from 'react-icons/fa';
 import { CartDropDown } from './cartDropdown';
 
 export const Navigation = () => {
@@ -44,7 +42,9 @@ export const Navigation = () => {
 
                   <Dropdown align="end" >
                     <Dropdown.Toggle variant="light" id="dropdown-basic"  >
-                      <FaUserCircle />
+                      <div className='icons_nav'>
+                    <i className="bi bi-person icons_nav"></i>
+</div>
                     </Dropdown.Toggle>
                     <Dropdown.Menu className='profil'>
                       <Dropdown.Item href="/profile" className="hover-target" >Profil</Dropdown.Item>
@@ -56,7 +56,10 @@ export const Navigation = () => {
                 <>
                   <Dropdown align="end" className=''>
                     <Dropdown.Toggle variant="light" id="dropdown-basic" >
-                      <FaUserCircle />
+                    <div className='icons_nav'>
+                    <i className="bi bi-person icons_nav"></i>
+</div>
+
                     </Dropdown.Toggle>
                     <Dropdown.Menu className='profil'>
                       <Dropdown.Item onClick={handleLogin} className='hover-target' >Logga in</Dropdown.Item>

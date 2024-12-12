@@ -10,8 +10,8 @@ console.log(setCartItem,setDiscount,setTotalPrice)
 
   return (
     <Dropdown align="end" className='transparent '>
-      <Dropdown.Toggle variant="light" id="dropdown-basic" className='transparent '>
-        <i className="bi bi-cart3"></i>
+      <Dropdown.Toggle variant="light" id="dropdown-basic" className='transparent icons_nav_cart'>
+        <i className="bi bi-cart3 "></i>
         <Badge pill bg="ligth" className="ms-1 custom-badge ">
           <p>
             {cartItems.reduce((acc, item) => acc + +item.quantity, 0) /* Cart item count */}

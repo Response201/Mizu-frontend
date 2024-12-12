@@ -86,6 +86,11 @@
         text-shadow: 2px 2px 20px v.$cart-dropdown !important;
     }
 }
+
+
+.icons_nav_cart{font-size: 1.19rem !important;}
+.icons_nav{font-size: 1.25rem !important;}
+
 .profil {
     max-width: 2rem !important;
     @include mixins.devices(desktop) {
