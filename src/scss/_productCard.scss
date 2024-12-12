@@ -113,7 +113,7 @@ transition: 0.3s ease-in;
           right: -0.275rem;
           width: 6rem;
           height: 6rem;
-          background: var(--clr);
+          background: var(--clr) !important;
           border-top-left-radius: 50%;
 z-index: 10;
           &:hover .iconBox {

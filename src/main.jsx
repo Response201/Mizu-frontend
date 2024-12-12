@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./scss/index.scss"
 import "./scss/styles.scss"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import { router } from "./Router.jsx";
 import { RouterProvider } from "react-router-dom";

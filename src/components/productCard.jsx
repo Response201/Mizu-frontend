@@ -13,7 +13,8 @@ export const ProductCard = ({item}) => {
                     </div>
                     <div className="icon hover-target " style={{ '--clr': "#fff" }}>
                         <a href="#" className="iconBox hover-target" style={{ '--clr-tag': `${item.primaryColor}` }}> <span className="material-symbols-outlined">
-                            {/* arrow_outward */}
+                            {/* arrow_outward */} <i class="bi bi-arrow-up-right"></i>
+
                         </span></a>
                     </div>
                 </div>

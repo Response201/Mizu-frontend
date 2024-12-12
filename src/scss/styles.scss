@@ -4,6 +4,8 @@
 @use 'loading';
 @use 'layout';
 @use 'productCard';
+@use 'navbar';
+
 * {
 
     cursor: url(https://cur.cursors-4u.net/cursors/cur-7/cur686.cur), auto !important;
@@ -13,7 +15,7 @@
     /* Firefox */
 
  
-    background-color: v.$background-secondary;
+ 
 }
 
 *::-webkit-scrollbar {
@@ -30,4 +32,37 @@ h1 {
 
     color: black;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

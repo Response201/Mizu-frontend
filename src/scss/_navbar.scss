@@ -1,0 +1,200 @@
+@use 'variables' as v;
+@use 'mixins';
+.nav {
+    position: relative;
+}
+.navbar-container {
+    position: fixed !important;
+    top: 0 !important;
+    z-index: 9999;
+    width: 100%;
+    max-width: 100vw;
+    color: black I !important;
+    background-color: v.$cart-color;
+    backdrop-filter: blur(8px);
+}
+/* DROPDOWN FÄRG */
+.dropdown-menu {
+    margin-top: 0.8rem !important;
+    position: absolute;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: v.$cart-dropdown !important;
+}
+.nav {
+    padding: 0 2rem !important;
+}
+.transparent,
+.nav,
+.basic-navbar-nav,
+.navbar-collapse,
+.collapse {
+    @include mixins.devices(desktop) {
+        background-color: transparent !important;
+    }
+}
+#dropdown-basic {
+    color: v.$text-primary !important;
+    display: flex;
+    align-items: center;
+    justify-content: start !important;
+    background-color: transparent !important;
+    padding: 0;
+    transition: color 0.3s ease-out, transform 0.3s ease-out !important;
+    &:hover {
+        transform: scale(95%);
+    }
+    @include mixins.devices(desktop) {
+        justify-content: end !important;
+        width: 4.5rem;
+    }
+}
+/* Links (home,products, pick&mix, about) middel in navbar */
+.nav-middle {
+    @include mixins.devices(desktop) {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+}
+.nav-middle>div {
+    @include mixins.devices(desktop) {
+        height: 3rem !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        margin-left: 6rem;
+        width: 40% !important;
+    }
+}
+.nav_home_link:first-of-type {
+    font-weight: 500 !important;
+    font-size: 25px;
+    font-family: "Montserrat Underline", sans-serif !important;
+    color: v.$text-secondary !important;
+}
+.nav_link {
+    max-width: fit-content;
+    color: v.$text-primary !important;
+    margin-top: 0.1rem;
+    font-weight: 500 !important;
+    font-family: "Montserrat", sans-serif !important;
+    transition: color 0.45s ease-out, transform 0.45s ease-out !important;
+    &:hover {
+        transform: scale(110%);
+        text-shadow: 2px 2px 20px v.$cart-dropdown !important;
+    }
+}
+.profil {
+    max-width: 2rem !important;
+    @include mixins.devices(desktop) {
+        max-width: none !important;
+    }
+}
+.profil>a:first-child {
+    width: 100%;
+    border-bottom: 1px solid v.$border-nav !important;
+}
+.dropdown-item {
+    background-color: transparent !important;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+.custom-badge {
+    background-color: #d2690c22;
+    /* Custom background color */
+    color: white;
+    /* Text color */
+    object-position: center;
+    color: v.$text-primary !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+        background-color: transparent !important;
+        margin: 1px 0 0 0;
+    }
+}
+.icon {
+    background-color: transparent !important;
+    padding: 0;
+    margin: 0;
+    color: v.$text-primary !important;
+}
+.container-fluid {
+    min-height: fit-content !important;
+}
+.navbar-toggler {
+    z-index: 5;
+}
+.dropdown-toggle {
+    border: none !important;
+    margin: 5px 0 0 0 !important;
+    @include mixins.devices(desktop) {
+        margin: 0px 5px !important;
+    }
+}
+/* CART LIST */
+.border_bottom {
+    border: none !important;
+    border-bottom: solid .5px v.$border-nav !important;
+    background-color: transparent !important;
+}
+.emtpyList {
+    padding: 12px 0;
+}
+.btn {
+    height: 30px;
+    width: 30px;
+    border: none !important;
+    min-width: fit-content;
+    margin-left: 5px;
+    background-color: rgba(248, 248, 248, 0.72) !important;
+    color: v.$text-primary !important;
+    transition: 0.3s ease;
+    &:hover {
+        transform: scale(90%);
+        background-color: rgba(220, 203, 184, 0.72) !important;
+    }
+}
+.checkout___btn {
+    color: v.$text-primary;
+    margin: 0 !important;
+    border-radius: 5px;
+    padding: 0 !important;
+    width: 100px;
+    border: 0;
+    display: inline-block;
+    height: 2.1rem;
+    text-align: center;
+    &:hover {
+        transform: scale(90%);
+        background-color: rgba(220, 203, 184, 0.72) !important;
+    }
+}
+.checkout {
+    background-color: transparent !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1rem 0.5rem;
+}
+.price {
+    height: 1rem;
+    font-size: 14px;
+    width: 35% !important;
+    min-width: fit-content;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    background-color: transparent !important;
+    p {
+        padding: 0;
+        margin: 0;
+    }
+    p:last-of-type {
+        margin-left: 3px;
+    }
+}
