@@ -4,10 +4,14 @@ export const CartDropDown = () => {
   const [totalPrice, setTotalPrice] = useState(1545456)
   const [discount, setDiscount] = useState(1000)
   const [cartItems, setCartItem] = useState([{ id: 15, name: 'hello', quantity: '5', price: "15" }, { id: 12, name: 'hello', quantity: '5', price: "15" }])
+
+
+console.log(setCartItem,setDiscount,setTotalPrice)
+
   return (
     <Dropdown align="end" className='transparent '>
       <Dropdown.Toggle variant="light" id="dropdown-basic" className='transparent '>
-        <i class="bi bi-cart3"></i>
+        <i className="bi bi-cart3"></i>
         <Badge pill bg="ligth" className="ms-1 custom-badge ">
           <p>
             {cartItems.reduce((acc, item) => acc + +item.quantity, 0) /* Cart item count */}
@@ -30,13 +34,13 @@ export const CartDropDown = () => {
                   {item.quantity}</span>
                 <div className='transparent'>
                   <Button size="sm" className="btn">
-                    <i class="bi bi-plus-lg"></i>
+                    <i className="bi bi-plus-lg"></i>
                   </Button>
                   <Button size="sm" className="btn">
-                    <i class="bi bi-dash-lg"></i>
+                    <i className="bi bi-dash-lg"></i>
                   </Button>
                   <Button size="sm" className="btn">
-                    <i class="bi bi-trash3"></i>
+                    <i className="bi bi-trash3"></i>
                   </Button>
                 </div>
               </ListGroup.Item>

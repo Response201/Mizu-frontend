@@ -1,15 +1,16 @@
 import { useState } from 'react';
-import { useGlobalContext } from '../../../context/GlobalContext';
-import { Navbar, Nav, Container, Dropdown, Badge, Button, ListGroup } from "react-bootstrap";
-import { FaShoppingCart, FaUserCircle } from 'react-icons/fa';
-import { CartDropDown } from './cartDropDown';
+
+import { Navbar, Nav, Container, Dropdown,  } from "react-bootstrap";
+import {FaUserCircle } from 'react-icons/fa';
+import { CartDropDown } from './cartDropdown';
+
 export const Navigation = () => {
-  const [categories, setCategories] = useState([]);
-  const [cartCount, setCartCount] = useState(0);
+/*   const [categories, setCategories] = useState([]);
+  const [cartCount, setCartCount] = useState(0); */
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
  
-  console.log(setCartCount, setCategories, setIsLoggedIn)
+  console.log(setIsLoggedIn)
   const handleLogout = () => {
     setIsLoggedIn(false); // Logic to log out the user
   };
