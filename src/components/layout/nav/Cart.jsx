@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Dropdown, Badge, Button, ListGroup } from "react-bootstrap";
-export const CartDropDown = () => {
+export const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(1545456)
   const [discount, setDiscount] = useState(1000)
   const [cartItems, setCartItem] = useState([{ id: 15, name: 'hello', quantity: '5', price: "15" }, { id: 12, name: 'hello', quantity: '5', price: "15" }])

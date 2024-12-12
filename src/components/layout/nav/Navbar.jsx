@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Navbar, Nav, Container, Dropdown,  } from "react-bootstrap";
-import { CartDropDown } from './cartDropdown';
+import { Cart } from './Cart';
+
+
 
 export const Navigation = () => {
 /*   const [categories, setCategories] = useState([]);
@@ -36,7 +38,7 @@ export const Navigation = () => {
               {isLoggedIn ? (
                 <>
                   {/* CART */}
-                  <CartDropDown />
+              <Cart />
 
 
 
