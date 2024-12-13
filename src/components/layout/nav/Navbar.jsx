@@ -7,7 +7,7 @@ import { Cart } from './Cart';
 export const Navigation = () => {
 /*   const [categories, setCategories] = useState([]);
   const [cartCount, setCartCount] = useState(0); */
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
  
   console.log(setIsLoggedIn)
@@ -27,12 +27,12 @@ export const Navigation = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" >
             <Nav className="me-auto transparent nav-middle">
-              <div>
+           
                 <Nav.Link href="/" className='hover-target nav_link' >Hem</Nav.Link>
                 <Nav.Link href="/products" className='hover-target nav_link' >Produkter</Nav.Link>
                 <Nav.Link href="/mix" className='hover-target nav_link'  >Pick & Mix</Nav.Link>
                 <Nav.Link href="/about" className='hover-target nav_link' >About</Nav.Link>
-              </div>
+              
             </Nav>
             <Nav className="nav-right transparent">
               {isLoggedIn ? (

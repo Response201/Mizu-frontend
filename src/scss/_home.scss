@@ -1,0 +1,105 @@
+
+@use "variables" as v;
+@use 'mixins';
+
+.headerContainer{
+    @include mixins.article() {
+
+       position: relative;
+    height: 70vh;
+    overflow: hidden;
+min-height: 500px;
+background-color:transparent;
+padding: 0 v.$padding;
+    }
+    
+    @include mixins.devices(desktop) {
+        padding:  0 v.$padding; ;
+    }
+
+&___section{
+    @include mixins.section() {
+
+background-color:transparent !important;
+display: flex;
+justify-content: start;
+align-items: center;
+z-index: 100;
+ }
+
+}
+
+
+
+.spline{
+
+display: none;
+
+@include mixins.devices(desktop) {
+    top:-5%;
+    width: 110vw !important;
+    height: 150%;
+    left: 0;
+    z-index: 0;
+z-index: 0;
+position: absolute !important;
+display: block;
+bottom: -120px;
+
+     }
+}
+
+
+
+
+.header{
+z-index: 15;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+color: v.$text-primary;
+
+h1{
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px v.$shadow;
+    font-size: clamp(3rem, 4vw, 4rem);
+    color: v.$text-secondary;
+    font-family: "Montserrat Underline", sans-serif !important;
+}
+
+p{  max-width: 600px; font-family: "Montserrat", sans-serif !important;
+line-height: 1.75rem;
+font-size: clamp(0.8rem, 1vw, 1rem);
+span{
+
+display: block;
+color: v.$text-secondary;
+font-weight: 700;
+display: none;
+
+@include mixins.devices(desktop) {
+  display: block;
+
+     }
+}
+
+
+@include mixins.devices(desktop) {
+    max-width: none
+
+     }
+
+}
+
+@include mixins.devices(desktop) {
+    width: 45%;
+    align-items: start;
+}
+
+}
+
+
+}

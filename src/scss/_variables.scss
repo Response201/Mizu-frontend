@@ -12,12 +12,20 @@ $font-one: 'Courier New', Courier, monospace;
 $star:#704A31;
 
 
-$max-width:1500px;
-$padding:5rem;
+$max-width:1300px;
+$padding:clamp(1rem, 5vw, 5rem);
 
 
-$cart-color:#ddc0b0a0;
-$cart-dropdown:#ead8cef0;
+$cart-color:#ddc0b05b;
+$cart-dropdown:#d9c1b3a6;
 $cart-blur: 10px;
 
  
+
+/* BAckground particles */
+
+$primary-background-color:rgb(228,236,246);
+
+$background-color1: #ffffffa6;
+$background-color2: #ffffff;
+$background-color3: #ffffffad;

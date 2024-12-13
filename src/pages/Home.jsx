@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useGlobalContext } from "../context/GlobalContext";
 import { useFetch } from "../services/useFetch";
 import { ProductCard } from "../components/productCard";
+import { Header } from "../components/home/header";
 
 export const Home = () => {
   const { allProducts, setAllProducts } = useGlobalContext();
@@ -19,12 +20,9 @@ export const Home = () => {
 
   return (
     <>
-
-      <h1>
-        Home
-
-      </h1>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam aspernatur quae ipsa animi deleniti nulla molestiae ea eaque dolorum, ut esse non enim quidem, error mollitia quas suscipit dolore voluptatem!</p>
+  
+<Header />
+      
 
 {allProducts.length >= 1  &&
 <section className="ProductCard___container">

@@ -77,14 +77,28 @@
 .nav_link {
     max-width: fit-content;
     color: v.$text-primary !important;
-    margin-top: 0.1rem;
+    margin: 0 ;
     font-weight: 500 !important;
+ 
     font-family: "Montserrat", sans-serif !important;
     transition: color 0.45s ease-out, transform 0.45s ease-out !important;
     &:hover {
         transform: scale(110%);
         text-shadow: 2px 2px 20px v.$cart-dropdown !important;
     }
+
+
+
+    @include mixins.devices(tablet) {
+        margin: 0 1rem;
+    }
+
+    @include mixins.devices(desktop) {
+        margin: 0 2.5rem;
+    }
+
+
+
 }
 
 
