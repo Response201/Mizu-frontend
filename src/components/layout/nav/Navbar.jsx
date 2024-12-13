@@ -7,15 +7,15 @@ import { Cart } from './Cart';
 export const Navigation = () => {
 /*   const [categories, setCategories] = useState([]);
   const [cartCount, setCartCount] = useState(0); */
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
  
   console.log(setIsLoggedIn)
   const handleLogout = () => {
-    setIsLoggedIn(false); // Logic to log out the user
+    setIsLoggedIn(false); 
   };
   const handleLogin = () => {
-    setIsLoggedIn(true); // Logic to log in the user (this could be replaced with actual login flow)
+    setIsLoggedIn(true); 
   };
   return (
     <>
@@ -49,7 +49,7 @@ export const Navigation = () => {
 </div>
                     </Dropdown.Toggle>
                     <Dropdown.Menu className='profil'>
-                      <Dropdown.Item href="/profile" className="hover-target" >Profil</Dropdown.Item>
+                      <Dropdown.Item href="/profil" className="hover-target">Profil</Dropdown.Item>
                       <Dropdown.Item onClick={handleLogout} className='hover-target' >Logga ut</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
@@ -64,7 +64,8 @@ export const Navigation = () => {
 
                     </Dropdown.Toggle>
                     <Dropdown.Menu className='profil'>
-                      <Dropdown.Item onClick={handleLogin} className='hover-target' >Logga in</Dropdown.Item>
+                      <Dropdown.Item  href="/signin" className='hover-target'>Logga in</Dropdown.Item>
+
                       <Dropdown.Item href="/register" className='hover-target' >Skapa konto</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
