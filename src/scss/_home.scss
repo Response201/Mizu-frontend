@@ -2,6 +2,11 @@
 @use "variables" as v;
 @use 'mixins';
 
+
+
+
+/* Header */
+
 .headerContainer{
     @include mixins.article() {
 
@@ -103,3 +108,35 @@ display: none;
 
 
 }
+
+
+
+/* HappyHighlights */
+.HappyHighlightsContainer{
+    @include mixins.section() {
+
+        background-color:transparent !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+     padding: v.$padding-komponents  0;
+         }
+
+
+}
+
+.HappyHighlightsContent{
+
+width: 100%;
+text-align: center;
+
+h2{
+    color: v.$text-secondary;
+    font-size: clamp(1rem, 2vw, 2rem);
+}
+p{
+   font-weight: 500;
+    color: v.$text-primary;
+    font-size: clamp(.5rem, 1.5vw, 1rem);
+}
+ }

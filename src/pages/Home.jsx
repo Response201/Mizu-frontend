@@ -4,6 +4,7 @@ import { useGlobalContext } from "../context/GlobalContext";
 import { useFetch } from "../services/useFetch";
 import { ProductCard } from "../components/productCard";
 import { Header } from "../components/home/header";
+import { HappyHighlights } from "../components/home/HappyHighlights";
 
 export const Home = () => {
   const { allProducts, setAllProducts } = useGlobalContext();
@@ -22,7 +23,10 @@ export const Home = () => {
     <>
   
 <Header />
-      
+
+
+     <HappyHighlights />
+
 
 {allProducts.length >= 1  &&
 <section className="ProductCard___container">
