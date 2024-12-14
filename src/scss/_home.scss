@@ -9,18 +9,16 @@
 
 .headerContainer{
     @include mixins.article() {
-
+        padding: v.$padding 0;
        position: relative;
-    height: 70vh;
+    height: 75vh;
     overflow: hidden;
 min-height: 500px;
 background-color:transparent;
-padding: 0 v.$padding;
+
     }
     
-    @include mixins.devices(desktop) {
-        padding:  0 v.$padding; ;
-    }
+ 
 
 &___section{
     @include mixins.section() {
@@ -30,6 +28,17 @@ display: flex;
 justify-content: start;
 align-items: center;
 z-index: 100;
+width: 100%;
+position: relative;
+max-height: 500px;
+margin-top: 0rem;
+padding: 0 v.$padding-komponents;
+overflow: hidden;
+
+@include mixins.devices(desktop) {
+    max-height: 600px;
+}
+
  }
 
 }
@@ -41,10 +50,14 @@ z-index: 100;
 display: none;
 
 @include mixins.devices(desktop) {
-    top:-5%;
-    width: 110vw !important;
-    height: 150%;
-    left: 0;
+ 
+    top:-10%;
+    width:95% !important;
+    max-height: 80vw;
+    height: 170%;
+    min-height: 600px;
+    right: -12%;
+  
     z-index: 0;
 z-index: 0;
 position: absolute !important;
@@ -119,7 +132,7 @@ display: none;
         display: flex;
         justify-content: space-between;
         align-items: center;
-     padding: v.$padding-komponents  0;
+     padding: v.$padding-komponents;
          }
 
 
