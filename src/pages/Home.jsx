@@ -2,12 +2,18 @@
 import { useEffect } from "react";
 import { useGlobalContext } from "../context/GlobalContext";
 import { useFetch } from "../services/useFetch";
-import { ProductCard } from "../components/productCard";
+
 import { Header } from "../components/home/header";
 import { HappyHighlights } from "../components/home/HappyHighlights";
+import { TopRatedProducts } from "../components/home/TopRatedProducts";
 
 export const Home = () => {
-  const { allProducts, setAllProducts } = useGlobalContext();
+  const {  setAllProducts } = useGlobalContext();
+
+
+
+
+
 
   const { data } = useFetch("allProducts");
 
@@ -28,31 +34,12 @@ export const Home = () => {
      <HappyHighlights />
 
 
-{allProducts.length >= 1  &&
-<section className="ProductCard___container">
-{allProducts.map((item, index) => (
-   <ProductCard key={index} item={item} />
-      ))}
 
-
-</section>
-
-
-}
-
-      {/* {allProducts && allProducts.map((item, index) => (
-        <section key={index} className="hover-target card"  style={{ '--card-primaryColor': item.primaryColor }}>
-          <p   
-      >
-
-            {item.name}
-          </p>
+<TopRatedProducts  />
 
 
 
 
-        </section>
-      ))} */}
 
 
 

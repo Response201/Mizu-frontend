@@ -54,4 +54,21 @@
 }
 
 
+@mixin home-headings-h2 {
+  font-weight: 400;
+line-height: 1.75rem;
+  color: v.$text-secondary;
+  font-size: clamp(1.5rem, 2.8vw, 2.5rem);
+  @content;
 
+}
+
+@mixin home-sub-p {
+
+margin-top: clamp(0px, 1.5vw, 2.5rem);
+line-height: 1.75rem;
+color: v.$text-primary;
+font-size: clamp(0.7rem, 1vw, 1rem) !important;
+@content;
+  
+  }

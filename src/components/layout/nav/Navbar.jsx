@@ -1,22 +1,24 @@
-import { useState } from 'react';
+
 import { Navbar, Nav, Container, Dropdown,  } from "react-bootstrap";
 import { Cart } from './Cart';
+import { useGlobalContext } from '../../../context/GlobalContext';
 
 
 
 export const Navigation = () => {
 /*   const [categories, setCategories] = useState([]);
   const [cartCount, setCartCount] = useState(0); */
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+const {userId, setUserId} = useGlobalContext();
+
+  
 
  
-  console.log(setIsLoggedIn)
+
   const handleLogout = () => {
-    setIsLoggedIn(false); 
+ 
+    setUserId('')
   };
-  const handleLogin = () => {
-    setIsLoggedIn(true); 
-  };
+
   return (
     <>
       <Navbar expand="lg" className="navbar-container">
@@ -35,7 +37,7 @@ export const Navigation = () => {
               
             </Nav>
             <Nav className="nav-right transparent">
-              {isLoggedIn ? (
+              {userId ? (
                 <>
                   {/* CART */}
               <Cart />

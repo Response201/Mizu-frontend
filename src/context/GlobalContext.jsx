@@ -10,6 +10,12 @@ export const GlobalProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [allProducts, setAllProducts] = useState(JSON.parse(localStorage.getItem("allProducts")) || [])
     const [isHovering, setIsHovering] = useState(false);
+
+
+const [userId, setUserId] = useState('')
+const [token, setToken] = useState('')
+
+
     /* sätter localstorage "allProducts" om allProducts förändras */
     useEffect(() => {
         localStorage.setItem("allProducts", JSON.stringify(allProducts));
@@ -18,7 +24,7 @@ export const GlobalProvider = ({ children }) => {
 
     /* States som skickas ut till alla children inom contexten */
     return (
-        <GlobalContext.Provider value={{ allProducts, setAllProducts, products, setProducts, loading, setLoading, error, setError, isHovering, setIsHovering }}>
+        <GlobalContext.Provider value={{userId, setUserId, allProducts, setAllProducts, products, setProducts, loading, setLoading, error, setError, isHovering, setIsHovering, token, setToken}}>
             {children}
         </GlobalContext.Provider>
     );

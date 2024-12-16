@@ -12,11 +12,11 @@ export const HappyHighlights = () => {
           sub: "2000"
         },
         {
-          titel: "5-Stjärniga Recensioner",
+          titel: "5-stars",
           sub: "1200"
         },
         {
-          titel: "Rekommendationsgrad",
+          titel: "Recommended",
           sub: "95%"
         }
       ];

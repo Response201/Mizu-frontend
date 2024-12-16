@@ -7,7 +7,7 @@
 @use 'navbar';
 @use 'home';
 @use 'background';
-
+@use 'signin';
 
 
 
@@ -29,6 +29,8 @@
 
 html, body{  height: 100vh; 
     min-height: 100%; 
+    font-family: "Montserrat", sans-serif !important;
+  
    }
 
 

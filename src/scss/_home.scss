@@ -1,4 +1,3 @@
-
 @use "variables" as v;
 @use 'mixins';
 
@@ -7,119 +6,124 @@
 
 /* Header */
 
-.headerContainer{
+.headerContainer {
     @include mixins.article() {
-        padding: v.$padding 0;
-       position: relative;
-    height: 75vh;
-    overflow: hidden;
-min-height: 500px;
-background-color:transparent;
+      
+        position: relative;
+        height: 75vh;
+        overflow: hidden;
+        min-height: 500px;
+        background-color: transparent;
 
     }
-    
- 
-
-&___section{
-    @include mixins.section() {
-
-background-color:transparent !important;
-display: flex;
-justify-content: start;
-align-items: center;
-z-index: 100;
-width: 100%;
-position: relative;
-max-height: 500px;
-padding: 0 v.$padding-komponents;
-overflow: hidden;
-
-@include mixins.devices(desktop) {
-    max-height: 600px;
-}
-
- }
-
-}
 
 
 
-.spline{
+    &___section {
+        @include mixins.section() {
 
-display: none;
+            background-color: transparent !important;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            z-index: 100;
+            width: 100%;
+            position: relative;
+            max-height: 500px;
+            padding: 0 v.$padding-komponents;
+            overflow: hidden;
 
-@include mixins.devices(desktop) {
- 
-    top:-10%;
-    width:95% !important;
-    max-height: 80vw;
-    height: 170%;
-    min-height: 600px;
-    right: -12%;
-  
-    z-index: 0;
-z-index: 0;
-position: absolute !important;
-display: block;
-bottom: -120px;
+            @include mixins.devices(desktop) {
+                max-height: 600px;
+            }
 
-     }
-}
+        }
 
-
+    }
 
 
-.header{
-z-index: 15;
-width: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-color: v.$text-primary;
 
-@include mixins.devices(desktop) {
-    margin-top: -8vh;
-       }
-h1{
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    text-shadow: 1px 1px 3px v.$shadow;
-    font-size: clamp(3rem, 4vw, 4rem);
-    color: v.$text-secondary;
-    font-family: "Montserrat Underline", sans-serif !important;
-}
+    .spline {
 
-p{  max-width: 600px; font-family: "Montserrat", sans-serif !important;
-line-height: 1.75rem;
-font-size: clamp(0.8rem, 1vw, 1rem);
-span{
+        display: none;
 
-display: block;
-color: v.$text-secondary;
-font-weight: 700;
-display: none;
+        @include mixins.devices(desktop) {
 
-@include mixins.devices(desktop) {
-  display: block;
+            top: -10%;
+            width: 95% !important;
+            max-height: 80vw;
+            height: 170%;
+            min-height: 600px;
+            right: -12%;
 
-     }
-}
+            z-index: 0;
+            z-index: 0;
+            position: absolute !important;
+            display: block;
+            bottom: -120px;
+
+        }
+    }
 
 
-@include mixins.devices(desktop) {
-    max-width: none
 
-     }
 
-}
+    .header {
+        z-index: 15;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: v.$text-primary;
 
-@include mixins.devices(desktop) {
-    width: 45%;
-    align-items: start;
-}
+        @include mixins.devices(desktop) {
+            margin-top: -8vh;
+        }
 
-}
+        h1 {
+           
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px v.$shadow;
+            font-size: clamp(3rem, 4vw, 4rem);
+            color: v.$text-secondary;
+            font-family: "Montserrat Underline", sans-serif !important;
+        }
+
+        p {
+            
+            max-width: 600px;
+            font-family: "Montserrat", sans-serif !important;
+            line-height: 1.75rem;
+            font-size: clamp(0.8rem, 1vw, 1rem);
+
+            span {
+
+                display: block;
+                color: v.$text-secondary;
+                font-weight: 700;
+                display: none;
+
+                @include mixins.devices(desktop) {
+                    display: block;
+
+                }
+            }
+
+
+            @include mixins.devices(desktop) {
+                max-width: none
+            }
+
+        }
+
+        @include mixins.devices(desktop) {
+            width: 45%;
+            align-items: start;
+        }
+
+    }
 
 
 }
@@ -127,31 +131,77 @@ display: none;
 
 
 /* HappyHighlights */
-.HappyHighlightsContainer{
+.HappyHighlightsContainer {
     @include mixins.section() {
 
-        background-color:transparent !important;
+        background-color: transparent !important;
         display: flex;
         justify-content: space-between;
         align-items: center;
-     padding: v.$padding-komponents;
-         }
+        padding: v.$padding-komponents;
+    }
 
 
 }
 
-.HappyHighlightsContent{
+.HappyHighlightsContent {
 
-width: 100%;
+    width: 100%;
+    text-align: center;
+   
+    h2 {
+        color: v.$text-secondary;
+        font-size: clamp(1rem, 2vw, 1.8rem);
+    }
+
+    p {
+        @include mixins.home-sub-p(){
+white-space: nowrap;
+margin-top: 0.5rem;
+font-weight: 500;
+        }
+      
+    
+       
+    }
+}
+
+
+/* topRated Products */
+
+.topRatedProductsContainer {
+
+    @include mixins.section() {
+        display: flex;
+        flex-direction: column;
+align-items: center;
+justify-content: center;
+        background-color: transparent !important;
+        padding: v.$padding v.$padding-komponents   ;
+    }
+
+    &___text{
+
+padding:0 0 v.$padding 0;
 text-align: center;
+width: 100%;
+max-width: none;
 
-h2{
-    color: v.$text-secondary;
-    font-size: clamp(1rem, 2vw, 2rem);
+@include mixins.devices(desktop) {
+    max-width: 700px;
 }
-p{
-   font-weight: 500;
-    color: v.$text-primary;
-    font-size: clamp(.5rem, 1.5vw, 1rem);
+
+h2 {
+   @include mixins.home-headings-h2()
 }
- }
+
+p {
+    @include mixins.home-sub-p()
+
+}
+
+
+    }
+
+
+}

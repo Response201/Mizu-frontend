@@ -1,7 +1,95 @@
 /* eslint-disable react/prop-types */
 
+import {  useState } from "react";
 
-export const ProductCard = ({item}) => {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import {  faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
+import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
+import axios from "axios";
+import { useGlobalContext } from "../context/GlobalContext";
+
+
+
+
+
+
+export const RatingComponent = ({ id, item, setUrl}) => {
+  const [hoveredStar, setHoveredStar] = useState(null); // Tracks hovered stars
+  const {token, userId} = useGlobalContext();
+
+  // Handle mouse hover over a star
+  const handleMouseOver = (index) => setHoveredStar(index + 1);
+
+  // Reset hover effect
+  const handleMouseOut = () => setHoveredStar(null);
+
+  // Handle click event for rating
+  const handleMouseClick = async (index) => {
+    const newRating = index + 1;
+   
+  
+    try {
+        const options = {
+            method: 'put',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization':`Bearer ${token}`
+            },
+            data:  JSON.stringify({"id": id, 
+                "userId": userId,
+            "newRating": newRating
+            
+            }) 
+        };
+        const response = await axios({
+            url: `${import.meta.env.VITE_BASE_URL}/updateRating`,
+            ...options,  
+        });
+
+  if(response){
+
+    setUrl("sortProducts?limit=3&search=&sort=averageRating:desc,price:desc")
+
+  }
+    
+    } catch (err) {
+        console.error(err);
+       
+    } 
+
+  };
+
+  // Generate star elements
+  const stars = Array.from({ length: 5 }, (_, index) => (
+    <FontAwesomeIcon
+      key={index}
+      icon={index < (hoveredStar ?? item.averageRating) ? faStarSolid : faStarRegular}
+      className="star"
+      onMouseOver={() => handleMouseOver(index)}
+      onMouseOut={handleMouseOut}
+      onClick={() => handleMouseClick(index)}
+      aria-label={`Rate ${index + 1} star`}
+    />
+  ));
+
+  return (
+    <section className="ratingContainer">
+      <div className="stars">{stars} </div>
+      <p> {item.averageRating} ({item.ratings.length}) </p>
+    </section>
+  );
+};
+
+
+
+
+
+
+
+
+export const ProductCard = ({item,  setUrl}) => {
+  const {token, userId} = useGlobalContext();
 
     
     return (
@@ -20,12 +108,30 @@ export const ProductCard = ({item}) => {
                 </div>
             </div>
             <div className="content">
-                <h3>  {item.name} </h3>
+
+                <div className="ProductsTitleAndRatingContainer"> 
+                <h3>  {item.name} </h3>    <section className="ratingContainer">
+    
+      <div className="stars">
+        {userId && token ? <RatingComponent item={item} inRating={item.rating} id={item._id} userId={userId} setUrl={setUrl}  /> : <p className="signIn_to_shop">  Sign in to shop </p> }
+      
+      </div>
+    </section>
+
+    </div>
+
+
                 <p>Fill out the form and the algorithm will offer the right team of experts</p>
+                <div className="categoryAndBuyBtnPrice">        
                 <ul>
                     <li style={{ '--clr-tag': `${item.primaryColor}`}} >{item.category}</li>
-                    {item?.pickAndMix ?  <li style={{ '--clr-tag': `${item.primaryColor}`}} >pick and mix</li> : ""}
+                    {item?.pickAndMix ?  <li style={{ '--clr-tag': `${item.primaryColor}`}} >mix</li> : ""}
                 </ul>
+                <div className="categoryAndBuyBtnPrice___buyBtn_price" style={{ '--clr-tag': `${item.primaryColor}`}}>       <p > {item.price}kr    </p>
+                {userId && token ?  <button>  <i className="bi bi-bag-plus"></i></button> :  ''   } </div> 
+
+                
+                </div>
             </div>
         </div>
     )

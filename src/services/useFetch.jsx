@@ -2,36 +2,51 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useGlobalContext } from '../context/GlobalContext';
 
-export const useFetch = (url) => {
-    const { setLoading, setError } = useGlobalContext();
+export const useFetch = (url, fetchType = "GET", bodyInput = null) => {
+    const {  loading, setLoading, error, setError, token } = useGlobalContext();
     const [data, setData] = useState(null);
-    
+
+
     useEffect(() => {
-        
-        
         const fetchData = async () => {
+          
+            setError(null); 
+            setLoading(true); 
+
             try {
-                /* aktiverar loading */
-                setLoading(true)
-                const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/${url}`);
+                const options = {
+                    method: fetchType,
+                    headers: {
+                        'Content-Type': 'application/json',
+   'Authorization': token
 
-
+                    },
                 
+                    data: bodyInput ? JSON.stringify(bodyInput) : null,
+                };
+
+                const response = await axios({
+                    url: `${import.meta.env.VITE_BASE_URL}/${url}`,
+                    ...options,  
+                });
+
                 setData(response.data);
-            } catch (err) {
-                /* om något går fel sätts ett error meddelande som sedan nollställs efter 3 sek med setTimeout- funktion */
-                setError(err);
-                setTimeout(() => {
-                    setError('')
-                }, 3000);
-            } finally {
-                  /* avaktiverar loading - när axis slutfört anropet */
                 setLoading(false);
+            } catch (err) {
+                console.error(err);
+                setError(err.message); 
+                setLoading(false);
+            } finally {
+                setLoading(false);
+    
             }
         };
-       
-        fetchData();
-    }, [url]);
 
-    return { data };
+        if (url) {  // Only fetch if the URL is valid
+            fetchData();
+        }
+
+    }, [url, fetchType, bodyInput, setError, setLoading]);
+
+    return { data, loading, error };
 };
