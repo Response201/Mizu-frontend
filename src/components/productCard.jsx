@@ -1,11 +1,10 @@
-/* eslint-disable react/prop-types */
+
 
 import {  useState } from "react";
-
+import "@fortawesome/fontawesome-free/css/all.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import {  faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
-import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
+import { faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
+import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
 import { useGlobalContext } from "../context/GlobalContext";
 
