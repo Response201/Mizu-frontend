@@ -1,13 +1,15 @@
 @use 'variables' as v;
 @use 'mixins';
+@use 'signin';
 @use 'keyFrames';
 @use 'loading';
-@use 'layout';
 @use 'productCard';
 @use 'navbar';
 @use 'home';
 @use 'background';
-@use 'signin';
+@use 'layout';
+
+
 
 
 
@@ -45,31 +47,30 @@ h1 {
 
 
 
+.custom-cursor {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    margin-top: 0px;
+    margin-left: -3px;
+    border-radius: 50%;
+    background-color: rgba(255, 20, 235, 0.774);
+    pointer-events: none;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    z-index: 20000;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* egen klass eftersom den ska lösas ut separat ifrån huvudklassen ".custom-cursor"  */
+.custom-cursor.hovering {
+    transform: scale(35) translateX(-25%) translateY(-25%) !important;
+    margin-top: 5px;
+    margin-left: 5px;
+    border: none;
+    background: v.$cursor-main-color-hover !important;
+    box-shadow: 1px 1px 50px v.$cursor-color-hover-out !important;
+z-index: 20000;
+}
 
 

@@ -1,97 +1,49 @@
 @use 'variables' as v;
 @use 'mixins';
 
-
-
-
-
-
-
-
-
-
-
 .signInContainer {
     @include mixins.article() {
-
-
         height: 100vh;
         min-height: 500px;
-
-
     }
 
     .signInContent {
-
         @include mixins.section() {
-            height: 100%;
+            height: 70%;
             width: 90%;
             background-color: transparent;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 3rem 0 0 0;
+            min-height: 500px;
 
-
+            @include mixins.devices(tablet) {
+                height: 100%;
+            }
         }
 
-
-
-
-
-
-
         &___imgContainer {
-            border: 2px solid v.$background-secondary;
-            overflow: hidden;
-            width: 40%;
-                max-height: 600px;
-            height: 100%;
-            min-height: 400px;
-            overflow: hidden;
-            position: relative;
-
-            display: flex !important;
-            justify-content: center !important;
-            align-items: start !important;
-
-            padding: v.$padding 0;
-
+            display: none;
 
             div {
-display: flex;
-align-items: center;
-flex-direction: column;
-justify-content: space-between;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: space-between;
                 width: 100%;
                 min-height: 60%;
-            
-              
-z-index: 5;
+                z-index: 5;
                 color: aliceblue;
 
                 h2 {
-                    @include mixins.home-headings-h2(){
-                 
-                 
-                 
-                    }
-
-
-
-
+                    @include mixins.home-headings-h2() {}
                 }
 
-                button{
-                   
+                button {
                     max-width: 80% !important;
-                    
-                    }
+                }
             }
-
-
-
-
 
             img {
                 top: 0;
@@ -101,51 +53,39 @@ z-index: 5;
                 z-index: 0;
             }
 
-
-
-
-
-
-
-
-
-            @include mixins.devices(desktop) {
-                width: 20%;
+            .overlay {
+                top: 0;
+                height: 100%;
+                width: 100%;
+                background-color: v.$cart-color !important;
+                backdrop-filter: blur(4px);
+                z-index: 1;
+                position: absolute;
             }
 
-
-
-
-
+            @include mixins.devices(tablet) {
+                border: 2px solid v.$background-secondary;
+                overflow: hidden;
+                max-height: 600px;
+                height: 100%;
+                min-height: 400px;
+                overflow: hidden;
+                position: relative;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: start !important;
+                padding: v.$padding 0;
+                max-width: 250px;
+                width: 30%;
+            }
         }
-
-
-
-        .overlay {
-            top: 0;
-            height: 100%;
-            width: 100%;
-            background-color: v.$cart-color !important;
-            backdrop-filter: blur(4px);
-            z-index: 1;
-            position: absolute;
-
-
-        }
-
-
-
-
-
 
         form {
-
             padding: v.$padding-komponents 0;
-
             max-height: 600px;
             height: 100%;
-            min-height: 400px;
-            width: 60%;
+            min-height: 300px;
+            width: 90%;
             max-width: 500px !important;
             display: flex;
             flex-direction: column;
@@ -154,26 +94,29 @@ z-index: 5;
             padding: v.$padding 0;
 
             h1 {
+                @include mixins.home-headings-h2() {
+                    padding-top: 3rem;
+                    margin-bottom: -1rem;
+                    font-size: clamp(2rem, 2.8vw, 2.5rem);
+                }
 
-
-                @include mixins.home-headings-h2()
+                @include mixins.devices(tablet) {
+                    @include mixins.home-headings-h2() {
+                        padding-top: 0;
+                        margin-bottom: 1.5rem !important;
+                        font-size: clamp(1.5rem, 2.8vw, 2.5rem);
+                    }
+                }
             }
 
-
-
-            .signin___content{
-display: flex;
-flex-direction: column;
-justify-content:flex-end;
-align-items: center;
-min-height: 50%;
-width: 100%;
-
-
-
+            .signin___content {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+                min-height: 50%;
+                width: 100%;
             }
-
-
 
             label {
                 width: 66% !important;
@@ -181,43 +124,23 @@ width: 100%;
                 flex-direction: column;
                 align-items: center;
                 margin: 3rem 0 0 0;
-
             }
 
-
             input {
-                min-width: 100% !important;
+                min-width: 90% !important;
                 outline: none !important;
                 border: 0;
                 border-bottom: 1px v.$text-primary solid;
-                background-color: transparent;
-
+                background-color: v.$background-secondary;
             }
 
-
-
-
-.signin___btn{
-width: 100%;
-height: 30%;
-
-display: flex;
-justify-content: center;
-align-items: center;
-
-}
-
-
-
-
+            .signin___btn {
+                width: 100%;
+                height: 30%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
         }
-
     }
-
-
-
-
-
-
-
 }

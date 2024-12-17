@@ -1,31 +1,37 @@
-$background-primary: #ffffff;
-$background-secondary: #ddc0b0;
+$background-primary: #e4ecf6;
+$background-secondary: #f7f7f7;
 $background-light:#FBF7F5;
 $primary-color: rgb(33, 54, 16);
 $secondary-color: rgb(135, 153, 127);
 $shadow: rgb(57, 57, 57);
 $border-nav: #382b2321;;
- $text-primary:#382b23; 
-$text-secondary:#a2603e;
+ $text-primary:#5c462d; 
+ $text-header:#faa02b;
+$text-secondary:#dd912e;
 $font-one: 'Courier New', Courier, monospace;
 
 $star:#704A31;
 
-
+$text-shadow:  .7px 0px .5px #1d1710a2;
 $max-width:1400px;
 $padding:clamp(1rem, 5vw, 4rem);
 $padding-komponents:clamp(1rem, 5vw, 2.5rem) 1rem;
 
-$cart-color:#ddc0b05b;
-$cart-dropdown:#d9c1b3a6;
-$cart-blur: 10px;
+$cart-color:#f7f7f73d;
+$cart-dropdown:#e0dcdaa6;
+$cart-blur: 15px;
 
-
-
+$cursor-main-color-hover:rgba(250, 190, 100, 0.219); 
+$cursor-color-hover-out:rgba(253, 13, 221, 0.24);
 /* Background particles */
-
+/* 
 $primary-background-color:rgb(228,236,246);
 
 $background-color1: #ffffffa6;
 $background-color2: #ffffff;
-$background-color3: #ffffffad;
+$background-color3: #ffffffad; */
+
+$primary-background-color:rgb(228,236,246);
+$background-color1: #efa977af;
+$background-color2: #f390e3d5;
+$background-color3: #c590f3a3;
