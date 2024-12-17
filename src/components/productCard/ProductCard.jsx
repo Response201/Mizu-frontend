@@ -1,0 +1,56 @@
+
+
+import "@fortawesome/fontawesome-free/css/all.css";
+
+import { useGlobalContext } from "../../context/GlobalContext";
+import { RatingComponent } from "./RatingComponent";
+
+
+export const ProductCard = ({ item, setUrl }) => {
+  const { token, userId } = useGlobalContext();
+
+
+  return (
+    <div className="productCard">
+      <div className="card-inner" style={{ '--clr': "#fff" }}>
+        <div className="box">
+          <div className="imgBox" style={{ '--clr-tag': `${item.primaryColor}` }}>
+            <img src="https://images.unsplash.com/photo-1601049676869-702ea24cfd58?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Trust & Co." />
+          </div>
+          <div className="icon hover-target " style={{ '--clr': "#fff" }}>
+            <a href="#" className="iconBox hover-target" style={{ '--clr-tag': `${item.primaryColor}` }}> <span className="material-symbols-outlined">
+              {/* arrow_outward */} <i className="bi bi-arrow-up-right"></i>
+
+            </span></a>
+          </div>
+        </div>
+      </div>
+      <div className="content">
+
+        <div className="ProductsTitleAndRatingContainer">
+          <h3>  {item.name} </h3>    <section className="ratingContainer">
+
+            <div className="stars">
+              {userId && token ? <RatingComponent item={item} inRating={item.rating} id={item._id} userId={userId} setUrl={setUrl} /> : <p className="signIn_to_shop">  Sign in to shop </p>}
+
+            </div>
+          </section>
+
+        </div>
+
+
+        <p>Fill out the form and the algorithm will offer the right team of experts</p>
+        <div className="categoryAndBuyBtnPrice">
+          <ul>
+            <li style={{ '--clr-tag': `${item.primaryColor}` }} >{item.category}</li>
+            {item?.pickAndMix ? <li style={{ '--clr-tag': `${item.primaryColor}` }} >mix</li> : ""}
+          </ul>
+          <div className="categoryAndBuyBtnPrice___buyBtn_price" style={{ '--clr-tag': `${item.primaryColor}` }}>       <p > {item.price}kr    </p>
+            {userId && token ? <button>  <i className="bi bi-bag-plus"></i></button> : ''} </div>
+
+
+        </div>
+      </div>
+    </div>
+  )
+}
