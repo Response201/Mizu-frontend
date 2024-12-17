@@ -12,14 +12,26 @@ export const GlobalProvider = ({ children }) => {
     const [isHovering, setIsHovering] = useState(false);
 
 
-const [userId, setUserId] = useState('')
-const [token, setToken] = useState('')
+const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("userId")) ||'')
+const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")) ||'')
 
 
     /* sätter localstorage "allProducts" om allProducts förändras */
     useEffect(() => {
         localStorage.setItem("allProducts", JSON.stringify(allProducts));
     }, [allProducts])
+
+
+    useEffect(() => {
+        console.log(error)
+        if(error === "Request failed with status code 403"){
+            setToken('')
+            setUserId('')
+
+        }
+        localStorage.setItem("token", JSON.stringify(token));
+        localStorage.setItem("userId", JSON.stringify(userId));
+    }, [token,userId, error])
 
 
     /* States som skickas ut till alla children inom contexten */

@@ -8,14 +8,14 @@ import { useGlobalContext } from '../../../context/GlobalContext';
 export const Navigation = () => {
 /*   const [categories, setCategories] = useState([]);
   const [cartCount, setCartCount] = useState(0); */
-const {userId, setUserId} = useGlobalContext();
+const {userId, setUserId, setToken} = useGlobalContext();
 
   
 
  
 
   const handleLogout = () => {
- 
+    setToken('')
     setUserId('')
   };
 

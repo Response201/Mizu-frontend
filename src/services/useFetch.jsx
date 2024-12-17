@@ -3,46 +3,46 @@ import axios from 'axios';
 import { useGlobalContext } from '../context/GlobalContext';
 
 export const useFetch = (url, fetchType = "GET", bodyInput = null) => {
-    const {  loading, setLoading, error, setError, token } = useGlobalContext();
+    const { loading, setLoading, error, setError, token } = useGlobalContext();
     const [data, setData] = useState(null);
-
+    console.log(token)
 
     useEffect(() => {
         const fetchData = async () => {
-          
-            setError(null); 
-            setLoading(true); 
+
+            setError(null);
+            setLoading(true);
 
             try {
                 const options = {
                     method: fetchType,
                     headers: {
                         'Content-Type': 'application/json',
-   'Authorization': token
+                        'Authorization': `Bearer ${token}`
 
                     },
-                
+
                     data: bodyInput ? JSON.stringify(bodyInput) : null,
                 };
 
                 const response = await axios({
                     url: `${import.meta.env.VITE_BASE_URL}/${url}`,
-                    ...options,  
+                    ...options,
                 });
 
                 setData(response.data);
                 setLoading(false);
             } catch (err) {
                 console.error(err);
-                setError(err.message); 
+                setError(err.message);
                 setLoading(false);
             } finally {
                 setLoading(false);
-    
+
             }
         };
 
-        if (url) {  // Only fetch if the URL is valid
+        if (url) {
             fetchData();
         }
 
