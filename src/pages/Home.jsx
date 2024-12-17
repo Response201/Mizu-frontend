@@ -7,6 +7,7 @@ import { Header } from "../components/home/header";
 import { HappyHighlights } from "../components/home/HappyHighlights";
 import { TopRatedProducts } from "../components/home/TopRatedProducts";
 
+
 export const Home = () => {
   const {  setAllProducts } = useGlobalContext();
 
@@ -30,9 +31,10 @@ export const Home = () => {
   
 <Header />
 
-
+<section className="dottedBorder">           
      <HappyHighlights />
 
+     </section>
 
 
 <TopRatedProducts  />

@@ -24,6 +24,8 @@ const [topRatedProducts, setTopRatedProducts] = useState([])
 
 
   return (
+
+    <>    {topRatedProducts.length >= 1  &&      
     <article className='topRatedProductsContainer'>
         <section className='topRatedProductsContainer___text'>
 
@@ -53,6 +55,7 @@ const [topRatedProducts, setTopRatedProducts] = useState([])
 
 
 
-    </article>
+    </article> }
+    </>
   )
 }

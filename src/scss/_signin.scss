@@ -4,20 +4,20 @@
 .signInContainer {
     @include mixins.article() {
         height: 100vh;
-        min-height: 500px;
+        min-height: 480px;
     }
 
     .signInContent {
         @include mixins.section() {
-            height: 70%;
+            height: 100%;
             width: 90%;
             background-color: transparent;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 3rem 0 0 0;
-            min-height: 500px;
-
+        
+min-height: fit-content;
             @include mixins.devices(tablet) {
                 height: 100%;
             }
@@ -90,8 +90,55 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: v.$background-secondary !important;
+            background-color: transparent !important;
             padding: v.$padding 0;
+overflow: hidden;
+
+position: relative;
+
+
+
+
+            img {
+    filter: opacity(30%);
+                top: -50%;
+                position: absolute;
+                height: 200%;
+                object-fit: cover;
+                z-index: -2;
+            }
+
+            .overlay {
+                top: 0;
+                height: 100%;
+                width: 100%;
+                background-color: v.$cart-color !important;
+                backdrop-filter: blur(4px);
+                z-index: -1;
+                position: absolute;
+            }
+
+
+
+
+            @include mixins.devices(tablet) {
+
+                background-color: v.$background-secondary !important;
+
+
+             }
+
+
+
+
+
+
+
+
+
+
+
+
 
             h1 {
                 @include mixins.home-headings-h2() {

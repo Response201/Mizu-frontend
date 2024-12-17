@@ -1,5 +1,6 @@
 
 
+import { MainButton } from '../lottieBtn/MainBtn.jsx';
 import { Background } from './Background';
 
 
@@ -12,7 +13,9 @@ export const Header = () => {
 
                 <section className='header'>   <h1>Mizu <span> : skin</span></h1>
 
-                    <p><span>  Naturla inner beauty </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, explicabo. Aspernatur tempora sunt totam consequuntur quisquam ratione quibusdam!</p>
+                    <p><span>  Naturla inner beauty </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, explicabo. Aspernatur tempora sunt totam consequuntur quisquam ratione !</p>
+<MainButton text="See products" />
+
                 </section>
 
 

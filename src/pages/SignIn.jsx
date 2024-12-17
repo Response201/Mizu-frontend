@@ -40,6 +40,9 @@ return (
   <article className="signInContainer">
       <section className="signInContent">
           <form onSubmit={handleSubmit}>
+          <img src="https://i.ibb.co/sRxRDnJ/Product1.png" alt="" />
+          <div className="overlay"></div>
+            
               <h1>Sign in</h1>
               <section className="signin___content">
                   <label>
