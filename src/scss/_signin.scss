@@ -10,13 +10,13 @@
     .signInContent {
         @include mixins.section() {
             height: 100%;
-            width: 90%;
+            width: 100%;
             background-color: transparent;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 3rem 0 0 0;
-        
+      
 min-height: fit-content;
             @include mixins.devices(tablet) {
                 height: 100%;
@@ -64,7 +64,7 @@ min-height: fit-content;
             }
 
             @include mixins.devices(tablet) {
-                border: 2px solid v.$background-secondary;
+           
                 overflow: hidden;
                 max-height: 600px;
                 height: 100%;
@@ -77,6 +77,7 @@ min-height: fit-content;
                 padding: v.$padding 0;
                 max-width: 250px;
                 width: 30%;
+                border: 1.5px inset v.$text-secondary;
             }
         }
 
@@ -85,7 +86,7 @@ min-height: fit-content;
             max-height: 600px;
             height: 100%;
             min-height: 300px;
-            width: 90%;
+            width: 95%;
             max-width: 500px !important;
             display: flex;
             flex-direction: column;
@@ -93,7 +94,7 @@ min-height: fit-content;
             background-color: transparent !important;
             padding: v.$padding 0;
 overflow: hidden;
-
+border: 1px inset v.$text-secondary;
 position: relative;
 
 
@@ -123,9 +124,11 @@ position: relative;
 
             @include mixins.devices(tablet) {
 
-                background-color: v.$background-secondary !important;
+                background-color: v.$background-secondary!important;
 
-
+                width: 90%;
+   
+                border: none;
              }
 
 
