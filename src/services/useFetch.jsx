@@ -6,6 +6,7 @@ export const UseFetch = (url, fetchType = "GET", bodyInput = null) => {
     const { loading, setLoading, error, setError, token } = useGlobalContext();
     const [data, setData] = useState(null);
 
+    
 
     useEffect(() => {
         const fetchData = async () => {
