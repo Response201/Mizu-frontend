@@ -2,7 +2,7 @@ import  { useState } from "react";
 import ButtonLottie from "./ButtonLottie";
 
 
-export const MainButton = ({ text }) => {
+export const MainButton = ({ text, getAnimation, textColorMainBtn="#dd912e" }) => {
   const [hoverLottie, setHoverLottie] = useState(false);
 
   const onClickBtn = () => {
@@ -14,10 +14,10 @@ export const MainButton = ({ text }) => {
         <ButtonLottie
           clickLottie={hoverLottie}
           setClickLottie={setHoverLottie}
-        
+        getAnimation={getAnimation}
         />
 
-        <p className="btnAndText___content___text"> {text} </p>
+        <p style={{ '--color-mainBtn': `${textColorMainBtn}` }} className="btnAndText___content___text"> {text} </p>
       </section>
 
   );

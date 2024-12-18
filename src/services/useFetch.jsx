@@ -34,7 +34,7 @@ export const useFetch = (url, fetchType = "GET", bodyInput = null) => {
                 setLoading(false);
             } catch (err) {
                 console.error(err);
-                setError(err.message);
+                setError('somthing went wrong');
                 setLoading(false);
             } finally {
                 setLoading(false);

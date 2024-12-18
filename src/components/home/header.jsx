@@ -2,7 +2,7 @@
 
 import { MainButton } from '../lottieBtn/MainBtn.jsx';
 import { Background } from './Background';
-
+import getAnimation from "../../assets/lotties/button.json";
 
 
 export const Header = () => {
@@ -14,8 +14,9 @@ export const Header = () => {
                 <section className='header'>   <h1>Mizu <span> : skin</span></h1>
 
                     <p><span>  Naturla inner beauty </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, explicabo. Aspernatur tempora sunt totam consequuntur quisquam ratione !</p>
-<MainButton text="See products" />
-
+                    <section className="hover-target" >        
+<MainButton text="See products" getAnimation={getAnimation}       />
+</section>
                 </section>
 
 

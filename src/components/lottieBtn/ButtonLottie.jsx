@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
-import pink from "../../assets/lotties/button.json";
+
 import Lottie from "lottie-react";
 
-const ButtonLottie = ({ clickLottie, setClickLottie }) => {
+const ButtonLottie = ({ clickLottie, setClickLottie, getAnimation }) => {
 
   const [isFirstRun, setisFirstRun] = useState(true);
-  const [animation, setAnimation] = useState(pink);
+  const [animation, setAnimation] = useState(getAnimation);
   const lottieRef = useRef();
 
 

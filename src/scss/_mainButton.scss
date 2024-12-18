@@ -31,7 +31,7 @@ filter:drop-shadow(v.$box-shadow-fade) ;
              font-weight: 600;
              margin-top: -2px;
           white-space: nowrap;
-          color: v.$text-secondary;
+          color:  var(--color-mainBtn) !important;
           filter: brightness(60%);
 
     }

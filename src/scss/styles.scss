@@ -1,6 +1,6 @@
 @use 'variables' as v;
 @use 'mixins';
-@use 'signin';
+@use 'formSigninRegisterUser';
 @use 'keyFrames';
 @use 'loading';
 @use 'productCard';
@@ -19,6 +19,7 @@
     cursor: url(https://cur.cursors-4u.net/cursors/cur-7/cur686.cur), auto !important;
     -ms-overflow-style: none;
     /* IE and Edge */
+    -webkit-scrollbar-width: none;
     scrollbar-width: none;
     /* Firefox */
 

@@ -4,7 +4,7 @@
 .signInContainer {
     @include mixins.article() {
         height: 100vh;
-        min-height: 480px;
+        min-height: 500px;
     }
 
     .signInContent {
@@ -16,8 +16,9 @@
             justify-content: center;
             align-items: center;
             padding: 3rem 0 0 0;
-      
-min-height: fit-content;
+
+            min-height: fit-content;
+
             @include mixins.devices(tablet) {
                 height: 100%;
             }
@@ -31,13 +32,19 @@ min-height: fit-content;
                 align-items: center;
                 flex-direction: column;
                 justify-content: space-between;
-                width: 100%;
+                width: 98%;
                 min-height: 60%;
                 z-index: 5;
                 color: aliceblue;
 
                 h2 {
-                    @include mixins.home-headings-h2() {}
+                    @include mixins.home-headings-h2() {
+                        font-size: clamp(1.8rem, 1vw + 1rem, 2.3rem) !important;
+                        line-height: 2.2rem;
+                        text-align: center;
+                        color: var(--color) !important;
+
+                    }
                 }
 
                 button {
@@ -58,13 +65,14 @@ min-height: fit-content;
                 height: 100%;
                 width: 100%;
                 background-color: v.$cart-color !important;
+                -webkit-backdrop-filter: blur(4px);
                 backdrop-filter: blur(4px);
                 z-index: 1;
                 position: absolute;
             }
 
             @include mixins.devices(tablet) {
-           
+
                 overflow: hidden;
                 max-height: 600px;
                 height: 100%;
@@ -77,7 +85,7 @@ min-height: fit-content;
                 padding: v.$padding 0;
                 max-width: 250px;
                 width: 30%;
-                border: 1.5px inset v.$text-secondary;
+                border: 1.5px inset  var(--color) !important;;
             }
         }
 
@@ -93,15 +101,15 @@ min-height: fit-content;
             align-items: center;
             background-color: transparent !important;
             padding: v.$padding 0;
-overflow: hidden;
-border: 1px inset v.$text-secondary;
-position: relative;
+            overflow: hidden;
+            border: 1px inset v.$text-secondary;
+            position: relative;
 
 
 
 
             img {
-    filter: opacity(30%);
+                filter: opacity(30%);
                 top: -50%;
                 position: absolute;
                 height: 200%;
@@ -114,22 +122,37 @@ position: relative;
                 height: 100%;
                 width: 100%;
                 background-color: v.$cart-color !important;
+                -webkit-backdrop-filter: blur(4px);
                 backdrop-filter: blur(4px);
                 z-index: -1;
                 position: absolute;
             }
 
+.errorContainer{
+display: flex;
+align-items: center;
+justify-content: center;
+height: 4rem;
+width: 100%;
 
+
+p{
+
+margin: 0;
+color: var(--color) !important;
+}
+
+}
 
 
             @include mixins.devices(tablet) {
 
-                background-color: v.$background-secondary!important;
+                background-color: v.$background-secondary !important;
 
                 width: 90%;
-   
+
                 border: none;
-             }
+            }
 
 
 
@@ -147,7 +170,8 @@ position: relative;
                 @include mixins.home-headings-h2() {
                     padding-top: 3rem;
                     margin-bottom: -1rem;
-                    font-size: clamp(2rem, 2.8vw, 2.5rem);
+                    font-size: clamp(1.8rem, 1vw + 1rem, 2.3rem) !important;
+                    color: var(--color) !important;
                 }
 
                 @include mixins.devices(tablet) {
@@ -174,22 +198,56 @@ position: relative;
                 flex-direction: column;
                 align-items: center;
                 margin: 3rem 0 0 0;
+                color:  var(--color) ;
+                text-shadow: v.$text-shadow;
+                position: relative;
+                background-color: transparent;
             }
 
             input {
                 min-width: 90% !important;
                 outline: none !important;
                 border: 0;
-                border-bottom: 1px v.$text-primary solid;
-                background-color: v.$background-secondary;
+                border-bottom: 1px  var(--color)  solid;
+                text-shadow: v.$text-shadow;
+                background-color: transparent !important;
+                color: var(--color) !important ;
+                
+            &::placeholder{
+font-size: clamp(.4rem, .5vw + .5rem, .7rem);
+                color: var(--color) !important ;
+filter: brightness(75%) opacity(50%);
+            }  
             }
+
+            
+          
+       .icon{
+                visibility: visible;
+                color: var(--color) !important; /* Färgen styrs av CSS-variabeln --color */
+                width: 20px;
+                height: 20px;
+                background-size: cover;
+                margin-left: 10px;
+                position: absolute;
+                bottom: 0.4rem;
+                right: 1.5rem;
+                white-space: nowrap;
+              }
+
 
             .signin___btn {
                 width: 100%;
-                height: 30%;
+               
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
+                button {
+                    border: none;
+                
+background-color: transparent;
+                }
             }
         }
     }

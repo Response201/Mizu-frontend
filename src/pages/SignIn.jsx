@@ -2,7 +2,9 @@ import { useState } from "react"
 import { useFetch } from "../services/useFetch"
 import { useGlobalContext } from "../context/GlobalContext";
 import { useNavigate } from "react-router-dom";
+import getAnimation from "../assets/lotties/buttonOrange.json";
 
+import { FormSigninRegisterUser } from "../components/FormSigninResisterUser/FormSigninRegisterUser";
 
 export const SignIn = () => {
   const {setUserId, setToken, token, userId} = useGlobalContext();
@@ -38,58 +40,23 @@ const handleSubmit = (e) => {
 
 return (
   <article className="signInContainer">
-      <section className="signInContent">
-          <form onSubmit={handleSubmit}>
-          <img src="https://i.ibb.co/sRxRDnJ/Product1.png" alt="" />
-          <div className="overlay"></div>
-            
-              <h1>Sign in</h1>
-              <section className="signin___content">
-                  <label>
-                      <span>Email</span>
-                      <input
-                          type="email"
-                          className="hover-target"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          required
-                      />
-                  </label>
-                  <label>
-                      <span>Password</span>
-                      <input
-                          type="password"
-                          className="hover-target"
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                          required
-                      />
-                  </label>
-              </section>
-              <section className="signin___btn">
-                  <button className="hover-target" type="submit">
-                      Sign in
-                  </button>
-              </section>
-          </form>
-          
-          <section className="signInContent___imgContainer">
-              <img src="https://i.ibb.co/sRxRDnJ/Product1.png" alt="" />
-              <div className="overlay"></div>
-              <div>
-                  <h2>New here?</h2>
-                  <button
-                      className="hover-target"
-                      onClick={() => {
-                        navigate("/register")
-                        
-                      }}
-                  >
-                      Create User
-                  </button>
-              </div>
-          </section>
-      </section>
+   <FormSigninRegisterUser 
+   
+   email={email}
+   setEmail={setEmail}
+   password={password}
+   setPassword={setPassword}
+   handleSubmit={handleSubmit}
+   navigateTo="/register"
+   signInImage="https://i.ibb.co/sRxRDnJ/Product1.png"
+   title="Sign in"
+   newHereText="Don't have an account?"
+      firstBtnText="Sign in"
+     secondBtnText="Register Now"
+ 
+   getAnimation={getAnimation}
+   
+   />
   </article>
 );
 };
