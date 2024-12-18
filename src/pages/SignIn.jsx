@@ -1,10 +1,9 @@
 import { useState } from "react"
-import { UseFetch } from "../services/UseFetch"
 import { useGlobalContext } from "../context/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import getAnimation from "../assets/lotties/buttonOrange.json";
-
 import { FormSigninRegisterUser } from "../components/FormSigninResisterUser/FormSigninRegisterUser";
+import { UseFetch } from "../services/UseFetch";
 
 
 export const SignIn = () => {
