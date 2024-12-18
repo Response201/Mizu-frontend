@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import Cookies from "js-cookie";
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 
@@ -31,10 +30,10 @@ const GoogleSignIn = ({ label, url, clientId }) => {
                     const email = userObject.email;
                     const password = null;
                     const provider = "google"
-console.log("URL", url)
+                    console.log("URL", url)
                     const body = { email, password, provider };
                     setLoading(true)
-                    const data  = await FetchLogin(url, body);
+                    const data = await FetchLogin(url, body);
 
 
 
@@ -42,17 +41,17 @@ console.log("URL", url)
 
 
 
-                     if (data.message === "Registration successful!" && label === "signup_with") {
+                    if (data.message === "Registration successful!" && label === "signup_with") {
                         console.log("Registration successful!");
                         setLoading(false)
                         setError("Registration successful!")
                         setTimeout(() => {
                             navigate("/signin");
                         }, 5000);
-                    }else if(data.message === "Login with google" && data.token && data.userId ){
+                    } else if (data.message === "Login with google" && data.token && data.userId) {
                         setLoading(false)
-setToken(data.token)
-setUserId(data.userId)
+                        setToken(data.token)
+                        setUserId(data.userId)
                         navigate("/");
 
 
@@ -91,7 +90,7 @@ setUserId(data.userId)
                 console.error('Element with id "signInGoogle" not found.');
             }
         });
-    }, [clientId, navigate, label]);
+    }, [clientId, navigate, label, setError, setLoading, setUserId, setToken]);
 
     return <div id="signInGoogle"></div>;
 };

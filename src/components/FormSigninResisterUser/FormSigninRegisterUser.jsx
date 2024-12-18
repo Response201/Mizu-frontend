@@ -1,5 +1,5 @@
 
-import {  useNavigate } from 'react-router-dom';
+
 import { MainButton } from '../lottieBtn/MainBtn.jsx';
 import { useGlobalContext } from '../../context/GlobalContext.jsx';
 import { useEffect, useState } from 'react';
@@ -83,7 +83,7 @@ export const FormSigninRegisterUser = ({
                             required
                         />
                         <span className="icon" style={{ '--color': `${color}` }}>
-                            {email.length >= 1 && <>{!isEmailValid ? <i class="bi bi-x"></i> : <i className="bi bi-check"></i>}
+                            {email.length >= 1 && <>{!isEmailValid ? <i className="bi bi-x"></i> : <i className="bi bi-check"></i>}
 
                             </>}
 
@@ -108,7 +108,7 @@ export const FormSigninRegisterUser = ({
                         />
                         <span className="icon" style={{ '--color': `${color}` }}>
                             {password.length >= 1 && <>
-                                {!isPasswordValid ? <i class="bi bi-x"></i> : <i className="bi bi-check"></i>}</>
+                                {!isPasswordValid ? <i className="bi bi-x"></i> : <i className="bi bi-check"></i>}</>
                             }
 
                         </span>
