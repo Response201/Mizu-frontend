@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import getAnimation from "../assets/lotties/button.json";
 
 import { FormSigninRegisterUser } from "../components/FormSigninResisterUser/FormSigninRegisterUser";
-import { UseFetch } from "../services/UseFetch";
+import { Fetch } from "../services/Fetch";
+
+
 
 export const Register = () => {
 
@@ -13,7 +15,7 @@ export const Register = () => {
   const [body, setBody] = useState({})
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { data } = UseFetch(url, "POST", body)
+  const { data } = Fetch(url, "POST", body)
   const [message, setMessage] = useState('')
 
 

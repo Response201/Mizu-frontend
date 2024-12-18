@@ -3,7 +3,8 @@ import { useGlobalContext } from "../context/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import getAnimation from "../assets/lotties/buttonOrange.json";
 import { FormSigninRegisterUser } from "../components/FormSigninResisterUser/FormSigninRegisterUser";
-import { UseFetch } from "../services/UseFetch";
+import { Fetch } from "../services/Fetch";
+
 
 
 export const SignIn = () => {
@@ -13,7 +14,7 @@ export const SignIn = () => {
   const [body, setBody] = useState({})
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { data } = UseFetch(url, "POST", body)
+  const { data } = Fetch(url, "POST", body)
 
 
 
