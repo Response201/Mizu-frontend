@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import { ProductCard } from '../productCard/ProductCard'
-import { useFetch } from '../../services/useFetch'
+import { UseFetch } from '../../services/UseFetch'
 import { useGlobalContext } from '../../context/GlobalContext';
 
 export const TopRatedProducts = () => {
   const { userId, topRatedProducts, setTopRatedProducts } = useGlobalContext();
 
   const [url, setUrl] = useState("sortProducts?limit=3&search=&sort=averageRating:desc,price:desc")
-  const { data } = useFetch(url);
+  const { data } = UseFetch(url);
 
 
 

@@ -35,7 +35,6 @@ useEffect(() => {
 
 
     useEffect(() => {
-        console.log(error)
         if(error === "Request failed with status code 403"){
             setToken('')
             setUserId('')

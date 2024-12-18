@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
 import { useGlobalContext } from "../../context/GlobalContext";
-import { useFetch } from "../../services/useFetch";
+import { UseFetch } from "../../services/UseFetch";
 import { LottieLoadingStar } from "./LottieLoadingRating";
 
 
@@ -19,7 +19,7 @@ export const RatingComponent = ({ id, item, setUrl }) => {
   const { userId } = useGlobalContext();
   const [body, setBody] = useState({});
   const [urlRating, setUrlRating] = useState("");
-  const { data, loading, error } = useFetch(urlRating, "PUT", body);
+  const { data, loading, error } = UseFetch(urlRating, "PUT", body);
   const [target, setTarget] = useState();
 
   // Handle mouse hover over a star

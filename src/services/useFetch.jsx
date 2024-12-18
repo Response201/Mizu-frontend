@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useGlobalContext } from '../context/GlobalContext';
 
-export const useFetch = (url, fetchType = "GET", bodyInput = null) => {
+export const UseFetch = (url, fetchType = "GET", bodyInput = null) => {
     const { loading, setLoading, error, setError, token } = useGlobalContext();
     const [data, setData] = useState(null);
-    console.log(token)
+
 
     useEffect(() => {
         const fetchData = async () => {

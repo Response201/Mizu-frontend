@@ -1,8 +1,9 @@
 
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { MainButton } from '../lottieBtn/MainBtn.jsx';
 import { useGlobalContext } from '../../context/GlobalContext.jsx';
 import { useEffect, useState } from 'react';
+import GoogleSignIn from '../Google/Google.jsx';
 
 export const FormSigninRegisterUser = ({
     title = "Sign in",
@@ -20,9 +21,11 @@ export const FormSigninRegisterUser = ({
     color = " #dd912e",
     textColorMainBtn = "#dd912e",
     message='',
+    label="signin",
+    url
 }) => {
 
-    const { error, setError } = useGlobalContext();
+    const { error, setError, loading } = useGlobalContext();
     const [isPasswordValid, setIsPasswordValid] = useState(false);
     const [isEmailValid, setIsEmailValid] = useState(false);
 
@@ -59,7 +62,7 @@ export const FormSigninRegisterUser = ({
 
 
 
-    const navigate = useNavigate();
+
 
     return (
         <section className="signInContent">
@@ -115,6 +118,9 @@ export const FormSigninRegisterUser = ({
                     </label>
                 </section>
                 <section className='errorContainer'>
+
+
+                    {loading && !error && !message && <p> loading...  </p>}
                     {error && <p style={{ '--color': `${color}` }}> {error}   </p>}
                     {message && <p style={{ '--color': `${color}` }}> {message}   </p>}
                 </section>
@@ -122,6 +128,12 @@ export const FormSigninRegisterUser = ({
                     <button className="hover-target" type="submit">
                         <MainButton text={firstBtnText} getAnimation={getAnimation} textColorMainBtn={textColorMainBtn} />
                     </button>
+
+                    <GoogleSignIn   
+                    url={url}
+                    label={label}
+        clientId= {`${import.meta.env.VITE_CLIENTID}`}
+         />
                 </section>
 
 
@@ -138,6 +150,7 @@ export const FormSigninRegisterUser = ({
                        
                     >
                         <MainButton text={secondBtnText} getAnimation={getAnimation} textColorMainBtn={textColorMainBtn} />
+             
                     </a>
                 </div>
             </section>

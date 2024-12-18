@@ -1,4 +1,4 @@
-
+import Cookies from "js-cookie";
 import { Navbar, Nav, Container, Dropdown,  } from "react-bootstrap";
 import { Cart } from './Cart';
 import { useGlobalContext } from '../../../context/GlobalContext';
@@ -17,6 +17,7 @@ const {userId, setUserId, setToken} = useGlobalContext();
   const handleLogout = () => {
     setToken('')
     setUserId('')
+    Cookies.remove("jwtToken");
   };
 
   return (

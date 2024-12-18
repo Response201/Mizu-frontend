@@ -1,9 +1,9 @@
 import { useState } from "react"
-import { useFetch } from "../services/useFetch"
 import { useNavigate } from "react-router-dom";
 import getAnimation from "../assets/lotties/button.json";
 
 import { FormSigninRegisterUser } from "../components/FormSigninResisterUser/FormSigninRegisterUser";
+import { UseFetch } from "../services/UseFetch";
 
 export const Register = () => {
 
@@ -13,20 +13,21 @@ export const Register = () => {
   const [body, setBody] = useState({})
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { data } = useFetch(url, "POST", body)
-const [message, setMessage] = useState('')
+  const { data } = UseFetch(url, "POST", body)
+  const [message, setMessage] = useState('')
 
 
   if (data && data.message === "Registration successful!") {
 
 
-if(!message){
-    setMessage("Registration successful!")
+    if (!message) {
+      setMessage("Registration successful!")
 
 
-    setTimeout(() => {
-      navigate("/signin")
-    }, 7000)}
+      setTimeout(() => {
+        navigate("/signin")
+      }, 7000)
+    }
 
   }
 
@@ -62,6 +63,10 @@ if(!message){
         color="rgb(25, 154, 154)"
         textColorMainBtn="rgb(25, 154, 154)"
         message={message}
+        label="signup_with"
+
+        url="createUser"
+
       />
     </article>
   );

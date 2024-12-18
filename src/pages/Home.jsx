@@ -1,7 +1,7 @@
 
 import { useEffect } from "react";
 import { useGlobalContext } from "../context/GlobalContext";
-import { useFetch } from "../services/useFetch";
+import { UseFetch } from "../services/UseFetch";
 
 import { Header } from "../components/home/header";
 import { HappyHighlights } from "../components/home/HappyHighlights";
@@ -16,7 +16,7 @@ export const Home = () => {
 
 
   
-  const { data } = useFetch("allProducts");
+  const { data } = UseFetch("allProducts");
 
   useEffect(() => {
     if (data && data.products) {
