@@ -40,12 +40,12 @@ export const Fetch = (url, fetchType = "GET", bodyInput = null) => {
                 setLoading(false);
             } finally {
                 setLoading(false);
-                url='';
+           
 
             }
         };
 
-        if (url && !data) {
+        if (url ) {
             fetchData();
         }
 

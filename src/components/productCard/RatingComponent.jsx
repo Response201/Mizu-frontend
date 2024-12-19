@@ -47,12 +47,14 @@ export const RatingComponent = ({ id, item, setUrl }) => {
 
   // Update displayed rating when data changes
   useEffect(() => {
-    if (data) {
+    if (data && urlRating) {
       setCurrentRating(Math.ceil(data.averageRating || item.averageRating));
       setTarget(null); // Clear the target after update
       setUrl("sortProducts?limit=3&search=&sort=averageRating:desc,price:desc");
     }
-  }, [data, item.averageRating, setUrl]);
+
+    setUrlRating("")
+  }, [data, item.averageRating, setUrlRating]);
 
   // Generate star elements
   const stars = Array.from({ length: 5 }, (_, index) => (
