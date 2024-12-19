@@ -3,9 +3,16 @@
 import { MainButton } from '../lottieBtn/MainBtn.jsx';
 import { Background } from './Background';
 import getAnimation from "../../assets/lotties/button.json";
+import { useEffect } from 'react';
 
 
 export const Header = () => {
+
+ useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+
     return (
         <article className='headerContainer'>
 

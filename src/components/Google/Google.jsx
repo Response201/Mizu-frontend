@@ -47,12 +47,14 @@ const GoogleSignIn = ({ label, url, clientId }) => {
                         setError("Registration successful!")
                         setTimeout(() => {
                             navigate("/signin");
+                            navigate(0)
                         }, 5000);
                     } else if (data.message === "Login with google" && data.token && data.userId) {
                         setLoading(false)
                         setToken(data.token)
                         setUserId(data.userId)
-                        navigate("/");
+                        navigate("/")
+                        navigate(0)
 
 
                     } else {

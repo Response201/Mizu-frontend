@@ -8,7 +8,7 @@ import { Fetch } from "../services/Fetch";
 
 
 export const SignIn = () => {
-  const { setUserId, setToken, token, userId } = useGlobalContext();
+  const { setUserId, setToken } = useGlobalContext();
   const navigate = useNavigate()
   const [url, setUrl] = useState('')
   const [body, setBody] = useState({})
@@ -23,11 +23,11 @@ export const SignIn = () => {
     setUserId(data.userId)
     setToken(data.token)
     navigate("/")
-
+    navigate(0)
 
   }
 
-  console.log(token, userId)
+ 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,6 +37,7 @@ export const SignIn = () => {
       email,
       password,
     });
+   
   };
 
   return (

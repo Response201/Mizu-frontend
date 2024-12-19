@@ -5,17 +5,22 @@
 
 
 .ProductCard___container {
-
+  display: -webkit-grid;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   gap: 2rem;
   row-gap: 1rem;
   width: 100%;
-  max-width: v.$max-width;
+  max-width: 100vw;
   justify-content: center;
   align-items: center;
   background-color: #ffffff;
   padding: 0;
+
+
+  @include mixins.devices(desktop) {
+    max-width: v.$max-width;
+}
 
 
   .productCard {

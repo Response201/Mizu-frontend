@@ -6,7 +6,7 @@ export const Fetch = (url, fetchType = "GET", bodyInput = null) => {
     const { loading, setLoading, error, setError, token } = useGlobalContext();
     const [data, setData] = useState(null);
 
-    
+   
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,21 +33,23 @@ export const Fetch = (url, fetchType = "GET", bodyInput = null) => {
 
                 setData(response.data);
                 setLoading(false);
+              
             } catch (err) {
                 console.error(err);
                 setError('somthing went wrong');
                 setLoading(false);
             } finally {
                 setLoading(false);
+                url='';
 
             }
         };
 
-        if (url) {
+        if (url && !data) {
             fetchData();
         }
 
-    }, [url, fetchType, bodyInput, setError, setLoading]);
+    }, [url]);
 
     return { data, loading, error };
 };
