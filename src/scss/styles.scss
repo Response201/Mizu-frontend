@@ -31,12 +31,24 @@
     display: none;
 }
 
-html, body{  height: 100vh; 
+html,#root, body{  height: 100vh; 
     min-height: 100%; 
     font-family: "Montserrat", sans-serif !important;
   max-width: 100vw;
   overflow-x: hidden;
    }
+
+
+   body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  body {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+
 
 
 h1 {
