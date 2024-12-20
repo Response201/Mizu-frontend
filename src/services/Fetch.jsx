@@ -6,7 +6,7 @@ export const Fetch = (url, fetchType = "GET", bodyInput = null) => {
     const { loading, setLoading, error, setError, token } = useGlobalContext();
     const [data, setData] = useState(null);
 
-   
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -33,19 +33,21 @@ export const Fetch = (url, fetchType = "GET", bodyInput = null) => {
 
                 setData(response.data);
                 setLoading(false);
-              
+
             } catch (err) {
-                console.error(err);
-                setError('somthing went wrong');
-                setLoading(false);
+                if (err.response && err.response.status === 403) {
+                    setError("Request failed with status code 403");
+                } else {
+                    setError('Something went wrong');
+                }
             } finally {
                 setLoading(false);
-           
+
 
             }
         };
 
-        if (url ) {
+        if (url) {
             fetchData();
         }
 

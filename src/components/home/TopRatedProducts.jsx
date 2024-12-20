@@ -1,65 +1,47 @@
-import { useEffect, useState } from 'react'
-import { ProductCard } from '../productCard/ProductCard'
-
-import { useGlobalContext } from '../../context/GlobalContext';
-import { Fetch } from '../../services/Fetch';
+import { useEffect, useState } from "react";
+import { ProductCard } from "../productCard/ProductCard";
+import { useGlobalContext } from "../../context/GlobalContext";
+import { Fetch } from "../../services/Fetch";
 
 export const TopRatedProducts = () => {
   const { userId, topRatedProducts, setTopRatedProducts } = useGlobalContext();
-
-  const [url, setUrl] = useState("sortProducts?limit=3&search=&sort=averageRating:desc,price:desc")
+  const [url, setUrl] = useState("sortProducts?limit=3&search=&sort=averageRating:desc,price:desc");
   const { data } = Fetch(url);
 
 
-
-
   useEffect(() => {
-
     if (data && data.products) {
-      setTopRatedProducts(data.products);
-      setUrl('')
+      setTopRatedProducts([...data.products]);
+      setUrl("");
     }
-    setUrl("")
-  }, [data, url]);
-
-
+  }, [data, setTopRatedProducts]);
 
   return (
-
     <>
- 
 
-      {topRatedProducts.length >= 1 &&
-        <article className='topRatedProductsContainer'>
-          <section className='topRatedProductsContainer___text'>
 
+      {topRatedProducts.length > 0 && (
+        <article className="topRatedProductsContainer">
+          <section className="topRatedProductsContainer___text">
             <h2>TOP RATED</h2>
-
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto assumenda, magnam, voluptates. Ipsum cumque, si sint!</p>
-
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto assumenda, magnam,
+              voluptates. Ipsum cumque, si sint!
+            </p>
           </section>
 
-
-
-
-          {topRatedProducts.length >= 1 &&
-            <section className="ProductCard___container">
-              {topRatedProducts.map((item) => (
-                <ProductCard key={item._id} item={item} userId={userId} setUrl={setUrl} />
-              ))}
-
-
-            </section>
-
-
-          }
-
-
-
-
-
-
-        </article>}
+          <section className="ProductCard___container">
+            {topRatedProducts.map((item) => (
+              <ProductCard
+                key={`${item._id}-${item.averageRating}`}
+                item={item}
+                userId={userId}
+                setUrl={setUrl}
+              />
+            ))}
+          </section>
+        </article>
+      )}
     </>
-  )
-}
+  );
+};

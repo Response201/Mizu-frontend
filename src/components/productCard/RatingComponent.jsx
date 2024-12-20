@@ -5,13 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
 import { useGlobalContext } from "../../context/GlobalContext";
-
 import { LottieLoadingStar } from "./LottieLoadingRating";
 import { Fetch } from "../../services/Fetch";
-
-
-
-
 
 
 export const RatingComponent = ({ id, item, setUrl }) => {
@@ -48,13 +43,13 @@ export const RatingComponent = ({ id, item, setUrl }) => {
   // Update displayed rating when data changes
   useEffect(() => {
     if (data && urlRating) {
-      setCurrentRating(Math.ceil(data.averageRating || item.averageRating));
+      setCurrentRating(Math.round(item.averageRating));
       setTarget(null); // Clear the target after update
       setUrl("sortProducts?limit=3&search=&sort=averageRating:desc,price:desc");
     }
 
     setUrlRating("")
-  }, [data, item.averageRating, setUrlRating]);
+  }, [data, item, setUrlRating]);
 
   // Generate star elements
   const stars = Array.from({ length: 5 }, (_, index) => (
@@ -77,7 +72,9 @@ export const RatingComponent = ({ id, item, setUrl }) => {
 
       <div className="stars">{stars}</div>
 
-      {loading && id === target ? <LottieLoadingStar /> : <p>  {currentRating} ({item.ratings.length})   </p>}
+      {loading && id === target && item ? <LottieLoadingStar /> : <p>
+        {Math.round(item.averageRating * 2) / 2} {/* värde med en decimal */}
+        ({item.ratings.length})   </p>}
 
 
 
