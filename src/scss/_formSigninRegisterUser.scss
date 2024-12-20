@@ -3,8 +3,7 @@
 
 .signInContainer {
     @include mixins.article() {
-        height: 100vh;
-        min-height: 500px;
+  
     }
 
     .signInContent {
@@ -21,6 +20,7 @@
 
             @include mixins.devices(tablet) {
                 height: 100%;
+                max-height: 580px;
             }
         }
 

@@ -4,7 +4,7 @@ import { useGlobalContext } from "../../context/GlobalContext";
 import { Fetch } from "../../services/Fetch";
 
 export const TopRatedProducts = () => {
-  const { userId, topRatedProducts, setTopRatedProducts } = useGlobalContext();
+    const { userId, topRatedProducts, setTopRatedProducts } = useGlobalContext();
   const [url, setUrl] = useState("sortProducts?limit=3&search=&sort=averageRating:desc,price:desc");
   const { data } = Fetch(url);
 

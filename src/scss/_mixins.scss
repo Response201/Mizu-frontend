@@ -22,10 +22,10 @@
 
 
 @mixin article() {
-  height: fit-content;
+  height: 100vh;
   width: 100%;
   max-width: 100vw;
-  min-height: 100vh;
+  min-height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,7 +34,7 @@
   padding: v.$padding 0;
 
   @include devices(desktop) {
-    padding: v.$padding;
+    padding: v.$padding ;
   }
 
 

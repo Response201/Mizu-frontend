@@ -1,0 +1,202 @@
+@use 'variables' as v;
+@use 'mixins';
+
+
+
+
+
+
+
+
+.productsContainer{
+    @include mixins.article(){
+
+overflow: hidden;
+
+
+
+
+padding-bottom: 0;
+
+
+@include mixins.devices(desktop) {
+padding-bottom: 0;
+  
+  }
+
+
+
+    }
+
+
+
+
+}
+
+.productsContent{
+
+    @include mixins.section(){
+  padding-bottom: 0;
+background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+   
+
+h1{
+margin: 1rem 0 clamp(1rem, 1rem + 1vw, 2rem)  0;
+    padding: 0;
+
+
+@include mixins.devices(desktop){
+  margin: 0rem 0 clamp(1rem, 1rem + 1vw, 2rem)  0;
+
+
+}
+
+}
+
+
+&___loading{
+  z-index: -1;
+height: 100vh;
+width: 100vw;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+display: flex;
+justify-content: center;
+align-items: center;
+
+
+}
+
+
+&___FilterProductsContainer{
+
+width: 100%;
+display: flex;
+
+flex-direction: column;
+flex-flow: column-reverse;
+@include mixins.devices(desktop){
+flex-flow:row;
+
+
+
+  }
+
+
+
+&___filterCard{
+  background-color: rgb(219, 229, 229);
+  min-height: 100%;
+  width: 100%;
+  height: 20vh;
+  min-height: 20rem;
+
+
+  @include mixins.devices(desktop) {
+width: 20%;
+position: relative !important;
+
+  }
+
+
+  &___card{
+
+
+
+
+  @include mixins.devices(desktop) {
+    
+    height: 50vh;
+    min-height: 20rem;
+    position: fixed;
+   width: 18%;
+  
+  top: 11rem;
+  background-color: yellow;
+      }
+
+
+  }
+
+}
+
+
+
+&___grid{
+  overflow: hidden;
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  align-items: start;
+  width:100% ;
+  
+  
+  @include mixins.devices(desktop){
+  width: 75%;
+  }
+  
+  }
+
+}
+
+
+&___textContainer{
+ backdrop-filter: none;
+z-index: 100;
+ position: absolute;
+ bottom: 0;
+ right: .5rem;
+ width: 200px;
+display: flex;
+justify-content: end;
+align-items: end;
+top: 1rem;
+left:calc(50% - 100px);
+right:calc( 50% - 100px);
+
+bottom: unset;
+z-index: 10000;
+
+@include mixins.devices(desktop){
+  bottom: 0;
+ right: .5rem;
+top:unset;
+left: unset;
+backdrop-filter: blur(15px);
+}
+
+
+
+&___textContent{
+width: 200px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+
+p{
+margin: 0;
+padding:2px 0 0 0;
+white-space: nowrap;
+}}
+
+
+
+
+
+
+
+
+
+}
+
+
+
+    }
+
+
+
+}
