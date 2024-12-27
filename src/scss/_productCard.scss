@@ -16,7 +16,7 @@
   align-items: center;
   background-color: #ffffff;
   padding: 0;
-overflow-x: hidden;
+overflow: hidden;
   @include mixins.devices(desktop) {
     max-width: v.$max-width;
 }
@@ -26,10 +26,9 @@ overflow-x: hidden;
  
     justify-content: center;
         align-items: center;
-     
+     width: 100%;
     background: #ffffff;;
 margin: 0px;
-
 height: 100%;
 
 
@@ -117,6 +116,21 @@ height: 100%;
 
       border-radius: 1.25rem;
       overflow: hidden;
+
+
+
+p{
+position: absolute;
+background-color: #e8e4e0db;
+transform: rotate(-40deg);
+top: 1.5rem;
+left: -3rem;
+z-index: 100;
+font-size: 0.6rem;
+padding: .4rem 3rem;
+font-weight: 600;
+box-shadow: v.$box-shadow-fade;
+}
 
       .imgBox {
         position: absolute;
@@ -287,7 +301,7 @@ white-space: nowrap !important;
 }
 
 
-  .star {
+  .star, .noRatingStars {
 
     height: clamp(11px, 1vw, 12px) !important;
 
@@ -296,12 +310,18 @@ white-space: nowrap !important;
    
 color: #F7B559;
 
-      &:hover {
-          color: #f69611;
-          cursor: pointer;
-      }
+ 
 
     
+  }
+
+  .star{
+
+    &:hover {
+      color: #f69611;
+      cursor: pointer;
+  }
+
   }
 
  

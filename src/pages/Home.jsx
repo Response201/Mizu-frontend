@@ -6,17 +6,14 @@ import { TopRatedProducts } from "../components/home/TopRatedProducts";
 import { Fetch } from "../services/Fetch";
 
 export const Home = () => {
-  const { setAllProducts } = useGlobalContext();
-  const { data } = Fetch("allProducts");
-
-
-
+  const { setBeforeFilteringProducts } = useGlobalContext();
+  const { data } = Fetch("sortProducts?limit=9&search=&sort=averageRating:desc&category=all&page=1");
 
   useEffect(() => {
     if (data && data.products) {
-      setAllProducts(data.products);
+      setBeforeFilteringProducts(data.products);
     }
-  }, [data, setAllProducts]);
+  }, [data, setBeforeFilteringProducts]);
 
   return (
     <>

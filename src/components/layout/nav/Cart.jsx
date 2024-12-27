@@ -6,7 +6,7 @@ export const Cart = () => {
   const [cartItems, setCartItem] = useState([{ id: 15, name: 'hello', quantity: '5', price: "15" }, { id: 12, name: 'hello', quantity: '5', price: "15" }])
 
 
-console.log(setCartItem,setDiscount,setTotalPrice)
+
 
   return (
     <Dropdown align="end" className='transparent '>

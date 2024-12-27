@@ -9,14 +9,15 @@ import { LottieLoadingStar } from "./LottieLoadingRating";
 import { Fetch } from "../../services/Fetch";
 
 
-export const RatingComponent = ({ id, item, setUrl }) => {
+export const RatingComponent = ({ id, item, setUrl, limit=3, searchQuery="", selectedSort="averageRating:desc", selectedCategory="all", page=1, pickAndMix=false }) => {
   const [hoveredStar, setHoveredStar] = useState(null); // Tracks hovered stars
   const [currentRating, setCurrentRating] = useState(Math.ceil(item.averageRating)); // Tracks displayed rating
-  const { userId } = useGlobalContext();
+  const { userId, token } = useGlobalContext();
   const [body, setBody] = useState({});
   const [urlRating, setUrlRating] = useState("");
   const { data, loading, error } = Fetch(urlRating, "PUT", body);
   const [target, setTarget] = useState();
+  
 
   // Handle mouse hover over a star
   const handleMouseOver = (index) => setHoveredStar(index + 1);
@@ -45,7 +46,7 @@ export const RatingComponent = ({ id, item, setUrl }) => {
     if (data && urlRating) {
       setCurrentRating(Math.round(item.averageRating));
       setTarget(null); // Clear the target after update
-      setUrl("sortProducts?limit=3&search=&sort=averageRating:desc,price:desc");
+      setUrl(`sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=${page}&pickAndMix=${pickAndMix}`);
     }
 
     setUrlRating("")
@@ -64,13 +65,27 @@ export const RatingComponent = ({ id, item, setUrl }) => {
     />
   ));
 
+
+
+
+  
+  // Generate star elements
+  const noRatingStars = Array.from({ length: 5 }, (_, index) => (
+    <FontAwesomeIcon
+      key={index}
+      icon={index < (currentRating) ? faStarSolid : faStarRegular}
+      className="noRatingStars"
+      
+    />
+  ));
+
   return (
     <section className="ratingContainer">
 
       {error && id === target && <p>Something went wrong</p>}
 
-
-      <div className="stars">{stars}</div>
+{token && userId ? <div className="stars">{stars}</div>: <div className="stars">{noRatingStars}</div>    }
+      
 
       {loading && id === target && item ? <LottieLoadingStar /> : <p>
         {Math.round(item.averageRating * 2) / 2} {/* värde med en decimal */}

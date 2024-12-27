@@ -12,7 +12,9 @@
     color: black I !important;
     background-color: v.$cart-color;
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
+
 /* DROPDOWN FÄRG */
 .dropdown-menu {
     margin-top: 0.8rem !important;
@@ -169,6 +171,7 @@
     width: 30px;
     border: none !important;
     min-width: fit-content;
+
     margin-left: 5px;
     background-color: rgba(248, 248, 248, 0.72) !important;
     color: v.$text-primary !important;
@@ -203,7 +206,7 @@
 .price {
     height: 1rem;
     font-size: 14px;
-    width: 35% !important;
+    width: 35% !important; 
     min-width: fit-content;
     display: flex;
     justify-content: end;

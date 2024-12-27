@@ -2,84 +2,116 @@ import { useEffect, useRef, useState } from "react";
 import { ProductCard } from "../components/productCard/ProductCard";
 import { useGlobalContext } from "../context/GlobalContext";
 import { Fetch } from "../services/Fetch";
-import { LottieLoadingStar } from "../components/productCard/LottieLoadingRating";
-
+import { FilterComponents } from "../components/Products/FilterComponents";
+import { PageComponent } from "../components/Products/PageComponent";
 export const Products = () => {
-  const { userId, allProducts, setAllProducts } = useGlobalContext();
-  const [url, setUrl] = useState("sortProducts?limit=6&search=&sort=averageRating:desc,price:desc");
+  const {
+    userId,
+    beforeFilteringProducts,
+    filtredProducts,
+    setFiltredProducts,
+    setUniqueCategories,
+    
+    
+  } = useGlobalContext();
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState();
-  const { data, loading } = Fetch(url);
-
-  // Create a reference to the productsContent section for scrolling
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedSort, setSelectedSort] = useState("averageRating:desc");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [pickAndMix, setPickAndMix] = useState(false);
+  const [limit, setLimit] = useState(9);
+  const [url, setUrl] = useState(``);
+  const [newUrl, setNewUrl] = useState('')
+  const { data} = Fetch(url || newUrl);
   const myRef = useRef(null);
 
-  // UseEffect to set products and page data
+useEffect(() => {
+setFiltredProducts(beforeFilteringProducts)
+}, [])
+
+
+
+ /*  Update products and page data */
   useEffect(() => {
     if (data && data.products) {
-      setAllProducts([...data.products]);
-      setPage(data.page);
-      setTotalPages(Math.ceil(data.total / data.limit));
-      setUrl("");
-
-      // Scroll to the top of the productsContent section
       if (myRef.current) {
         myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+     
       }
+      setFiltredProducts([...data.products]);
+      setUniqueCategories(data.categories);
+      setTotalPages(Math.ceil(data.total / data.limit));
+      setUrl('')
+      setNewUrl("")
+    
     }
-  }, [data, setAllProducts]);
+  }, [data, setFiltredProducts, setUniqueCategories]);
 
-  const HandlePage = (action) => {
-    if (action === 'next' && +page < totalPages) {
-      const nextPage = +page + 1;
-      setUrl(`sortProducts?limit=6&search=&page=${nextPage}&sort=averageRating:desc,price:desc`);
-    }
-    if (action === 'back' && +page >= 2) {
-      const prevPage = +page - 1;
-      setUrl(`sortProducts?limit=6&search=&page=${prevPage}&sort=averageRating:desc,price:desc`);
-    }
-  };
+
+  /* set page to 1 if searchQuery, selectedSort, selectedCategory, limit changes */
+  useEffect(() => {
+    setPage(1);
+   
+  }, [searchQuery, selectedSort, selectedCategory, limit]);
+
+
+
+
+
 
   return (
     <article className="productsContainer" ref={myRef}>
-      <section className="productsContent" >
- 
-<section >
+      <section className="productsContent">
+        {/* Top Filter Nav */}
+        <FilterComponents
+          userId={userId}
+        
+          limit={limit}
+          setLimit={setLimit}
+          searchQuery={searchQuery}
+          selectedSort={selectedSort}
+          selectedCategory={selectedCategory}
+          page={page}
+          setSearchQuery={setSearchQuery}
+          setSelectedSort={setSelectedSort}
+          setSelectedCategory={setSelectedCategory}
+          pickAndMix={pickAndMix} 
+          setPickAndMix={setPickAndMix}
+          url={url}
+          setUrl={setUrl}
+        />
 
-<h1>Products</h1>
 
-{loading && <section className="productsContent___loading"><LottieLoadingStar />   </section> }
-
- <section className="productsContent___FilterProductsContainer">          
- <section className="ProductCard___container productsContent___FilterProductsContainer___grid">
+        {/* Products List */}
     
-          {!loading && allProducts.map((item) => (
-            <ProductCard
-              key={`${item._id}-${item.averageRating}`}
-              item={item}
-              userId={userId}
-              setUrl={setUrl}
-            />
-          ))}
-        </section>
 
-        <section className="productsContent___FilterProductsContainer___filterCard">
+   
 
-<p>hello</p>
-
-        </section>
-
-        </section>
-</section>
-       
-        {/* Pagination Controls */}
-        <section className="productsContent___textContainer">
-          <section className="productsContent___textContainer___textContent">
-            <button onClick={() => HandlePage('back')}>Tillbaka</button>
-            <p>{page} / {totalPages}</p>
-            <button onClick={() => HandlePage('next')}>Framåt</button>
+          <section className={filtredProducts.length >= 3 ? "ProductCard___container productsContent___grid ": "ProductCard___container  productsContent___grid productsContent___smallGrid "} >
+            {filtredProducts.map((item) => (
+              <ProductCard
+                key={`${item._id}-${item.averageRating}`}
+                item={item}
+                userId={userId}
+                setUrl={setNewUrl}
+                limit={limit}
+                setLimit={setLimit}
+                searchQuery={searchQuery}
+                selectedSort={selectedSort}
+                selectedCategory={selectedCategory}
+                pickAndMix={pickAndMix} 
+                setPickAndMix={setPickAndMix}
+                page={page}
+              />
+            ))}
           </section>
-        </section>
+           
+      
+        {/* Pagination Control */}
+        <section className="productsContent___pageContainer">
+          <PageComponent page={page} setPage={setPage} totalPages={totalPages} />
+          </section>
       </section>
     </article>
   );

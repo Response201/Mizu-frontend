@@ -1,17 +1,21 @@
 import { createContext, useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const GlobalContext = createContext();
 
+const GlobalContext = createContext();
 export const GlobalProvider = ({ children }) => {
+
+
+
     /* States som i GlobalProvider */
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [allProducts, setAllProducts] = useState(JSON.parse(localStorage.getItem("allProducts")) || [])
+    const [beforeFilteringProducts, setBeforeFilteringProducts] = useState(JSON.parse(localStorage.getItem("beforeFilteringProducts")) || [])
+    const [filtredProducts, setFiltredProducts] = useState(JSON.parse(localStorage.getItem("beforeFilteringProducts")) || [])
     const [topRatedProducts, setTopRatedProducts] = useState(JSON.parse(localStorage.getItem("topRated")) || [])
     const [isHovering, setIsHovering] = useState(false);
-
+const [uniqueCategories, setUniqueCategories] = useState(JSON.parse(localStorage.getItem("uniqueCategories")) || [])
 
 const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("userId")) ||'')
 const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")) ||'')
@@ -19,8 +23,13 @@ const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")) ||'
 
     /* sätter localstorage "allProducts" om allProducts förändras */
     useEffect(() => {
-        localStorage.setItem("allProducts", JSON.stringify(allProducts));
-    }, [allProducts])
+        localStorage.setItem("uniqueCategories", JSON.stringify(uniqueCategories));
+    }, [uniqueCategories])
+
+
+    useEffect(() => {
+        localStorage.setItem("beforeFilteringProducts", JSON.stringify(beforeFilteringProducts));
+    }, [beforeFilteringProducts])
 
 useEffect(() => {
     localStorage.setItem("topRated", JSON.stringify(topRatedProducts));
@@ -32,12 +41,12 @@ useEffect(() => {
        }, 3000)
 }, [error])
 
-
-
     useEffect(() => {
         if(error === "Request failed with status code 403"){
             setToken('')
             setUserId('')
+            setFiltredProducts(localStorage.getItem("beforeFilteringProducts")) 
+
 
         }
         localStorage.setItem("token", JSON.stringify(token));
@@ -47,7 +56,7 @@ useEffect(() => {
 
     /* States som skickas ut till alla children inom contexten */
     return (
-        <GlobalContext.Provider value={{userId, setUserId, allProducts, setAllProducts, products, setProducts,topRatedProducts, setTopRatedProducts, loading, setLoading, error, setError, isHovering, setIsHovering, token, setToken}}>
+        <GlobalContext.Provider value={{userId, setUserId, beforeFilteringProducts, setBeforeFilteringProducts,filtredProducts, setFiltredProducts, products, setProducts,topRatedProducts, setTopRatedProducts, loading, setLoading, error, setError, isHovering, setIsHovering, token, setToken, uniqueCategories, setUniqueCategories}}>
             {children}
         </GlobalContext.Provider>
     );
