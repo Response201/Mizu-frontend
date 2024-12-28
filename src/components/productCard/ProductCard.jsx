@@ -1,12 +1,20 @@
 import "@fortawesome/fontawesome-free/css/all.css";
 import { useGlobalContext } from "../../context/GlobalContext";
 import { RatingComponent } from "./RatingComponent";
+import { useCartContext } from "../../context/CartContext";
 export const ProductCard = ({ item, setUrl, limit=3, searchQuery="", selectedSort= "averageRating:desc", selectedCategory="all", page=1, pickAndMix=false }) => {
   const { token, userId } = useGlobalContext();
+  const {  handleFetch } = useCartContext();
 
+  const addItemToCart = (item) => {
 
-
-
+ 
+      handleFetch(
+        userId,
+        item._id,
+      'add'
+      ); 
+  };
 
 
   return (
@@ -56,7 +64,7 @@ export const ProductCard = ({ item, setUrl, limit=3, searchQuery="", selectedSor
             {item?.pickAndMix ? <li style={{ '--clr-tag': `${item.primaryColor}` }} >mix</li> : ""}
           </ul>
           <div className="categoryAndBuyBtnPrice___buyBtn_price" style={{ '--clr-tag': `${item.primaryColor}` }}>       <p > {item.price}kr    </p>
-            {userId && token ? <button>  <i className="bi bi-bag-plus"></i></button> : ''} </div>
+            {userId && token ?     <button onClick={() => addItemToCart(item)}> <i className="bi bi-bag-plus"></i></button> : ''} </div>
         </div>
       </div>
     </div>

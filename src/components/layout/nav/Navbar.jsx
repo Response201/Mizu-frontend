@@ -5,10 +5,12 @@ import { useGlobalContext } from '../../../context/GlobalContext';
 import { Fetch } from "../../../services/Fetch";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 export const Navigation = () => {
   /*   const [categories, setCategories] = useState([]);
     const [cartCount, setCartCount] = useState(0); */
   const { userId, setUserId, token, setToken, error } = useGlobalContext();
+ 
   const [url, setUrl] = useState('')
   const [body] = useState({})
   const { data } = Fetch(url, "post", body)

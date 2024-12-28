@@ -21,9 +21,9 @@ export const Header = () => {
                 <section className='header'>   <h1>Mizu <span> : skin</span></h1>
 
                     <p><span>  Naturla inner beauty </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, explicabo. Aspernatur tempora sunt totam consequuntur quisquam ratione !</p>
-                    <section className="hover-target" >        
+                    <a className="hover-target" href='/products' >        
 <MainButton text="See products" getAnimation={getAnimation}       />
-</section>
+</a>
                 </section>
 
 

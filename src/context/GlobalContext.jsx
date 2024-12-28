@@ -25,6 +25,7 @@ useEffect(() => {
 
     useEffect(() => {
         if(error === "Request failed with status code 403"){
+            setError('You need to sign in')
             setToken('')
             setUserId('')
         }

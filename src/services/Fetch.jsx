@@ -9,6 +9,7 @@ export const Fetch = (url, fetchType = "GET", bodyInput = null) => {
 
 
     useEffect(() => {
+
         const fetchData = async () => {
 
             setError(null);

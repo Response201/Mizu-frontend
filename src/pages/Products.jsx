@@ -5,6 +5,9 @@ import { Fetch } from "../services/Fetch";
 import { FilterComponents } from "../components/Products/FilterComponents";
 import { PageComponent } from "../components/Products/PageComponent";
 import { useProductContext } from "../context/ProductContext";
+
+import noProductsImg from "../assets/images/no-products-found.png"
+
 export const Products = () => {
   const {
     userId,
@@ -63,8 +66,11 @@ export const Products = () => {
   /* set page to 1 if searchQuery, selectedSort, selectedCategory, limit changes */
   useEffect(() => {
     setPage(1);
+   if(totalPages === 0){
+    setTotalPages(1)
+   }
 
-  }, [searchQuery, selectedSort, selectedCategory, limit]);
+  }, [searchQuery, selectedSort, selectedCategory, limit,pickAndMix,totalPages]);
 
 
 
@@ -98,7 +104,11 @@ export const Products = () => {
         {/* Products List */}
 
 
-
+{filtredProducts.length <= 0 && <section className="productsContent___noProductsFound">
+  
+  <img src={noProductsImg} alt="No products found" />
+  
+  </section>}
 
         <section className={filtredProducts.length >= 3 ? "ProductCard___container productsContent___grid " : "ProductCard___container  productsContent___grid productsContent___smallGrid "} >
           {filtredProducts.map((item) => (
