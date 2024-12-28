@@ -1,7 +1,8 @@
 /* eslint-disable */
-import { useEffect, useState } from "react";
-import { useGlobalContext } from "../../context/GlobalContext";
+
+
 import { Fetch } from "../../services/Fetch";
+import { useProductContext } from "../../context/ProductContext";
 export const FilterComponents = ({
     setUrl,
     page,
@@ -14,22 +15,13 @@ export const FilterComponents = ({
     pickAndMix,
     setPickAndMix,
     limit,
-    setLimit
+    setLimit,
+    isFirstRender
 }) => {
-
-
-    const { uniqueCategories } = useGlobalContext();
+    const { uniqueCategories } = useProductContext();
     const { loading } = Fetch();
-    /*isFirstRender  motverkar att loading syns vid start */
-    const [isFirstRender, setIsFirstRender] = useState(true);
-    useEffect(() => {
-        if (isFirstRender) {
-            setIsFirstRender(false);
-            return;
-        }
-        const newUrl = `sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=${page}&pickAndMix=${pickAndMix}`;
-        setUrl(newUrl);
-    }, [limit, selectedSort, selectedCategory, pickAndMix, page, searchQuery, setUrl]);
+
+
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);
     };

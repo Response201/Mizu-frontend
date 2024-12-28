@@ -8,14 +8,16 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import { router } from "./Router.jsx";
 import { RouterProvider } from "react-router-dom";
 import { GlobalProvider } from "./context/GlobalContext.jsx";
+import { ProductProvider } from "./context/ProductContext.jsx";
 /* import {  GlobalProvider } from "./context/GlobalContext.tsx"; */
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
      <GlobalProvider >  
+      <ProductProvider >  
 
     <RouterProvider router={router}></RouterProvider>
-
+    </ProductProvider>
     </GlobalProvider> 
   </React.StrictMode>
 );
