@@ -70,7 +70,7 @@ export const Products = () => {
     setTotalPages(1)
    }
 
-  }, [searchQuery, selectedSort, selectedCategory, limit,pickAndMix,totalPages]);
+  }, [searchQuery, selectedSort, selectedCategory, limit, pickAndMix,setPickAndMix, totalPages, setTotalPages]);
 
 
 
