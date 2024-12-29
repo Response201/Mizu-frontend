@@ -63,8 +63,9 @@ export const ProductCard = ({ item, setUrl, limit=3, searchQuery="", selectedSor
             <li style={{ '--clr-tag': `${item.primaryColor}` }} >{item.category}</li>
             {item?.pickAndMix ? <li style={{ '--clr-tag': `${item.primaryColor}` }} >mix</li> : ""}
           </ul>
-          <div className="categoryAndBuyBtnPrice___buyBtn_price" style={{ '--clr-tag': `${item.primaryColor}` }}>       <p > {item.price}kr    </p>
-            {userId && token ?     <button onClick={() => addItemToCart(item)}> <i className="bi bi-bag-plus"></i></button> : ''} </div>
+          {userId && token ? 
+          <div className="categoryAndBuyBtnPrice___buyBtn_price" style={{ '--clr-tag': `${item.primaryColor}` }}> <p > {item.price}kr </p> <button onClick={() => addItemToCart(item)}> <i className="bi bi-bag-plus"></i></button>        </div>  :   
+          <div className="categoryAndBuyBtnPrice___buyBtn_price" style={{ '--clr-tag': `${item.primaryColor}` }}>  <p > {item.price}kr </p></div>   } 
         </div>
       </div>
     </div>
