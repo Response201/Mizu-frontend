@@ -1,0 +1,111 @@
+@use 'variables' as v;
+@use 'mixins';
+
+@keyframes pulse {
+    0% {
+      transform: translateX(0rem);
+   
+    }
+    30% {
+      transform: translateX(-0.05rem); 
+  
+    }
+    50% {
+      transform: translateX(0rem);
+    
+    }
+    70% {
+      transform: translateX(0.05rem); 
+   
+    }
+    100% {
+      transform: translateX(0rem);
+    
+    }
+  }
+
+
+
+
+
+
+
+.NoPage {
+  @include mixins.article() {
+    min-height: 300px !important;
+
+    @include mixins.devices(desktop) {
+      padding-bottom: 1.5rem !important;
+    }
+  }
+  padding-bottom: 5rem !important;
+  padding-top: 2.3rem !important;
+}
+
+.NoPageSection {
+  @include mixins.section() {
+    max-height: 500px !important;
+    max-width: 500px !important;
+    max-height: fit-content;
+    max-width: fit-content;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 2rem !important;
+    &___linkContainer {
+      font-size: 1.1rem;
+      width: 100%;
+      color: v.$text-primary;
+      text-decoration: none;
+      padding-bottom: 0.1rem;
+position: absolute;
+top: 1.5rem;
+left: 1rem;
+      section {
+        width: fit-content;
+        padding: 2px 0.6rem  0 0.3rem ;
+        border-radius: 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+height: fit-content;
+border: 1px dashed  v.$text-secondary;
+margin-bottom: .5rem;
+transition: ease-in 0.3s;
+color: v.$text-secondary;
+p{
+font-weight: 500;
+    padding: 0;
+    margin: 0 0 0px 0;
+    text-shadow: v.$text-shadow;
+    
+}
+        i{
+            text-shadow: v.$text-shadow;
+         font-size: 1.2rem;
+          margin-right: 0.5rem;
+          animation: pulse 0.9s infinite ease-in-out; 
+        }
+
+        &:hover{
+transform: scale(95%);
+
+        }
+      }
+    }
+  }
+
+  z-index: 12;
+
+  &___animation {
+    max-height: 500px !important;
+    max-width: 500px !important;
+    z-index: 10;
+    border: 3px rgba(8, 85, 201, 0.61) dashed;
+  }
+}
+
+
+

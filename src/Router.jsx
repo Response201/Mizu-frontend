@@ -9,6 +9,7 @@ import { PickAndMix } from "./pages/PickAndMix";
 import { About } from "./pages/About";
 import { Register } from "./pages/Register";
 import { SignIn } from "./pages/SignIn";
+import { CheckOut } from "./pages/CheckOut";
 
 
 export const router = createBrowserRouter([
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/checkout",
+        element: <CheckOut />,
       },
     ],
   },

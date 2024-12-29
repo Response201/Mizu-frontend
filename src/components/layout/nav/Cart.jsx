@@ -34,7 +34,7 @@ export const Cart = () => {
         <section className='blur'></section>
         <ListGroup className="ListGroup transparent ">
           {cart && cart.length === 0 ? (
-            <ListGroup.Item className='emtpyList'>Varukorgen är tom</ListGroup.Item>
+            <ListGroup.Item className='emtpyList transparent'>Varukorgen är tom</ListGroup.Item>
           ) : (
             cart.map((item) => (
               <ListGroup.Item
@@ -73,8 +73,13 @@ export const Cart = () => {
                 </section>
               </ListGroup.Item >
               <section className="checkout hover-target" >
-                <button className="checkout___btn hover-target">
-                  checkout  </button>
+                <a  href="/checkout">
+                <Button className="checkout___btn hover-target">
+
+                checkout
+
+                </Button>
+                    </a>
               </section></>
           )}
         </ListGroup>

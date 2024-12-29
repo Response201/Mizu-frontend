@@ -1,0 +1,66 @@
+@use 'variables' as v;
+@use 'mixins';
+
+.checkoutContainer{
+    @include mixins.article() {
+ 
+padding-top: 2rem;
+   
+        @include mixins.devices(desktop) {
+       padding-bottom: 1.5rem !important;
+      
+        }
+      }
+
+
+&___backgroundImg{
+height: 90%;
+width: 100%;
+position: absolute;
+z-index: 0;
+object-fit: cover;
+filter: opacity(25%) blur(10px) ;
+margin-top: -10vh;
+}
+
+}
+
+.checkoutContent{
+
+    @include mixins.section() {
+     background-color:transparent;
+display: flex;
+align-items: center;
+justify-content: center;
+
+
+
+
+
+
+    }
+
+
+
+    &___tabelContainer{
+z-index: 1;
+       
+        &___noProductsImgContainer{
+           
+      
+        display: flex;
+        align-items: center;
+        
+        img{
+
+min-height: 400px !important;
+
+        }
+        
+        }
+    
+    
+    }
+
+
+}

@@ -1,0 +1,87 @@
+@use 'variables' as v;
+@use 'mixins';
+
+
+.table {
+  
+    &__content {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+     
+     
+     
+      th, td {
+        border: 1px solid #bd57044f;
+        text-align: left;
+        padding: 8px;
+        font-size: 0.9rem;
+        @include mixins.devices(desktop) {
+          font-size: 1rem;
+         
+           }
+       
+      }
+      .td___quantity{
+
+        text-align: center;
+        
+        
+                }
+  
+      th {
+     
+        font-weight: bold;
+      }
+    
+  tr{
+    background-color:v.$tabel-color !important;
+
+  }
+ 
+  
+      tfoot td {
+        font-weight: bold;
+      }
+  
+     
+    }
+  
+    &__button {
+      padding: 5px 10px;
+      margin: 0 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+  
+    
+    }
+   
+
+.btnAndText___content{
+
+margin: auto;
+min-width: 180px;
+padding: 0.6rem 0;
+
+
+
+
+  
+     &___text {
+     
+     
+         font-weight: 700 !important;
+            font-size: 1rem !important;
+     
+  
+      
+         
+    
+        
+      }
+    }
+  
+
+  }
+  
