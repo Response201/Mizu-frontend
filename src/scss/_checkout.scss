@@ -33,8 +33,6 @@ display: flex;
 align-items: center;
 justify-content: center;
 
-min-height: fit-content;
-margin-top: 2rem;
 
 
 
@@ -44,7 +42,10 @@ margin-top: 2rem;
 
     &___tabelContainer{
 z-index: 1;
-min-height: fit-content;
+
+max-height: calc(95vh - 1rem)!important;
+overflow-y: scroll;
+padding-top: 1rem;
        
         &___noProductsImgContainer{
            
