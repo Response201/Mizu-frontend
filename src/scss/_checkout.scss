@@ -4,7 +4,7 @@
 .checkoutContainer{
     @include mixins.article() {
  
-padding-top: 2rem;
+
    
         @include mixins.devices(desktop) {
        padding-bottom: 1.5rem !important;
@@ -33,8 +33,8 @@ display: flex;
 align-items: center;
 justify-content: center;
 
-
-
+min-height: fit-content;
+padding-top: 3rem;
 
 
 
@@ -44,6 +44,7 @@ justify-content: center;
 
     &___tabelContainer{
 z-index: 1;
+min-height: fit-content;
        
         &___noProductsImgContainer{
            
