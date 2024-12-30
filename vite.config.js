@@ -6,14 +6,13 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      external: ['@stripe/react-stripe-js'], 
-    
-     
+      // Remove `@stripe/react-stripe-js` from `external` to bundle it correctly
+      // external: ['@stripe/react-stripe-js'],
     },
   },
-  base: '/',  // Den här inställningen ser till att dina rutter hanteras korrekt
+  base: '/',  // Ensure your routes are handled correctly
   optimizeDeps: {
-    // För att se till att de specifika FontAwesome-modulerna optimeras under utveckling
+    // Make sure specific FontAwesome modules are optimized during development
     include: ['@fortawesome/react-fontawesome', '@fortawesome/free-solid-svg-icons', '@fortawesome/free-regular-svg-icons'],
   },
 });
