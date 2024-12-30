@@ -1,6 +1,6 @@
 import  { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
+import { Elements } from '@stripe/react-stripe-js';
 
 import { useGlobalContext } from "../context/GlobalContext";
 import { useCartContext } from "../context/CartContext";
