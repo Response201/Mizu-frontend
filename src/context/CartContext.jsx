@@ -11,7 +11,7 @@ export const CartProvider = ({ children }) => {
     const [cartMessage, setCartMessage] = useState('')
 	
 
-const [receipt, setReceipt] = useState(JSON.parse(localStorage.getItem("receipt") || []))
+const [receipt, setReceipt] = useState(JSON.parse(localStorage.getItem("receipt")) || [])
 
 
 

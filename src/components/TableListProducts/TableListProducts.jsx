@@ -2,7 +2,7 @@ import { useCartContext } from '../../context/CartContext'
 
 import getAnimation from "../../assets/lotties/buttonOrange.json";
 import { MainButton } from '../lottieBtn/MainBtn';
-import { CartAndTableBtns } from '../CartAndTableBtns/CartAndTableBtns';
+import { CartAndTableBtns } from '../cartAndTableBtns/CartAndTableBtns';
 
 export const TableListProducts = ({ showButtons, cart, totalPrice }) => {
   const {   discount } = useCartContext();
