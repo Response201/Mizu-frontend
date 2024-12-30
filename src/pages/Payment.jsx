@@ -7,10 +7,8 @@ import { useCartContext } from "../context/CartContext";
 import { TableListProducts } from "../components/TableListProducts/TableListProducts";
 import { CheckoutForm } from "../components/stripePaymentForm/CheckoutForm";
 
-interface CreatePaymentIntentResponse {
-	clientSecret: string;
-}
-export const Payment: React.FC = () => {
+
+export const Payment  = () => {
 	const { cart, totalPrice, discount, setReceipt,  receipt } = useCartContext();
 	const { userId, token } = useGlobalContext();
 	const [clientSecret, setClientSecret] = useState<string>("");

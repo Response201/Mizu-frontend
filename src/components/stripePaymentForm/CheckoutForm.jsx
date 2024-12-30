@@ -1,4 +1,4 @@
-import React, { useEffect, useState, FormEvent } from "react";
+import  { useEffect, useState } from "react";
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 export const CheckoutForm = () => {
@@ -34,7 +34,7 @@ export const CheckoutForm = () => {
         });
     }, [stripe]);
 
-    const handleSubmit = async (e: FormEvent) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!stripe || !elements) {
@@ -46,9 +46,9 @@ export const CheckoutForm = () => {
         const { error } = await stripe.confirmPayment({
             elements,
             confirmParams: {
-                return_url: `${import.meta.env.VITE_APP_URL/paymentComplete`,
+                return_url: `${import.meta.env.VITE_APP_URL}/paymentComplete`,
             },
-        });
+        })
 
         if (error?.type === "card_error" || error?.type === "validation_error") {
             console.error("Stripe Error: ", error); // Log error for debugging

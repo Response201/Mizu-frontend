@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { Header } from "../components/home/header";
 import { HappyHighlights } from "../components/home/HappyHighlights";
