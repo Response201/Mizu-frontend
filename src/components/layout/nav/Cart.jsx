@@ -1,6 +1,6 @@
 import { Dropdown, Badge, Button, ListGroup } from "react-bootstrap";
 import { useCartContext } from '../../../context/CartContext';
-import { CartAndTableBtns } from "../../CartAndTableBtns/CartAndTableBtns";
+import { CartAndTableBtns } from "../../cartAndTableBtns/CartAndTableBtns";
 export const Cart = () => {
   const { totalPrice, cart, discount } = useCartContext()
   return (
