@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { loadStripe, Stripe } from "@stripe/stripe-js";
+import  { useState, useEffect } from "react";
+import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import { useNavigate } from "react-router";
+
 import { useGlobalContext } from "../context/GlobalContext";
 import { useCartContext } from "../context/CartContext";
 import { TableListProducts } from "../components/TableListProducts/TableListProducts";
@@ -9,12 +9,12 @@ import { CheckoutForm } from "../components/stripePaymentForm/CheckoutForm";
 
 
 export const Payment  = () => {
-	const { cart, totalPrice, discount, setReceipt,  receipt } = useCartContext();
+	const { cart, totalPrice, discount, setReceipt } = useCartContext();
 	const { userId, token } = useGlobalContext();
-	const [clientSecret, setClientSecret] = useState<string>("");
-	const [stripePromise, setStripePromise] = useState<Promise<Stripe | null> | null>(null);
+	const [clientSecret, setClientSecret] = useState("");
+	const [stripePromise, setStripePromise] = useState(null);
 	const stripePublicKey = import.meta.env.VITE_TEST_VAR;
-	const navigate = useNavigate();
+	/* const navigate = useNavigate(); */
 
 	useEffect(() => {
 		setStripePromise(
