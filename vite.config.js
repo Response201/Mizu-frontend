@@ -6,8 +6,9 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      // Ta bort `external` för FontAwesome-ikoner eftersom de inte ska externaliseras
-      external: [], // Om du inte har specifika externa beroenden att lägga till, lämna tomt
+      external: ['@stripe/react-stripe-js'], 
+    
+     
     },
   },
   base: '/',  // Den här inställningen ser till att dina rutter hanteras korrekt

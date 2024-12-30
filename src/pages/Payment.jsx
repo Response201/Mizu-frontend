@@ -17,11 +17,7 @@ export const Payment  = () => {
 	/* const navigate = useNavigate(); */
 
 	useEffect(() => {
-		setStripePromise(
-			loadStripe(
-				stripePublicKey
-			)
-		);
+		setStripePromise(loadStripe(stripePublicKey));
 		fetch( `${import.meta.env.VITE_BASE_URL}/create-payment-intent`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
