@@ -3,7 +3,7 @@ import { useCartContext } from '../context/CartContext';
 import noProductsImg from "../assets/images/no-products-found.png"
 import { TableListProducts } from '../components/TableListProducts/TableListProducts';
 export const CheckOut = () => {
-    const { cart } = useCartContext()
+    const { cart, totalPrice } = useCartContext()
     const showButtons = true;
     console.log(cart)
     return (
@@ -12,7 +12,7 @@ export const CheckOut = () => {
             <section className='checkoutContent'>
                 <section className='checkoutContent___tabelContainer'>
                     {cart && cart.length >= 1 ?
-                        <TableListProducts showButtons={showButtons} />
+                        <TableListProducts showButtons={showButtons} cart={cart} totalPrice={totalPrice} />
                         : <section className="checkoutContent___tabelContainer___noProductsImgContainer">
                             <img src={noProductsImg} alt="No products found" />
                         </section>

@@ -7,13 +7,13 @@ export const ProductCard = ({ item, setUrl, limit=3, searchQuery="", selectedSor
   const {  handleFetch } = useCartContext();
 
   const addItemToCart = (item) => {
+    
 
- 
       handleFetch(
         userId,
         item._id,
-      'add'
-      ); 
+      'add'   
+      );
   };
 
 
@@ -64,7 +64,14 @@ export const ProductCard = ({ item, setUrl, limit=3, searchQuery="", selectedSor
             {item?.pickAndMix ? <li style={{ '--clr-tag': `${item.primaryColor}` }} >mix</li> : ""}
           </ul>
           {userId && token ? 
-          <div className="categoryAndBuyBtnPrice___buyBtn_price" style={{ '--clr-tag': `${item.primaryColor}` }}    onClick={() => addItemToCart(item)}  > <p > {item.price}kr </p> <button > <i className="bi bi-bag-plus"></i></button>        </div>  :   
+          <>     
+          {item.stockLevel >= 1  ?     <div className="categoryAndBuyBtnPrice___buyBtn_price" style={{ '--clr-tag': `${item.primaryColor}` }}    onClick={() => addItemToCart(item)}  > <p > {item.price}kr </p> <button > <i className="bi bi-bag-plus"></i></button>  {item.stockLevel === 1 && <p>1 left</p>}       </div>
+        :
+
+        <div className="categoryAndBuyBtnPrice___buyBtn_price" style={{ '--clr-tag': `${item.primaryColor}` }}     > <p > {item.price}kr </p> <button > <i className="bi bi-x-circle"></i> </button>        </div>
+        
+        } </>
+           :   
           <div className="categoryAndBuyBtnPrice___buyBtn_price" style={{ '--clr-tag': `${item.primaryColor}` }}>  <p > {item.price}kr </p></div>   } 
         </div>
       </div>

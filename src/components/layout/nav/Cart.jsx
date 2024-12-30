@@ -1,32 +1,15 @@
-
 import { Dropdown, Badge, Button, ListGroup } from "react-bootstrap";
-import { useGlobalContext } from '../../../context/GlobalContext';
 import { useCartContext } from '../../../context/CartContext';
+import { CartAndTableBtns } from "../../CartAndTableBtns/CartAndTableBtns";
 export const Cart = () => {
-  const {totalPrice, cart, handleFetch, discount} = useCartContext()
-  const {  userId } = useGlobalContext();
-
- 
-
-
- 
-
-  
-
-/* add, remove, delete from cart */
-  const handleItemToCart = (item, action) => {
-    handleFetch(userId,item.productId, action); 
-};
-
-
-
+  const { totalPrice, cart, discount } = useCartContext()
   return (
     <Dropdown align="end" className='transparent '>
       <Dropdown.Toggle variant="light" id="dropdown-basic" className='transparent icons_nav_cart'>
         <i className="bi bi-cart3 "></i>
         <Badge pill bg="ligth" className="ms-1 custom-badge ">
           <p>
-             {cart && cart.reduce((acc, item) => acc + +item.quantity, 0)  /* Cart item count */}
+            {cart && cart.reduce((acc, item) => acc + +item.quantity, 0)  /* Cart item count */}
           </p>
         </Badge>
       </Dropdown.Toggle>
@@ -42,26 +25,17 @@ export const Cart = () => {
                 className="d-flex justify-content-between align-items-center item border_bottom transparent productName"
               >
                 <p>    {item.name}    </p>
-              
                 <span>
                   {item.quantity}</span>
-                <div className='transparent btnContainer'>
-                  <Button size="sm" className="btn" onClick={()=>handleItemToCart(item, 'add')}>
-                    <i className="bi bi-plus-lg"></i>
-                  </Button>
-                  <Button size="sm" className="btn" onClick={()=>handleItemToCart(item, 'remove')}>
-                    <i className="bi bi-dash-lg"></i>
-                  </Button>
-                  <Button size="sm" className="btn" onClick={()=>handleItemToCart(item, 'delete')}>
-                    <i className="bi bi-trash3"></i>
-                  </Button>
-                </div>
+                <>
+                  <CartAndTableBtns item={item} />
+                </>
               </ListGroup.Item>
             ))
           )}
           {cart && cart.length !== 0 && (
             <>
-              { discount !== 0 && <ListGroup.Item className="d-flex align-items-center justify-content-end item border_bottom transparent ">
+              {discount !== 0 && <ListGroup.Item className="d-flex align-items-center justify-content-end item border_bottom transparent ">
                 <section className='price'>
                   <p >Discount:</p>  <p>{discount}kr</p>
                 </section>
@@ -73,13 +47,11 @@ export const Cart = () => {
                 </section>
               </ListGroup.Item >
               <section className="checkout hover-target" >
-                <a  href="/checkout">
-                <Button className="checkout___btn hover-target">
-
-                checkout
-
-                </Button>
-                    </a>
+                <a href="/checkout">
+                  <Button className="checkout___btn hover-target">
+                    checkout
+                  </Button>
+                </a>
               </section></>
           )}
         </ListGroup>

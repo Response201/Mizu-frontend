@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useGlobalContext } from './GlobalContext';
 import { FetchCart } from '../services/FetchCart';
@@ -9,9 +9,18 @@ export const CartProvider = ({ children }) => {
     const [discount, setDiscount] = useState(JSON.parse(localStorage.getItem("discount")) || 0);
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
     const [cartMessage, setCartMessage] = useState('')
-    // Fetch function
+	
+
+const [receipt, setReceipt] = useState(JSON.parse(localStorage.getItem("receipt") || []))
 
 
+
+    useEffect(() => {
+        if(receipt)
+       
+        localStorage.setItem("receipt", JSON.stringify(receipt));
+      
+    }, [receipt])
 
 
     const handleFetch = async (userId,  productId, actionType) => {
@@ -44,7 +53,6 @@ const url = "cart"
         };
         const response = await FetchCart(url, data, token, setError, setCartMessage);
 
-        console.log(response)
 
             if (response.totalprice) {
                
@@ -58,13 +66,21 @@ const url = "cart"
             }
        
     };
+
+
+
+
+
+
+
+
     return (
         <CartContext.Provider value={{
             totalPrice,
             setTotalPrice,
             discount, setDiscount,
             handleFetch,
-            cart, setCart, cartMessage
+            cart, setCart, cartMessage,  receipt, setReceipt
         }}>
             {children}
         </CartContext.Provider>

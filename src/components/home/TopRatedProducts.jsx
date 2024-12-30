@@ -3,20 +3,40 @@ import { ProductCard } from "../productCard/ProductCard";
 import { useGlobalContext } from "../../context/GlobalContext";
 import { Fetch } from "../../services/Fetch";
 import { useProductContext } from "../../context/ProductContext";
+import { useCartContext } from "../../context/CartContext";
 
 export const TopRatedProducts = () => {
     const { userId} = useGlobalContext();
     const {  topRatedProducts, setTopRatedProducts } = useProductContext();
-  const [url, setUrl] = useState("sortProducts?limit=3&search=&sort=averageRating:desc,price:desc");
+    const {cart} = useCartContext()
+  const [url, setUrl] = useState("sortProducts?limit=3&search=&sort=averageRating:desc,price:asc");
   const { data } = Fetch(url);
+
+
+
 
 
   useEffect(() => {
     if (data && data.products) {
       setTopRatedProducts([...data.products]);
       setUrl("");
+   
     }
   }, [data, setTopRatedProducts]);
+
+
+
+
+  useEffect(() => {
+  
+      setUrl("sortProducts?limit=3&search=&sort=averageRating:desc,price:asc"); 
+      
+  }, [ cart]);
+
+
+
+
+
 
   return (
     <>

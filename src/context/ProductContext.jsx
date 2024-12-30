@@ -12,7 +12,7 @@ export const ProductProvider = ({ children }) => {
     const [topRatedProducts, setTopRatedProducts] = useState(JSON.parse(localStorage.getItem("topRated")) || []);
     const [totalPages, setTotalPages] = useState(JSON.parse(localStorage.getItem("totalPages")) || "1");
     const [uniqueCategories, setUniqueCategories] = useState(JSON.parse(localStorage.getItem("uniqueCategories")) || []);
-
+const [allProductsList, setAllProductsList] = useState(JSON.parse(localStorage.getItem("allProductsList")) || []);
     const [page, setPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedSort, setSelectedSort] = useState("averageRating:desc");
@@ -37,7 +37,9 @@ export const ProductProvider = ({ children }) => {
         localStorage.setItem("topRated", JSON.stringify(topRatedProducts));
     }, [topRatedProducts]);
 
-  
+    useEffect(() => {
+        localStorage.setItem("allProductsList", JSON.stringify(allProductsList));
+    }, [allProductsList]);
 
 
     /* States sent to all children within context */
@@ -53,7 +55,8 @@ export const ProductProvider = ({ children }) => {
             selectedSort, setSelectedSort,
             selectedCategory, setSelectedCategory,
             pickAndMix, setPickAndMix,
-            limit, setLimit
+            limit, setLimit,
+            allProductsList, setAllProductsList
         }}>
             {children}
         </ProductContext.Provider>

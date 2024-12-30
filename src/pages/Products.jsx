@@ -7,6 +7,7 @@ import { PageComponent } from "../components/Products/PageComponent";
 import { useProductContext } from "../context/ProductContext";
 
 import noProductsImg from "../assets/images/no-products-found.png"
+import { useCartContext } from "../context/CartContext";
 
 export const Products = () => {
   const {
@@ -27,7 +28,7 @@ export const Products = () => {
     pickAndMix, setPickAndMix,
     limit, setLimit } = useProductContext();
 
-
+  const { cart } = useCartContext()
   const [page, setPage] = useState()
   const [url, setUrl] = useState(``);
   const [newUrl, setNewUrl] = useState('')
@@ -66,15 +67,19 @@ export const Products = () => {
   /* set page to 1 if searchQuery, selectedSort, selectedCategory, limit changes */
   useEffect(() => {
     setPage(1);
-   if(totalPages === 0){
-    setTotalPages(1)
-   }
+    if (totalPages === 0) {
+      setTotalPages(1)
+    }
 
-  }, [searchQuery, selectedSort, selectedCategory, limit, pickAndMix,setPickAndMix, totalPages, setTotalPages]);
-
-
+  }, [searchQuery, selectedSort, selectedCategory, limit, pickAndMix, setPickAndMix, totalPages, setTotalPages]);
 
 
+
+  useEffect(() => {
+
+    setUrl(`sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=${page}&pickAndMix=${pickAndMix}`);
+
+  }, [cart]);
 
 
 
@@ -104,11 +109,11 @@ export const Products = () => {
         {/* Products List */}
 
 
-{filtredProducts.length <= 0 && <section className="productsContent___noProductsFound">
-  
-  <img src={noProductsImg} alt="No products found" />
-  
-  </section>}
+        {filtredProducts.length <= 0 && <section className="productsContent___noProductsFound">
+
+          <img src={noProductsImg} alt="No products found" />
+
+        </section>}
 
         <section className={filtredProducts.length >= 3 ? "ProductCard___container productsContent___grid " : "ProductCard___container  productsContent___grid productsContent___smallGrid "} >
           {filtredProducts.map((item) => (

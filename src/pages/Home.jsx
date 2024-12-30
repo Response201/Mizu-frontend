@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { Header } from "../components/home/header";
 import { HappyHighlights } from "../components/home/HappyHighlights";
@@ -7,15 +7,29 @@ import { Fetch } from "../services/Fetch";
 import { useProductContext } from "../context/ProductContext";
 
 export const Home = () => {
-  const { setBeforeFilteringProducts, setTotalPages } = useProductContext();
-  const { data } = Fetch("sortProducts?limit=9&search=&sort=averageRating:desc&category=all");
+  const { setBeforeFilteringProducts, setTotalPages, allProductsList, setAllProductsList } = useProductContext();
+
+  // Fetch for "beforeFilteringProducts"
+  const { data: topRatedData } = Fetch("sortProducts?limit=9&search=&sort=averageRating:desc&category=all");
 
   useEffect(() => {
-    if (data && data.products) {
-      setBeforeFilteringProducts(data.products);
-      setTotalPages(Math.ceil(data.total / data.limit))
+    if (topRatedData && topRatedData.products) {
+      setBeforeFilteringProducts(topRatedData.products);
+      setTotalPages(Math.ceil(topRatedData.total / topRatedData.limit));
     }
-  }, [data, setBeforeFilteringProducts,setTotalPages]);
+  }, [topRatedData, setBeforeFilteringProducts, setTotalPages]);
+
+  // Fetch for "allProductsList"
+  const { data: allProductsData } = Fetch("allProducts"); 
+
+  useEffect(() => {
+    if (allProductsData && allProductsData.products && !allProductsList) {
+      setAllProductsList(allProductsData.products);
+    }
+  }, [allProductsData, setAllProductsList]);
+
+
+console.log(allProductsList)
 
   return (
     <>

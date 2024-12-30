@@ -197,41 +197,6 @@ width: 20%;
 
 }
 }
-.btnContainer{
-
-display: flex;
-
-}
-.btn {
-    height: 30px;
-    width: 30px;
-    border: none !important;
-    min-width: fit-content;
-
-    margin-left: 5px;
-    background-color: rgba(248, 248, 248, 0.72) !important;
-    color: v.$text-primary !important;
-    transition: 0.3s ease;
-    &:hover {
-        transform: scale(90%);
-        background-color: rgba(220, 203, 184, 0.72) !important;
-    }
-}
-.checkout___btn {
-    color: v.$text-primary;
-    margin: 0 !important;
-    border-radius: 5px;
-    padding: 0 !important;
-    width: 100px;
-    border: 0;
-    display: inline-block;
-    height: 2.1rem;
-    text-align: center;
-    &:hover {
-        transform: scale(90%);
-        background-color: rgba(220, 203, 184, 0.72) !important;
-    }
-}
 .checkout {
     background-color: transparent !important;
     display: flex;
