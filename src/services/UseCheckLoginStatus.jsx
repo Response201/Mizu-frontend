@@ -21,6 +21,7 @@ const {setCart} = useCartContext();
         } else {
           const cartResponse = await FetchLogin("getCart", { userId }, token);
           if (cartResponse.cart?.products) {
+            localStorage.setItem("cart", JSON.stringify(cartResponse.cart.products))
             setCart(cartResponse.cart.products);
           }
         }

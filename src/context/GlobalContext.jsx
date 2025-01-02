@@ -12,10 +12,10 @@ export const GlobalProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [isHovering, setIsHovering] = useState(false);
     const [userId, setUserId] = useState(
-        JSON.parse(localStorage.getItem("userId")) || false
+        JSON.parse(localStorage.getItem("userId")) || ''
       );
       const [token, setToken] = useState(
-        JSON.parse(localStorage.getItem("token")) || false
+        JSON.parse(localStorage.getItem("token")) || ''
       );
     
 
