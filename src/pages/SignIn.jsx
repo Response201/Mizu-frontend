@@ -1,4 +1,4 @@
-import { useState } from "react"
+import {  useState } from "react"
 import { useGlobalContext } from "../context/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import getAnimation from "../assets/lotties/buttonOrange.json";
@@ -26,6 +26,8 @@ export const SignIn = () => {
     navigate(0)
 
   }
+
+
 
  
 
@@ -60,7 +62,7 @@ export const SignIn = () => {
 
 
         label={"signin"}
-
+        setUrl={setUrl}
 
         url="signin"
 

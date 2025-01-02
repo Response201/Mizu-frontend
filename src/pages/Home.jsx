@@ -5,31 +5,38 @@ import { HappyHighlights } from "../components/home/HappyHighlights";
 import { TopRatedProducts } from "../components/home/TopRatedProducts";
 import { Fetch } from "../services/Fetch";
 import { useProductContext } from "../context/ProductContext";
+import { UseCheckLoginStatus } from "../services/UseCheckLoginStatus";
+
+
+
 
 export const Home = () => {
-  const { setBeforeFilteringProducts, setTotalPages, allProductsList, setAllProductsList } = useProductContext();
+  const {
 
-  // Fetch for "beforeFilteringProducts"
-  const { data: topRatedData } = Fetch("sortProducts?limit=9&search=&sort=averageRating:desc&category=all");
+    allProductsList,
+    setAllProductsList
+  } = useProductContext();
 
-  useEffect(() => {
-    if (topRatedData && topRatedData.products) {
-      setBeforeFilteringProducts(topRatedData.products);
-      setTotalPages(Math.ceil(topRatedData.total / topRatedData.limit));
-    }
-  }, [topRatedData, setBeforeFilteringProducts, setTotalPages]);
 
-  // Fetch for "allProductsList"
-  const { data: allProductsData } = Fetch("allProducts"); 
+
+  /* Check if user have a valid userId && token, if true => get cart */
+  UseCheckLoginStatus()
+
+
+
+
+
+
+  // Fetch för "allProductsList" used to check stock value(cart && TabelListProducts => CartAndTableBtns)
+  const { data: allProductsData } = Fetch("allProducts");
 
   useEffect(() => {
     if (allProductsData && allProductsData.products && !allProductsList) {
       setAllProductsList(allProductsData.products);
     }
-  }, [allProductsData, setAllProductsList]);
+  }, [allProductsData, allProductsList, setAllProductsList]);
 
 
-console.log(allProductsList)
 
   return (
     <>

@@ -22,7 +22,8 @@ export const FormSigninRegisterUser = ({
     textColorMainBtn = "#dd912e",
     message='',
     label="signin",
-    url
+    url, 
+    setUrl
 }) => {
 
     const { error, setError, loading } = useGlobalContext();
@@ -59,7 +60,13 @@ export const FormSigninRegisterUser = ({
     }, [email]);
 
 
-
+    useEffect(() => {
+        if(error){
+        setUrl('')
+        setEmail('')
+        setPassword('')}
+      
+      }, [error, setUrl, setEmail,setPassword])
 
 
 

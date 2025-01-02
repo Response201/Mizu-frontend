@@ -68,7 +68,20 @@ padding-top: 1.5rem;
   align-items: start;
   justify-content: center;
   margin-bottom: 25px;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+
+
+
+ 
+  @include mixins.devices(desktop) {
+    margin-top: 1rem;
+   
+     }
+
+
+
+
+
 }
 
 .complete {

@@ -8,11 +8,13 @@ import { useProductContext } from "../context/ProductContext";
 
 import noProductsImg from "../assets/images/no-products-found.png"
 import { useCartContext } from "../context/CartContext";
+import { UseCheckLoginStatus } from "../services/UseCheckLoginStatus";
+
+
 
 export const Products = () => {
   const {
     userId,
-
 
   } = useGlobalContext();
 
@@ -35,10 +37,13 @@ export const Products = () => {
   const { data } = Fetch(url || newUrl);
   const myRef = useRef(null);
   /*isFirstRender  motverkar att loading syns vid start */
-  const [isFirstRender, setIsFirstRender] = useState(true);
+  const [isFirstRender, setIsFirstRender] = useState(false);
+  /* Scroll to top if filtering/page changes -> not if cart changes or a product is added to the cart */
+  const [click, setClick] = useState(false)
 
 
-
+  /* Check if user have a valid userId && token, if true => get cart */
+  UseCheckLoginStatus()
 
   useEffect(() => {
     setUrl(`sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=${page}&pickAndMix=${pickAndMix}`);
@@ -48,8 +53,9 @@ export const Products = () => {
   /*  Update products and page data */
   useEffect(() => {
     if (data && data.products) {
-      if (myRef.current) {
+      if (myRef.current && !click) {
         myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+
       }
       setFiltredProducts([...data.products]);
       setUniqueCategories(data.categories);
@@ -59,13 +65,14 @@ export const Products = () => {
 
       /* Set setIsFirstRender to true here to ensure the loading state only appears after the initial load */
       setIsFirstRender(false);
-
+      setClick(false)
     }
   }, [data, setFiltredProducts, setUniqueCategories, setTotalPages]);
 
 
   /* set page to 1 if searchQuery, selectedSort, selectedCategory, limit changes */
   useEffect(() => {
+
     setPage(1);
     if (totalPages === 0) {
       setTotalPages(1)
@@ -76,7 +83,7 @@ export const Products = () => {
 
 
   useEffect(() => {
-
+    setClick(true)
     setUrl(`sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=${page}&pickAndMix=${pickAndMix}`);
 
   }, [cart]);
@@ -130,6 +137,7 @@ export const Products = () => {
               pickAndMix={pickAndMix}
               setPickAndMix={setPickAndMix}
               page={page}
+              setClick={setClick}
             />
           ))}
         </section>

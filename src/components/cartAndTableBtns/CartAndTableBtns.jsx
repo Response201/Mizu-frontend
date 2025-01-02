@@ -13,6 +13,8 @@ export const CartAndTableBtns = ({ item }) => {
     const [url, setUrl] = useState("");
     const { data } = Fetch(url);
 
+
+
     // Funktion för att hantera ändringar i varukorgen
     const handleItemToCart = (item, action) => {
         handleFetch(userId, item.productId, action);
@@ -34,7 +36,7 @@ export const CartAndTableBtns = ({ item }) => {
     // Hitta produkten i produktlistan
     const product = allProductsList?.find((element) => element._id === item.productId);
 
-    // Rendera knappar direkt
+    // Rendera knappar direkt - 
     return (
         <div className="transparent btnContainer">
             <Button

@@ -23,6 +23,8 @@ export const Navigation = () => {
   const handleLogout = () => {
     setUrl("signout")
   };
+
+  
   if (data && data.message === "Logged out successfully" && token && userId) {
     setToken('')
     setUserId('')

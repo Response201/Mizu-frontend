@@ -7,9 +7,11 @@ import { useCartContext } from "../../context/CartContext";
 
 export const TopRatedProducts = () => {
     const { userId} = useGlobalContext();
-    const {  topRatedProducts, setTopRatedProducts } = useProductContext();
+ 
+    const {  topRatedProducts, setTopRatedProducts,   setBeforeFilteringProducts,
+      setTotalPages } = useProductContext();
     const {cart} = useCartContext()
-  const [url, setUrl] = useState("sortProducts?limit=3&search=&sort=averageRating:desc,price:asc");
+  const [url, setUrl] = useState("sortProducts?limit=3&search=&sort=averageRating:desc");
   const { data } = Fetch(url);
 
 
@@ -29,13 +31,26 @@ export const TopRatedProducts = () => {
 
   useEffect(() => {
   
-      setUrl("sortProducts?limit=3&search=&sort=averageRating:desc,price:asc"); 
+      setUrl("sortProducts?limit=3&search=&sort=averageRating:desc"); 
       
   }, [ cart]);
 
 
 
 
+
+
+ // Fetch for "beforeFilteringProducts" used in "product-page"
+  const { data: topRatedData } = Fetch(
+    "sortProducts?limit=9&search=&sort=averageRating:desc, price:desc&category=all"
+  );
+
+  useEffect(() => {
+    if (topRatedData && topRatedData.products) {
+      setBeforeFilteringProducts(topRatedData.products);
+      setTotalPages(Math.ceil(topRatedData.total / topRatedData.limit));
+    }
+  }, [topRatedData, setBeforeFilteringProducts, setTotalPages]);
 
 
   return (

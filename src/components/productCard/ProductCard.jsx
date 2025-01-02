@@ -2,13 +2,15 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import { useGlobalContext } from "../../context/GlobalContext";
 import { RatingComponent } from "./RatingComponent";
 import { useCartContext } from "../../context/CartContext";
-export const ProductCard = ({ item, setUrl, limit=3, searchQuery="", selectedSort= "averageRating:desc", selectedCategory="all", page=1, pickAndMix=false }) => {
+export const ProductCard = ({ item, setUrl, limit=3, searchQuery="", selectedSort= "averageRating:desc", selectedCategory="all", page=1, pickAndMix=false, setClick=false }) => {
   const { token, userId } = useGlobalContext();
   const {  handleFetch } = useCartContext();
 
-  const addItemToCart = (item) => {
-    
 
+  /* click function => add product to cart */
+  const addItemToCart = (item) => {
+    if(setClick){
+    setClick(true)}
       handleFetch(
         userId,
         item._id,
@@ -67,7 +69,8 @@ export const ProductCard = ({ item, setUrl, limit=3, searchQuery="", selectedSor
           <>     
           {item.stockLevel >= 1  ?     <div className="categoryAndBuyBtnPrice___buyBtn_price" style={{ '--clr-tag': `${item.primaryColor}` }}    onClick={() => addItemToCart(item)}  > <p > {item.price}kr </p> <button > <i className="bi bi-bag-plus"></i></button>  {item.stockLevel === 1 && <p>1 left</p>}       </div>
         :
-
+              /* noNot active now because products with a stock level of 0 are not returned from the backend, 
+               if this changes, a symbol will appear indicating that the product cannot be purchased */
         <div className="categoryAndBuyBtnPrice___buyBtn_price" style={{ '--clr-tag': `${item.primaryColor}` }}     > <p > {item.price}kr </p> <button > <i className="bi bi-x-circle"></i> </button>        </div>
         
         } </>

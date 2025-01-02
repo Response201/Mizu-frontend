@@ -1,4 +1,4 @@
-import { useState } from "react"
+import {  useState } from "react"
 import { useNavigate } from "react-router-dom";
 import getAnimation from "../assets/lotties/button.json";
 
@@ -34,7 +34,7 @@ export const Register = () => {
   }
 
 
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const provider = "default"
@@ -66,7 +66,7 @@ export const Register = () => {
         textColorMainBtn="rgb(25, 154, 154)"
         message={message}
         label="signup_with"
-
+        setUrl={setUrl}
         url="createUser"
 
       />

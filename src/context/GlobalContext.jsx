@@ -7,12 +7,17 @@ export const GlobalProvider = ({ children }) => {
 
 
 
-    /* States som i GlobalProvider */
+    /* States in GlobalProvider */
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [isHovering, setIsHovering] = useState(false);
-const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("userId")) ||'')
-const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")) ||'')
+    const [userId, setUserId] = useState(
+        JSON.parse(localStorage.getItem("userId")) || false
+      );
+      const [token, setToken] = useState(
+        JSON.parse(localStorage.getItem("token")) || false
+      );
+    
 
 
 
@@ -29,12 +34,16 @@ useEffect(() => {
             setToken('')
             setUserId('')
         }
+     /* if userid or token changes set local storage to new value */
         localStorage.setItem("token", JSON.stringify(token));
         localStorage.setItem("userId", JSON.stringify(userId));
     }, [token,userId, error])
 
 
-    /* States som skickas ut till alla children inom contexten */
+
+
+    
+    /* States sent out to all children within the context */
     return (
         <GlobalContext.Provider value={{userId, setUserId, loading, setLoading, error, setError, isHovering, setIsHovering, token, setToken}}>
             {children}
@@ -46,7 +55,7 @@ GlobalProvider.propTypes = {
     children: PropTypes.node.isRequired,
 };
 
-/* Custom hook som ger tillgång till contexten från GlobalContext. Om contexten inte finns, ges ett felmeddelande */
+/* Custom hook that provides access to the context from GlobalContext. If the context doesn't exist, an error message is given */
 export const useGlobalContext = () => {
     const context = useContext(GlobalContext);
     if (!context) {
