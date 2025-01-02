@@ -20,8 +20,8 @@ export const Payment = () => {
 
 	UseCheckLoginStatus()
 
-	if (!cart || !token) {
-		navigate("/")
+	if (cart && cart.length === 0 || !token) {
+		navigate("/");
 	}
 
 
