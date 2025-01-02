@@ -13,6 +13,8 @@ export const ProductProvider = ({ children }) => {
     const [totalPages, setTotalPages] = useState(JSON.parse(localStorage.getItem("totalPages")) || "1");
     const [uniqueCategories, setUniqueCategories] = useState(JSON.parse(localStorage.getItem("uniqueCategories")) || []);
 const [allProductsList, setAllProductsList] = useState(JSON.parse(localStorage.getItem("allProductsList")) || []);
+const [pickAndmixProducts, setPickAndmixProducts] = useState(JSON.parse(localStorage.getItem("pickAndmixProducts")) || []);
+
     const [page, setPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedSort, setSelectedSort] = useState("averageRating:desc");
@@ -41,6 +43,10 @@ const [allProductsList, setAllProductsList] = useState(JSON.parse(localStorage.g
         localStorage.setItem("allProductsList", JSON.stringify(allProductsList));
     }, [allProductsList]);
 
+    useEffect(() => {
+        localStorage.setItem("pickAndmixProducts", JSON.stringify(pickAndmixProducts));
+    }, [pickAndmixProducts]);
+
 
     /* States sent to all children within context */
     return (
@@ -56,7 +62,8 @@ const [allProductsList, setAllProductsList] = useState(JSON.parse(localStorage.g
             selectedCategory, setSelectedCategory,
             pickAndMix, setPickAndMix,
             limit, setLimit,
-            allProductsList, setAllProductsList
+            allProductsList, setAllProductsList,
+            pickAndmixProducts, setPickAndmixProducts
         }}>
             {children}
         </ProductContext.Provider>

@@ -63,9 +63,10 @@ export const Products = () => {
       setUrl('')
       setNewUrl("")
 
-      /* Set setIsFirstRender to true here to ensure the loading state only appears after the initial load */
-      setIsFirstRender(false);
+   
       setClick(false)
+         /* Set setIsFirstRender to true here to ensure the loading state only appears after the initial load */
+         setIsFirstRender(false);
     }
   }, [data, setFiltredProducts, setUniqueCategories, setTotalPages]);
 
@@ -84,6 +85,7 @@ export const Products = () => {
 
   useEffect(() => {
     setClick(true)
+    setIsFirstRender(true);
     setUrl(`sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=${page}&pickAndMix=${pickAndMix}`);
 
   }, [cart]);
