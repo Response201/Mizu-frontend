@@ -9,8 +9,8 @@ import { CheckoutForm } from "../components/stripePaymentForm/CheckoutForm";
 
 
 export const Payment  = () => {
-	const { cart, totalPrice, discount, setReceipt } = useCartContext();
-	const { userId, token } = useGlobalContext();
+	const { cart, totalPrice } = useCartContext();
+	const {  token } = useGlobalContext();
 	const [clientSecret, setClientSecret] = useState("");
 	const [stripePromise, setStripePromise] = useState(null);
 	const stripePublicKey = import.meta.env.VITE_TEST_VAR;
@@ -21,7 +21,7 @@ export const Payment  = () => {
 		fetch( `${import.meta.env.VITE_BASE_URL}/create-payment-intent`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-			body: JSON.stringify({ totalPrice, discount, userId, cart }),
+			body: JSON.stringify({totalPrice}),
 		})
 			.then((res) => res.json())
 			.then((data) => {
@@ -30,13 +30,14 @@ export const Payment  = () => {
 					return;
 				}
 				setClientSecret(data.clientSecret);
-				setReceipt(data.receipt);
 			
 			})
 			.catch((error) => {
 				console.error("Error creating payment intent:", error);
 			});
 	}, []);
+
+	
 	const appearance = {
 		theme: "stripe",
 	};
