@@ -10,7 +10,9 @@ export const PaymentComplete = () => {
     const { setTotalPrice, setCart, receipt, setReceipt, totalPrice, discount, cart } = useCartContext();
 
     const handleReceipt = async () => {
+
         try {
+			setReceipt({})
             const response = await fetch(`${import.meta.env.VITE_BASE_URL}/paymentComplete`, {
                 method: "POST",
                 headers: {
@@ -25,10 +27,7 @@ export const PaymentComplete = () => {
                 console.error("Payment failed:", data.error);
                 return;
             }
-
             setReceipt(data.receipt);
-
-            // Rensa kundvagn
             resetCart();
         } catch (error) {
             console.error("Error creating receipt:", error);

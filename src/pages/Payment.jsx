@@ -1,27 +1,36 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from '@stripe/react-stripe-js';
-
 import { useGlobalContext } from "../context/GlobalContext";
 import { useCartContext } from "../context/CartContext";
 import { TableListProducts } from "../components/TableListProducts/TableListProducts";
 import { CheckoutForm } from "../components/stripePaymentForm/CheckoutForm";
+import { useNavigate } from "react-router-dom";
+import { UseCheckLoginStatus } from "../services/UseCheckLoginStatus";
 
 
-export const Payment  = () => {
+export const Payment = () => {
 	const { cart, totalPrice } = useCartContext();
-	const {  token } = useGlobalContext();
+	const { token } = useGlobalContext();
 	const [clientSecret, setClientSecret] = useState("");
 	const [stripePromise, setStripePromise] = useState(null);
 	const stripePublicKey = import.meta.env.VITE_TEST_VAR;
-	/* const navigate = useNavigate(); */
+	const navigate = useNavigate();
+
+
+	UseCheckLoginStatus()
+
+	if (!cart || !token) {
+		navigate("/")
+	}
+
 
 	useEffect(() => {
 		setStripePromise(loadStripe(stripePublicKey));
-		fetch( `${import.meta.env.VITE_BASE_URL}/create-payment-intent`, {
+		fetch(`${import.meta.env.VITE_BASE_URL}/create-payment-intent`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-			body: JSON.stringify({totalPrice}),
+			body: JSON.stringify({ totalPrice }),
 		})
 			.then((res) => res.json())
 			.then((data) => {
@@ -30,14 +39,14 @@ export const Payment  = () => {
 					return;
 				}
 				setClientSecret(data.clientSecret);
-			
+
 			})
 			.catch((error) => {
 				console.error("Error creating payment intent:", error);
 			});
 	}, []);
 
-	
+
 	const appearance = {
 		theme: "stripe",
 	};

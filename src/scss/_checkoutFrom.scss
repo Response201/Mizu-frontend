@@ -92,6 +92,21 @@ padding-top: 1.5rem;
   display: flex;
   align-items: start;
   justify-content: start;
+
+
+
+
+  margin-top: 1.5rem;
+
+
+
+ 
+  @include mixins.devices(desktop) {
+    margin-top: 1rem;
+   
+     }
+
+
 }
 
 .paymentItems {
