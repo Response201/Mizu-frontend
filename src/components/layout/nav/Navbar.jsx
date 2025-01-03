@@ -7,8 +7,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Navigation = () => {
-  /*   const [categories, setCategories] = useState([]);
-    const [cartCount, setCartCount] = useState(0); */
+ 
   const { userId, setUserId, token, setToken, error } = useGlobalContext();
  
   const [url, setUrl] = useState('')
@@ -42,8 +41,8 @@ export const Navigation = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" >
             <Nav className="me-auto transparent nav-middle">
-              <Nav.Link href="/" className='hover-target nav_link' >Hem</Nav.Link>
-              <Nav.Link href="/products" className='hover-target nav_link' >Produkter</Nav.Link>
+              <Nav.Link href="/" className='hover-target nav_link' >Home</Nav.Link>
+              <Nav.Link href="/products" className='hover-target nav_link'>Products</Nav.Link>
               <Nav.Link href="/mix" className='hover-target nav_link'  >Pick & Mix</Nav.Link>
               <Nav.Link href="/about" className='hover-target nav_link' >About</Nav.Link>
             </Nav>
@@ -59,8 +58,8 @@ export const Navigation = () => {
                       </div>
                     </Dropdown.Toggle>
                     <Dropdown.Menu className='profil'>
-                      <Dropdown.Item href="/profil" className="hover-target">Profil</Dropdown.Item>
-                      <Dropdown.Item onClick={handleLogout} className='hover-target' >Logga ut</Dropdown.Item>
+                      <Dropdown.Item href="/receipts" className="hover-target">Receipts</Dropdown.Item>
+                      <Dropdown.Item onClick={handleLogout} className='hover-target' >Sign out</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </>
@@ -73,8 +72,8 @@ export const Navigation = () => {
                       </div>
                     </Dropdown.Toggle>
                     <Dropdown.Menu className='profil'>
-                      <Dropdown.Item href="/signin" className='hover-target'>Logga in</Dropdown.Item>
-                      <Dropdown.Item href="/register" className='hover-target' >Skapa konto</Dropdown.Item>
+                      <Dropdown.Item href="/signin" className='hover-target'>Sign in</Dropdown.Item>
+                      <Dropdown.Item href="/register" className='hover-target' >Sign up</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                 </>

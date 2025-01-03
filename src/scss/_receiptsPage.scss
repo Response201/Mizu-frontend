@@ -1,0 +1,287 @@
+@use 'variables' as v;
+@use 'mixins';
+
+.receiptsContainer{
+
+    @include mixins.article() {
+ 
+position: unset;
+  height: 99vh !important; 
+  padding-bottom: 0 !important;
+        @include mixins.devices(desktop) {
+         
+            position: relative;
+        }
+      }
+
+
+
+      &___backgroundImg{
+
+position: absolute;
+height: 105%;
+filter: blur(25px) opacity(35%);
+top: -5%;;
+z-index: -1;
+
+      }
+}
+
+.receiptsContent{
+padding-top: 2.5rem !important;
+    @include mixins.section() {
+
+   background-color: transparent; 
+
+
+
+ 
+    }
+
+
+h1{
+    display: flex;
+    align-items: center;
+  margin: 0 !important;
+  padding: 0;
+    height: 6%;
+    font-family: "Montserrat Underline", sans-serif !important;
+    color: v.$text-secondary;
+    text-shadow: 1px 1px 3px v.$shadow;
+}
+
+
+
+/* SIGLE RECEIPT */
+
+&___receipt{
+
+    height: 90%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+.orderDetails {
+    background-color: #f9f9f98b;
+    border-radius: 8px;
+    padding: 20px;
+    max-height: fit-content;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 1px 20px rgba(115, 60, 2, 0.416);
+    margin-top: 1rem;
+    color: v.$text-primary;
+  }
+  
+
+  .orderDetails__btnContainer{
+width: 100%;
+display: flex;
+justify-content: end;
+
+button{
+    border-radius: 2px;
+border: .5px solid rgba(185, 171, 154, 0.72) ;
+padding-top: 2px;
+&:hover{
+    background-color: rgba(220, 203, 184, 0.72) !important;
+
+}
+
+}
+}
+
+strong{
+
+    margin-right: 0.2rem;
+}
+
+  .orderDetails__title {
+    text-align: center;
+
+    margin-bottom: 1.2rem;
+  }
+  
+  .orderDetails__info {
+    font-size: 14px;
+    margin: 1.5rem  0;
+  }
+  
+  .orderDetails__productsTitle {
+    font-size: 18px;
+
+  margin:1.7rem 0 1rem  0 ;
+  }
+  
+  .orderDetails__productsList {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 2rem;
+    
+  }
+  
+  .orderDetails__product {
+   
+    padding: 0.3rem 0;
+    margin-bottom: 1rem;
+ 
+   width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+ 
+
+    section{
+        width: 33%;
+        overflow: hidden;
+       display: flex;
+       align-items: end;
+justify-content: end;
+        
+ }        
+
+section:nth-child(1){
+width: 30%;
+white-space: nowrap;
+text-overflow: ellipsis;
+overflow: hidden;
+display: block;
+}
+
+  }
+  
+ 
+  .orderDetails__discount,
+  .orderDetails__totalPrice {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    text-align: end;
+  }
+  
+ 
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* TABEL */
+
+
+&___receiptsList{
+
+height: 90%;
+
+
+&___noReceipts{
+
+display: flex;
+align-items: center;
+justify-content: center;
+height: 85%;
+margin-top: 2rem;
+
+div{
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
+border-radius: 5px;
+padding: 1rem;
+background:#36170134;
+backdrop-filter: blur(10px);
+    h2{
+
+        color: v.$text-header;
+        text-shadow: 1px 1px 3px v.$shadow;
+    
+    }
+    
+    
+    img{
+    
+        height: 50vh;
+        max-height: 300px;
+    }
+
+    
+}
+
+
+}
+
+
+
+
+table {
+
+    font-family: "Montserrat", sans-serif !important;
+    width: 98%;
+    margin-top: 2rem;
+color: v.$text-primary;
+}
+
+th, td {
+    
+    padding: .5rem;
+    text-align: left;
+    border: 1px solid #d587214c;
+    font-size: clamp(.3rem, 0.3rem + 1vw, 1rem);
+    max-height: 2rem !important;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+     }
+
+tr {
+  
+    max-height: 3rem !important;
+    overflow: hidden; 
+    display: table-row;
+    background-color: #e9d2be67;
+  
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f94f;
+
+    
+   
+}
+
+tr:hover {
+    background-color: #65320564;
+    font-weight: 700;
+}
+
+td {
+    font-size: clamp(.3rem, 0.3rem + 1vw, 1rem);
+    height: clamp(2.5rem, 1.5vw + 2.5rem, 5.2rem) !important; /* Ensure cells don’t exceed 3rem */
+    overflow: hidden; 
+    margin: 0;
+    padding: 0 0.5rem;
+   width: 20%;
+}
+
+}
+
+
+
+ }
+

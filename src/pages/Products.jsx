@@ -13,28 +13,14 @@ import { UseCheckLoginStatus } from "../services/UseCheckLoginStatus";
 
 
 export const Products = () => {
-  const {
-    userId,
-
-  } = useGlobalContext();
-
-  const {
-    filtredProducts,
-    setFiltredProducts,
-    setUniqueCategories,
-    totalPages,
-    setTotalPages,
-    searchQuery, setSearchQuery,
-    selectedSort, setSelectedSort,
-    selectedCategory, setSelectedCategory,
-    pickAndMix, setPickAndMix,
-    limit, setLimit } = useProductContext();
-
+  const { userId} = useGlobalContext();
+  const { filtredProducts,setFiltredProducts,setUniqueCategories, totalPages,setTotalPages,searchQuery, setSearchQuery,selectedSort, setSelectedSort, selectedCategory, setSelectedCategory, pickAndMix, setPickAndMix,limit, setLimit } = useProductContext();
   const { cart } = useCartContext()
   const [page, setPage] = useState()
   const [url, setUrl] = useState(``);
   const [newUrl, setNewUrl] = useState('')
   const { data } = Fetch(url || newUrl);
+  /* ref used to locate where to scroll */
   const myRef = useRef(null);
   /*isFirstRender  motverkar att loading syns vid start */
   const [isFirstRender, setIsFirstRender] = useState(false);
@@ -45,9 +31,34 @@ export const Products = () => {
   /* Check if user have a valid userId && token, if true => get cart */
   UseCheckLoginStatus()
 
+
+  /* set page to 1 if searchQuery, selectedSort, selectedCategory, limit changes an totalPages to 1 if value is 0*/
+  useEffect(() => {
+    setPage(1)
+    if (totalPages === 0) {
+      setTotalPages(1)
+    }
+
+  }, [searchQuery, selectedSort, selectedCategory, limit, pickAndMix,  totalPages, setTotalPages]);
+
+/* if states changes page is always 1 */
+  useEffect(() => {
+    setUrl(`sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=1&pickAndMix=${pickAndMix}`);
+  }, [limit, selectedSort, selectedCategory, pickAndMix, page, searchQuery]);
+
+/* if page changes this useEffect is trigged */
   useEffect(() => {
     setUrl(`sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=${page}&pickAndMix=${pickAndMix}`);
-  }, [limit, selectedSort, selectedCategory, pickAndMix, page, searchQuery]);
+  }, [page]);
+
+/* update list if cart changes */
+  useEffect(() => {
+    setClick(true)
+    setIsFirstRender(true);
+    setUrl(`sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=${page}&pickAndMix=${pickAndMix}`);
+
+  }, [cart]);
+
 
 
   /*  Update products and page data */
@@ -62,8 +73,6 @@ export const Products = () => {
       setTotalPages(Math.ceil(data.total / data.limit));
       setUrl('')
       setNewUrl("")
-
-   
       setClick(false)
          /* Set setIsFirstRender to true here to ensure the loading state only appears after the initial load */
          setIsFirstRender(false);
@@ -71,30 +80,17 @@ export const Products = () => {
   }, [data, setFiltredProducts, setUniqueCategories, setTotalPages]);
 
 
-  /* set page to 1 if searchQuery, selectedSort, selectedCategory, limit changes */
-  useEffect(() => {
-
-    setPage(1);
-    if (totalPages === 0) {
-      setTotalPages(1)
-    }
-
-  }, [searchQuery, selectedSort, selectedCategory, limit, pickAndMix, setPickAndMix, totalPages, setTotalPages]);
 
 
 
-  useEffect(() => {
-    setClick(true)
-    setIsFirstRender(true);
-    setUrl(`sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=${page}&pickAndMix=${pickAndMix}`);
 
-  }, [cart]);
 
 
 
   return (
     <article className="productsContainer" ref={myRef}>
       <section className="productsContent">
+
         {/* Top Filter Nav */}
         <FilterComponents
           userId={userId}
@@ -116,14 +112,10 @@ export const Products = () => {
 
 
         {/* Products List */}
-
-
         {filtredProducts.length <= 0 && <section className="productsContent___noProductsFound">
 
-          <img src={noProductsImg} alt="No products found" />
-
+        <img src={noProductsImg} alt="No products found" />
         </section>}
-
         <section className={filtredProducts.length >= 3 ? "ProductCard___container productsContent___grid " : "ProductCard___container  productsContent___grid productsContent___smallGrid "} >
           {filtredProducts.map((item) => (
             <ProductCard

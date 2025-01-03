@@ -16,6 +16,7 @@
 @use 'checkoutFrom';
 @use 'cartAndTableBtns';
 @use 'pickAndMixPage';
+@use 'receiptsPage';
 
 
 * {
@@ -35,8 +36,10 @@
     display: none;
 }
 
-html,#root, body{  height: 100vh; 
-    min-height: 100%; 
+html,#root, body{
+    padding: 0 !important;
+    margin: 0 !important; 
+    min-height: 90%; 
     font-family: "Montserrat", sans-serif !important;
   max-width: 100vw;
   overflow-x: hidden;
