@@ -29,7 +29,7 @@ background-color: transparent !important;
 
   }
 
-
+  
 
 
 }
@@ -44,9 +44,9 @@ background-color: transparent !important;
 padding-top: 1.5rem;
   font-size: 16px;
   display: flex;
-  height: fit-content;
   flex-direction: row;
   height: fit-content;
+  min-height: max-content;
   width: 100%;
   max-width: v.$max-width;
   align-items: start;
@@ -110,7 +110,7 @@ padding-top: 1.5rem;
 }
 
 .paymentItems {
-  width: 30vw;
+
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -224,19 +224,21 @@ padding-top: 1.5rem;
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   .payment {
     font-size: 16px;
     display: flex;
     flex-direction: column;
-    flex-flow: column-reverse;
     width: 100%;
+    min-height: fit-content;
     align-items: center;
+    justify-content: start;
   }
 
   .form {
     width: 90%;
     min-width: 0;
+    min-height: fit-content;
    
   }
 
