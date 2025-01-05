@@ -70,7 +70,7 @@ export const Receipts = () => {
                 {receipt.products.map((product, index) => (
                   <li className="orderDetails__product" key={index}>
                     <section>   {product.name}      </section>
-
+                    <section>   {product.pickAndMix ? 'mix': '-'}      </section>
                     <section>      {product.price} kr  x  {product.quantity}</section>
                     <section>  {product.price * product.quantity} kr </section>
                   </li>

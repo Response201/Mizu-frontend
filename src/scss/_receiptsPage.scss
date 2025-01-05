@@ -141,7 +141,7 @@ align-items: center;
  
 
     section{
-        width: 33%;
+        width: 30%;
         overflow: hidden;
        display: flex;
        align-items: end;
@@ -150,12 +150,18 @@ justify-content: end;
  }        
 
 section:nth-child(1){
-width: 30%;
+width: 40%;
 white-space: nowrap;
 text-overflow: ellipsis;
 overflow: hidden;
 display: block;
 }
+section:nth-child(2){
+  width: 15%;
+  white-space: nowrap;
+
+justify-content: center;
+  }
 
   }
   
