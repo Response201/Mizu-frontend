@@ -16,9 +16,7 @@ export const PaymentComplete = () => {
         setTotalPrice("0");
     };
 
-    const { handleReceipt,  error } = FetchPaymentComplete(
-        token, userId, totalPrice, discount, cart, setReceipt, resetCart
-    );
+    const { handleReceipt,  error } = FetchPaymentComplete(token, userId, totalPrice, discount, cart, setReceipt, resetCart);
 
     useEffect(() => {
         if (redirectStatus === "succeeded") {
@@ -31,7 +29,7 @@ export const PaymentComplete = () => {
             <section className="paymentContent">
                 <div className="payment">
                     <section className="paymentItems">
-					{receipt && receipt.products && receipt.totalPrice &&  (
+					{receipt && receipt.products && receipt.totalPrice !== 0 &&  (
                             <TableListProducts
                                 showButtons={false}
                                 cart={receipt.products}
@@ -41,7 +39,7 @@ export const PaymentComplete = () => {
                     </section>
                     <section className="complete">
                         <h2 className="completeText">
-                            Betalning: {!error && redirectStatus === "succeeded" ? "Betalningen lyckades" : "Något gick fel"}
+                            Betalning: {!error && redirectStatus === "succeeded" && receipt && receipt.products.lenght && receipt.totalPrice !== 0  ? "Betalningen lyckades" : "Något gick fel"}
                         </h2>
                     </section>
                 </div>
