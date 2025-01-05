@@ -16,6 +16,7 @@ export const TableListProducts = ({ showButtons, cart, totalPrice }) => {
         <thead>
           <tr>
             <th>Product</th>
+            <th>Mix</th>
             <th>Quantity</th>
             <th>Price</th>
             {showButtons && <th>Actions</th>}
@@ -25,6 +26,7 @@ export const TableListProducts = ({ showButtons, cart, totalPrice }) => {
           {cart && cart.map((item) => (
             <tr key={item.productId}>
               <td>{item.name}</td>
+              <td>{item.pickAndMix ? 'yes': 'no'}</td>
               <td className='td___quantity'>{item.quantity}</td>
               <td>{(item.price * item.quantity).toFixed(2)}</td>
               {showButtons && (
@@ -37,16 +39,16 @@ export const TableListProducts = ({ showButtons, cart, totalPrice }) => {
         </tbody>
         <tfoot>
           <tr>
-            <td colSpan={showButtons ? 3 : 2}>Discount</td>
-            <td colSpan={showButtons ? 1 : 2}>${discount.toFixed(2)}</td>
+            <td colSpan={showButtons ? 4 : 3}>Discount</td>
+            <td colSpan={showButtons ? 3 : 3}>${discount.toFixed(2)}</td>
           </tr>
           <tr>
-            <td colSpan={showButtons ? 3 : 2}>Total</td>
-            <td colSpan={showButtons ? 1 : 2}>${totalPrice.toFixed(2)}</td>
+            <td colSpan={showButtons ? 4 : 3}>Total</td>
+            <td colSpan={showButtons ? 2 : 3}>${totalPrice.toFixed(2)}</td>
           </tr>
           {showButtons && (
             <tr>
-              <td colSpan={4}>
+              <td colSpan={5}>
                 <a href='/payment'>
                   <MainButton text="Pay" getAnimation={getAnimation} />
                 </a>
