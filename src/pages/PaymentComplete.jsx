@@ -39,7 +39,7 @@ export const PaymentComplete = () => {
                     </section>
                     <section className="complete">
                         <h2 className="completeText">
-                            Betalning: {!error && redirectStatus === "succeeded" && receipt && receipt.products.lenght && receipt.totalPrice !== 0  ? "Betalningen lyckades" : "Något gick fel"}
+                            Betalning: {!error && redirectStatus === "succeeded" && receipt && receipt.products && receipt.totalPrice !== 0  ? "Betalningen lyckades" : "Något gick fel"}
                         </h2>
                     </section>
                 </div>
