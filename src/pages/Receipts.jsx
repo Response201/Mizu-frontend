@@ -114,7 +114,8 @@ export const Receipts = () => {
                       <td>{new Date(receipt.createdAt).toLocaleString().slice(0, -8)}</td>
 
                       {/* Antal Produkter */}
-                      <td>{receipt.products.length}</td>
+                 <td>{receipt.products.reduce((total, product) => total + product.quantity, 0)}</td>
+
 
                       {/* Totalpris */}
                       <td>{receipt.totalPrice}</td>

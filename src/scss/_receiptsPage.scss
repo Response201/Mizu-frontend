@@ -34,7 +34,7 @@ z-index: -1;
    background-color: transparent; 
 
    padding-top: 2.5rem !important;
-
+min-height: fit-content !important;
  
     }
 
@@ -70,10 +70,11 @@ justify-content: start;
 
 
 .orderDetails {
+  margin-top: 2rem;
     background-color: #f9f9f98b;
     border-radius: 8px;
     padding: 20px;
-    max-height: fit-content;
+height: fit-content;
     max-width: 600px;
     width: 100%;
     box-shadow: 0 1px 20px rgba(115, 60, 2, 0.416);
