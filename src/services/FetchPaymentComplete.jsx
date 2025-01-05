@@ -1,54 +1,41 @@
 import { useState } from 'react';
-import { useCartContext } from '../context/CartContext';
-import { useGlobalContext } from '../context/GlobalContext';
-
-export const FetchPaymentComplete = () => {
-  const { token, userId } = useGlobalContext();
-  const { setTotalPrice, setCart, setReceipt, totalPrice, discount, cart } = useCartContext();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
 
+export const FetchPaymentComplete  = (token, userId, totalPrice, discount, cart, setReceipt, resetCart) => {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
-  const fetchPaymentComplete = async () => {
-    try {
-      setLoading(true); // Set loading to true before the request
-      setError(null); // Reset error
-setReceipt({})
-      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/paymentComplete`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ totalPrice, discount, userId, cart }),
-      });
-      
-      const data = await response.json();
+    const handleReceipt = async () => {
+        setLoading(true);
+        setError(null);
+        
+        try {
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/paymentComplete`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({ totalPrice, discount, userId, cart }),
+            });
 
-      if (data.error) {
-        setError(`Payment failed: ${data.error}`);
-        console.error("Payment failed:", data.error);
-        return;
-      }
-      localStorage.setItem("cart", JSON.stringify([]));
-      localStorage.setItem("total", JSON.stringify("0"));
-      setCart([]);
-      setTotalPrice("0");
-      setReceipt(data.receipt);
-     
+            const data = await response.json();
 
-    } catch (error) {
-      setError(`Error creating receipt: ${error.message}`);
-      console.error("Error creating receipt:", error);
-    } finally {
-      setLoading(false); // Set loading to false after the request
-    }
-  };
+            if (data.error) {
+                setError(data.error);
+                console.error("Payment failed:", data.error);
+                return;
+            }
+            
+            setReceipt(data.receipt);
+            resetCart();
+        } catch (err) {
+            setError("Error creating receipt: " + err.message);
+            console.error("Error creating receipt:", err);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-  return {
-    fetchPaymentComplete,
-    loading,
-    error,
-  };
+    return { handleReceipt, loading, error };
 };

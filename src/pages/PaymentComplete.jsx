@@ -1,38 +1,35 @@
 import  { useEffect } from "react";
 import { useCartContext } from "../context/CartContext";
 import { TableListProducts } from "../components/TableListProducts/TableListProducts";
+import { useGlobalContext } from "../context/GlobalContext";
 import { FetchPaymentComplete } from "../services/FetchPaymentComplete";
 
 export const PaymentComplete = () => {
     const queryParams = new URLSearchParams(location.search);
     const redirectStatus = queryParams.get("redirect_status");
-
-    const {  receipt} = useCartContext();
-// Call the custom hook for payment completion logic
-const { completePayment, error, loading} = FetchPaymentComplete();
-
-
-useEffect(() => {
-    const handleReceipt = async () => {
-      try {
-        await completePayment();
-      } catch (error) {
-        console.error("Error creating receipt:", error);
-      }
+	const {token,userId}= useGlobalContext();
+    const { setTotalPrice, setCart, receipt, setReceipt, totalPrice, discount, cart } = useCartContext();
+    const resetCart = () => {
+        localStorage.setItem("cart", JSON.stringify([]));
+        localStorage.setItem("total", JSON.stringify("0"));
+        setCart([]);
+        setTotalPrice("0");
     };
 
-    if (redirectStatus === "succeeded") {
-      handleReceipt(); 
-    }
-  }, [redirectStatus, completePayment]); 
+    const { handleReceipt,  error } = FetchPaymentComplete(
+        token, userId, totalPrice, discount, cart, setReceipt, resetCart
+    );
 
+    useEffect(() => {
+        if (redirectStatus === "succeeded") {
+            handleReceipt();
+        }
+    }, [redirectStatus, handleReceipt]);
 
     return (
         <article className="paymentContainer">
             <section className="paymentContent">
                 <div className="payment">
-                    {error && <p>somthing wentwrong</p>}
-                    {loading && <p>loading..</p>}
                     <section className="paymentItems">
 					{receipt && receipt.products && receipt.totalPrice &&  (
                             <TableListProducts
