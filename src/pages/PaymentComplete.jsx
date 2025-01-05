@@ -24,7 +24,7 @@ export const PaymentComplete = () => {
         if (redirectStatus === "succeeded") {
             handleReceipt();
         }
-    }, [redirectStatus, handleReceipt]);
+    }, [redirectStatus]);
 
     return (
         <article className="paymentContainer">
