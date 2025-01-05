@@ -19,6 +19,7 @@ export const PaymentComplete = () => {
     const { handleReceipt,  error } = FetchPaymentComplete(token, userId, totalPrice, discount, cart, setReceipt, resetCart);
 
     useEffect(() => {
+      
         if (redirectStatus === "succeeded" && cart) {
             handleReceipt();
         }

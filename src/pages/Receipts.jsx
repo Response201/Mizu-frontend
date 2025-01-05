@@ -17,7 +17,7 @@ export const Receipts = () => {
 
 
   useEffect(() => {
-    console.log(data)
+  
     if (data) {
       setReceipts(data.receiptsList)
       setTotalPages(data.totalPages)
