@@ -5,16 +5,10 @@ import { useGlobalContext } from '../context/GlobalContext';
 export const FetchPaymentComplete = () => {
   const { token, userId } = useGlobalContext();
   const { setTotalPrice, setCart, setReceipt, totalPrice, discount, cart } = useCartContext();
-  
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const resetCart = () => {
-    localStorage.setItem("cart", JSON.stringify([]));
-    localStorage.setItem("total", JSON.stringify("0"));
-    setCart([]);
-    setTotalPrice("0");
-  };
+
 
   const fetchPaymentComplete = async () => {
     try {
@@ -37,9 +31,12 @@ setReceipt({})
         console.error("Payment failed:", data.error);
         return;
       }
-
+      localStorage.setItem("cart", JSON.stringify([]));
+      localStorage.setItem("total", JSON.stringify("0"));
+      setCart([]);
+      setTotalPrice("0");
       setReceipt(data.receipt);
-      resetCart();
+     
 
     } catch (error) {
       setError(`Error creating receipt: ${error.message}`);
