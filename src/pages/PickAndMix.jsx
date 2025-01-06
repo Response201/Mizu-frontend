@@ -3,9 +3,11 @@ import { Fetch } from "../services/Fetch";
 import { useProductContext } from "../context/ProductContext";
 import { useCartContext } from "../context/CartContext";
 import { UseCheckLoginStatus } from "../services/UseCheckLoginStatus";
-import { PickAndMixCategoryTitels } from "../components/pickAndMix/pickAndMixCategoryTitels";
+
 import { PickAndMixHeader } from "../components/pickAndMix/PickAndMixHeader";
 import { DisplayUniqueCategoriesAndProducts } from "../components/pickAndMix/DisplayUniqueCategoriesAndProducts";
+import { PickAndMixCategoryTitels } from "../components/pickAndMix/pickAndMixCategoryTitels";
+
 
 
 
@@ -33,7 +35,7 @@ export const PickAndMix = () => {
   }, [data]);
 
 
-/* If cart changes */
+  /* If cart changes */
   useEffect(() => {
     setUrl(`sortProducts?pickAndMix=true`);
   }, [cart]);
@@ -45,16 +47,16 @@ export const PickAndMix = () => {
       <section className="pickAndMixContent">
 
 
-{/* Header component */}
+        {/* Header component */}
         <PickAndMixHeader />
 
-{/* Display category titel and productCard */}
+        {/* Display category titel and productCard */}
         <DisplayUniqueCategoriesAndProducts setNewUrl={setNewUrl} />
 
 
 
 
-{/* if no products   */}
+        {/* if no products   */}
         {pickAndmixProducts <= 0 && <section className="pickAndMix">
           <PickAndMixCategoryTitels titel="No products" background="https://i.ibb.co/dfSJHFH/Product2.png" />
         </section>}
