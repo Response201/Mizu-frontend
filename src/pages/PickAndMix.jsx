@@ -6,7 +6,9 @@ import { UseCheckLoginStatus } from "../services/UseCheckLoginStatus";
 
 import { PickAndMixHeader } from "../components/pickAndMix/PickAndMixHeader";
 import { DisplayUniqueCategoriesAndProducts } from "../components/pickAndMix/DisplayUniqueCategoriesAndProducts";
-import { PickAndMixCategoryTitels } from "../components/pickAndMix/pickAndMixCategoryTitels";
+import PickAndMixCategoryTitels from "../components/pickAndMix/PickAndMixCategoryTitels";
+
+
 
 
 

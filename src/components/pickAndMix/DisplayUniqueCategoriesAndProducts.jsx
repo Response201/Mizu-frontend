@@ -2,7 +2,8 @@
 import { ProductCard } from '../productCard/ProductCard';
 import { useProductContext } from '../../context/ProductContext';
 import { useGlobalContext } from '../../context/GlobalContext';
-import { PickAndMixCategoryTitels } from './pickAndMixCategoryTitels';
+import PickAndMixCategoryTitels from './PickAndMixCategoryTitels';
+
 
 export const DisplayUniqueCategoriesAndProducts = ({ setNewUrl }) => {
   const { pickAndmixProducts } = useProductContext()
