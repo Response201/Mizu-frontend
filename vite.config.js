@@ -15,9 +15,5 @@ export default defineConfig({
     // Make sure specific FontAwesome modules are optimized during development
     include: ['@fortawesome/react-fontawesome', '@fortawesome/free-solid-svg-icons', '@fortawesome/free-regular-svg-icons'],
   },
-  resolve: {
-    alias: {
-      '@': '/src', // Alias för src-mappen
-    },
-  },
+  
 });
