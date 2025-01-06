@@ -15,8 +15,10 @@
 @use 'notFoundPage';
 @use 'checkoutFrom';
 @use 'cartAndTableBtns';
-@use 'pickAndMixPage';
 @use 'receiptsPage';
+@use 'pagesHeaderComponents';
+@use 'pickAndMixPage';
+@use 'barLoader';
 
 
 * {

@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import check from "../assets/lotties/404.json";
 import Lottie  from "lottie-react";
-import { Background } from "../components/home/Background";
+import { ParticleBackground } from "../components/particleBackground/ParticleBackground";
 
 export const NotFound = () => {
   const navigate = useNavigate()
@@ -13,7 +13,7 @@ export const NotFound = () => {
 
   return (
     <article className='NoPage' >
-      <Background />
+      <ParticleBackground />
     <section className='NoPageSection'>
     <a onClick={handleGoBack} className="NoPageSection___linkContainer" >
       <section>     <i className="bi bi-arrow-left"></i>

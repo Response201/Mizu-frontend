@@ -3,6 +3,7 @@
 
 import { Fetch } from "../../services/Fetch";
 import { useProductContext } from "../../context/ProductContext";
+import { BarLoader } from "../barLoader/BarLoader";
 export const FilterComponents = ({
     setUrl,
     page,
@@ -25,11 +26,12 @@ export const FilterComponents = ({
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);
     };
+
     return (
-        <section className="productsContent___topFilterNav">
+        <section className="productsContent___topFilterNav" >
             <section className="productsContent___topFilterNav___content">
                 <div className="overlay"></div>
-                <img src="https://i.ibb.co/sRxRDnJ/Product1.png" alt="background image" />
+                <img src="https://i.ibb.co/qrGk06H/12.png" alt="background image" />
                 {/* Sorting */}
                 <select
                     value={selectedSort}
@@ -89,17 +91,7 @@ export const FilterComponents = ({
                     />
                 </section>
             </section>
-            <section className="productsContent___topFilterNav___loading">
-                {loading && !isFirstRender ? (
-                    <section className="productsContent___topFilterNav___loading___load">
-                        <div className="bar1"></div>
-                        <div className="bar2"></div>
-                        <div className="bar3"></div>
-                        <div className="bar4"></div>
-                        <div className="bar5"></div>
-                    </section>
-                ) : null}
-            </section>
+        
         </section>
     );
 };

@@ -21,7 +21,7 @@ export const ProductCard = ({ item, setUrl, limit=3, searchQuery="", selectedSor
 
   return (
     <div className="productCard">
-      <div className="card-inner" style={{ '--clr': "#fff" }}>
+      <div className="card___inner" style={{ '--clr': "#fff" }}>
         <div className="box">
 
         {!userId && !token &&
@@ -54,6 +54,7 @@ export const ProductCard = ({ item, setUrl, limit=3, searchQuery="", selectedSor
                 selectedCategory={selectedCategory}
                 page={page}
                 pickAndMix={pickAndMix}
+              
             
               /> 
             </div>

@@ -3,7 +3,8 @@
 import { MainButton } from '../lottieBtn/MainBtn.jsx';
 import { useGlobalContext } from '../../context/GlobalContext.jsx';
 import { useEffect, useState } from 'react';
-import GoogleSignIn from '../Google/Google.jsx';
+import GoogleSignIn from '../google/Google.jsx';
+import { BarLoader } from '../barLoader/BarLoader.jsx';
 
 export const FormSigninRegisterUser = ({
     title = "Sign in",
@@ -127,7 +128,12 @@ export const FormSigninRegisterUser = ({
                 <section className='errorContainer'>
 
 
-                    {loading && !error && !message && <p> loading...  </p>}
+                    {loading && !error && !message &&   <BarLoader /> }
+
+
+
+
+
                     {error && <p style={{ '--color': `${color}` }}> {error}   </p>}
                     {message && <p style={{ '--color': `${color}` }}> {message}   </p>}
                 </section>

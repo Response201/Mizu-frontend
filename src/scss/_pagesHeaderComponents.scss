@@ -1,0 +1,93 @@
+@use 'variables' as v;
+@use 'mixins';
+
+.pagesHeaderComponents{
+
+    padding-top: 3rem ;
+    height: clamp(450px, 40vh, 580px);
+    min-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 3rem 0;
+   
+    @include mixins.devices(desktop) {
+      flex-direction: row;
+    justify-content: space-between;
+    padding-top: 0rem;
+    
+    }
+    
+    
+    
+    &___titleAndDescriptionContainer{
+    
+    color: var(--color) !important;
+    font-family: "Montserrat", sans-serif;
+    text-shadow: v.$text-shadow ;
+    font-weight: 400 ;
+    text-align: center;
+    &___titel{
+     
+      margin: 0;
+  
+     
+      
+      font-size: clamp(1.6rem, 1vw + 1.2rem, 2.5rem) ;
+      padding-bottom: 1rem !important;
+ 
+ 
+    }
+    
+    &___description{
+      margin: 0;
+      font-size: clamp(0.8rem, 1vw + .5rem, 1rem) ;
+      line-height:clamp(1.6rem, 1vw + 1.2rem, 1.8rem);
+  
+
+    
+    }
+
+
+
+    
+      @include mixins.devices(desktop) {
+        width: 45%;
+    
+     
+        text-align: left;
+    
+      
+      }
+    
+    }
+    
+    &___imageContainer{
+      border:1px dotted var(--color) ;
+    height: 80%;
+    width: 100%;
+    margin-top: 2rem;
+    overflow: hidden;
+    @include mixins.devices(desktop) {
+      width: 50%;
+    margin-top: 0;
+    
+    }
+    
+    img{
+      
+    width: 100%;
+ height: 100%;
+  object-fit: contain;
+    
+    
+    @include mixins.devices(desktop) {
+     
+    
+    }
+    }
+    
+    }
+    
+    }

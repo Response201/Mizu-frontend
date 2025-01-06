@@ -1,7 +1,7 @@
 
 
 import { MainButton } from '../lottieBtn/MainBtn.jsx';
-import { Background } from './Background';
+import { ParticleBackground } from '../particleBackground/ParticleBackground.jsx';
 import getAnimation from "../../assets/lotties/button.json";
 import { useEffect } from 'react';
 
@@ -40,7 +40,7 @@ export const Header = () => {
 
 
             </section>
-            <Background />
+            <ParticleBackground />
 
         </article>
     )

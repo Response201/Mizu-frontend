@@ -3,6 +3,7 @@ import { useCartContext } from "../context/CartContext";
 import { TableListProducts } from "../components/TableListProducts/TableListProducts";
 import { useGlobalContext } from "../context/GlobalContext";
 import { FetchPaymentComplete } from "../services/FetchPaymentComplete";
+import { BarLoader } from "../components/barLoader/BarLoader";
 
 export const PaymentComplete = () => {
     const queryParams = new URLSearchParams(location.search);
@@ -40,7 +41,8 @@ export const PaymentComplete = () => {
                     </section>
                     <section className="complete">
                        
-                       {loading && <p>loading</p>}
+                         { loading &&  <section className="paymentLoader">  <section className="paymentLoaderContainer"> <BarLoader /> </section>
+                            </section>}
                             {!error && redirectStatus === "succeeded" && receipt && receipt.products && receipt.totalPrice !== 0  &&  <h2 className="completeText">
                                 Betalning: Betalningen lyckades
                                 </h2> }

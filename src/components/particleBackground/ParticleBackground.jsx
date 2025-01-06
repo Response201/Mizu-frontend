@@ -1,4 +1,4 @@
-export const Background = () => {
+export const ParticleBackground = () => {
     const particleArray = []
     for(let i= 0; i < 50; i++){
         if(i % 2 === 0){
@@ -12,7 +12,7 @@ export const Background = () => {
         }
 return(
 <section className="backgroundContainer">          
-<section className="particle-container">
+<section className="particle___container">
 {particleArray.map(item =>  item  )}
 </section>
 </section>

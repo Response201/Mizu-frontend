@@ -51,24 +51,24 @@ export const Receipts = () => {
 
 
             <div className="orderDetails">
-              <section className="orderDetails__btnContainer">
+              <section className="orderDetails___btnContainer">
 
                 <button onClick={() => setReceipt(null)}>  <i className="bi bi-x-lg"></i>
                 </button>
               </section>
 
-              <h2 className="orderDetails__title">Order Information</h2>
-              <p className="orderDetails__info">
+              <h2 className="orderDetails___title">Order Information</h2>
+              <p className="orderDetails___info">
                 <strong>Receipt ID:</strong> #{receipt._id.slice(17, -1)}
               </p>
-              <p className="orderDetails__info">
+              <p className="orderDetails___info">
                 <strong>Order Created At:</strong> {new Date(receipt.createdAt).toLocaleString().slice(0, -3)}
               </p>
 
-              <h3 className="orderDetails__productsTitle">Products:</h3>
-              <ul className="orderDetails__productsList">
+              <h3 className="orderDetails___productsTitle">Products:</h3>
+              <ul className="orderDetails___productsList">
                 {receipt.products.map((product, index) => (
-                  <li className="orderDetails__product" key={index}>
+                  <li className="orderDetails___product" key={index}>
                     <section>   {product.name}      </section>
                     <section>   {product.pickAndMix ? 'mix': '-'}      </section>
                     <section>      {product.price} kr  x  {product.quantity}</section>
@@ -77,10 +77,10 @@ export const Receipts = () => {
                 ))}
               </ul>
 
-              <p className="orderDetails__discount">
+              <p className="orderDetails___discount">
                 <strong>Discount:</strong> {receipt.discount}kr
               </p>
-              <p className="orderDetails__totalPrice">
+              <p className="orderDetails___totalPrice">
                 <strong>Total:</strong> {receipt.totalPrice}kr
               </p>
             </div>

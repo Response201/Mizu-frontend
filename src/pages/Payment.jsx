@@ -8,6 +8,7 @@ import { CheckoutForm } from "../components/stripePaymentForm/CheckoutForm";
 import { useNavigate } from "react-router-dom";
 import { UseCheckLoginStatus } from "../services/UseCheckLoginStatus";
 import { FetchPayment } from "../services/FetchPayment";
+import { BarLoader } from "../components/barLoader/BarLoader";
 
 
 export const Payment = () => {
@@ -15,6 +16,7 @@ export const Payment = () => {
     const { token } = useGlobalContext();
     const [clientSecret, setClientSecret] = useState("");
     const [stripePromise, setStripePromise] = useState(null);
+    const [firstLoader, setFirstLoader] = useState(true)
     const navigate = useNavigate();
 
     UseCheckLoginStatus();
@@ -31,6 +33,7 @@ export const Payment = () => {
                     const { clientSecret, stripePromise } = await FetchPayment();
                     setClientSecret(clientSecret);
                     setStripePromise(stripePromise);
+                    setFirstLoader(false)
                
             }
         };
@@ -50,14 +53,17 @@ export const Payment = () => {
                             <TableListProducts showButtons={false} cart={cart} totalPrice={totalPrice} />
                         )}
                     </section>
-                    {(!clientSecret || !stripePromise) && <p>Loading payment details...</p>}
+
+                    
+                 {(!clientSecret || !stripePromise && firstLoader) && <section className="paymentLoader">    <section className="paymentLoaderContainer"> <BarLoader /> </section>
+</section>}
                     {clientSecret && stripePromise && (
                         <section className="form">
                             <Elements stripe={stripePromise} options={options}>
                                 <CheckoutForm />
                             </Elements>
                         </section>
-                    )}
+                    )} 
                 </section>
             </section>
         </article>

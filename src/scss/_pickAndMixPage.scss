@@ -28,20 +28,29 @@
 
 &___noProductsFound{
 
-
-    max-height: 90vh;
+border: v.$dotted-line;
+    max-height: 40vh;
+    min-height: 300px;
     width: 100%;
     height: 98%;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 2rem;
 
-
+img{
+height: 90%;
 
 }
 
 
 }
+
+
+}
+.pickAndMixProducts{
+  width: 100%;
+  
 
 .pickAndMix{
  
@@ -51,10 +60,10 @@ align-items: center;
 justify-content: center;
 margin: 3rem 0 ;
 
-    &___pickAndMixHeader{
-margin: 2rem 0 3rem 0;
+    &___pickAndMixTitels{
+margin: 1rem 0 3rem 0;
         position: relative;
-        height: 5rem;
+        height: 4rem;
 width: 100%;
 overflow: hidden;
     display: flex;
@@ -70,9 +79,9 @@ border: 1px solid rgba(128, 74, 9, 0.192);
        color: v.$text-secondary;
         margin: 0;
         text-shadow: v.$text-shadow;
-        font-family: "Montserrat Underline", sans-serif !important;
+        font-family: "Montserrat", sans-serif !important;
         font-weight: 400;
-        font-size: clamp(3rem, 2vw + 2rem, 4rem);
+        font-size: clamp(1.2rem, 1vw + 1.25rem, 2.3rem);
     }
         @include mixins.devices(desktop) {
           width: 100%;
@@ -176,7 +185,7 @@ border: 1px solid rgba(128, 74, 9, 0.192);
 
 
 
-}
+}}
 .pickAndMix:first-child{
 margin-top: 0rem;
 margin-bottom: 3rem;

@@ -52,7 +52,49 @@ padding-top: 1.5rem;
   max-width: v.$max-width;
   align-items: start;
   justify-content: space-around;
+  position: relative;
+ 
+ 
 }
+
+
+
+.paymentLoader{
+
+position: relative;
+  width: 30vw;
+  max-width: 500px;
+  min-width: 250px;
+  border-radius: 7px;
+  padding: 40px;
+  min-height: 10rem;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  margin-bottom: 25px;
+  margin-top: 1.5rem;
+z-index: 1;
+  
+  @include mixins.devices(tablet) {
+   position: unset;
+   
+     }
+
+}
+.paymentLoaderContainer{
+
+position: absolute;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 30vw;
+
+top: 45%;
+bottom: 50%;
+margin: auto;
+}
+
+
 
 .form {
 
@@ -224,6 +266,11 @@ padding-top: 1.5rem;
     transform: rotate(360deg);
   }
 }
+
+
+
+
+
 
 @media only screen and (max-width: 768px) {
   .payment {
