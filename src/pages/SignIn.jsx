@@ -1,10 +1,11 @@
-import {  useState } from "react"
+import { useState } from "react"
 import { useGlobalContext } from "../context/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import getAnimation from "../assets/lotties/buttonOrange.json";
 
 import { Fetch } from "../services/Fetch";
-import { FormSigninRegisterUser } from "../components/formSigninResisterUser/FormSigninRegisterUser";
+import { FormSigninRegisterUser } from "../components/formSigninRegisterUser/FormSigninRegisterUser";
+
 
 
 
@@ -32,7 +33,7 @@ export const SignIn = () => {
 
 
 
- 
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +43,7 @@ export const SignIn = () => {
       email,
       password,
     });
-   
+
   };
 
   return (
