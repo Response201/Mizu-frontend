@@ -3,7 +3,7 @@
 import { MainButton } from '../lottieBtn/MainBtn.jsx';
 import { useGlobalContext } from '../../context/GlobalContext.jsx';
 import { useEffect, useState } from 'react';
-import GoogleSignIn from '../google/Google.jsx'
+import GoogleSignIn from '../Google/Google.jsx'
 import { BarLoader } from '../barLoader/BarLoader.jsx';
 
 export const FormSigninRegisterUser = ({
