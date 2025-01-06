@@ -1,9 +1,8 @@
 import {  useState } from "react"
 import { useNavigate } from "react-router-dom";
 import getAnimation from "../assets/lotties/button.json";
-
-import { FormSigninRegisterUser } from "../components/formSigninResisterUser/FormSigninRegisterUser"
 import { Fetch } from "../services/Fetch";
+import { FormSigninRegisterUser } from "../components/formSigninResisterUser/FormSigninRegisterUser";
 
 
 
