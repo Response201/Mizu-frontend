@@ -6,17 +6,18 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      onwarn(warning, warn) {
-        if (warning.code === 'UNRESOLVED_IMPORT') {
-          console.error('Unresolved import:', warning.source);
-        } else {
-          warn(warning);
-        }
-      },}
+      // Remove `@stripe/react-stripe-js` from `external` to bundle it correctly
+      // external: ['@stripe/react-stripe-js'],
+    },
   },
   base: '/',  // Ensure your routes are handled correctly
   optimizeDeps: {
     // Make sure specific FontAwesome modules are optimized during development
     include: ['@fortawesome/react-fontawesome', '@fortawesome/free-solid-svg-icons', '@fortawesome/free-regular-svg-icons'],
+  },
+  resolve: {
+    alias: {
+      '@': '/src', // Alias för src-mappen
+    },
   },
 });
