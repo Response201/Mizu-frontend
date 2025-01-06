@@ -6,9 +6,13 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      // Remove `@stripe/react-stripe-js` from `external` to bundle it correctly
-      // external: ['@stripe/react-stripe-js'],
-    },
+      onwarn(warning, warn) {
+        if (warning.code === 'UNRESOLVED_IMPORT') {
+          console.error('Unresolved import:', warning.source);
+        } else {
+          warn(warning);
+        }
+      },}
   },
   base: '/',  // Ensure your routes are handled correctly
   optimizeDeps: {
