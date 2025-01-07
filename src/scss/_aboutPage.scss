@@ -21,7 +21,7 @@
     background-color: transparent;
 
     @include mixins.devices(desktop) {
-      padding-top: 2;
+      padding-top: 6rem;
     }
   }
 
@@ -36,6 +36,7 @@
 /* About story component */
 
 .aboutStory {
+  text-shadow: v.$text-shadow-light;
   width: 100% !important;
   height: auto;
   display: flex;
@@ -149,9 +150,10 @@ text-align: left;
 
       p {
         font-family: "Montserrat", sans-serif !important;
-
-        line-height: 1.6;
+font-weight: 500;
+        line-height: 1.7;
         padding: 1rem 0 0 0;
+      
 
       }
 
@@ -166,7 +168,7 @@ text-align: left;
 /* AboutQuote Component */
 
 .AboutQuote {
-
+  text-shadow: v.$text-shadow-light;
   height: auto;
   display: flex;
   flex-direction: column;

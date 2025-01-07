@@ -25,16 +25,16 @@
     
     color: var(--color) !important;
     font-family: "Montserrat", sans-serif;
-    text-shadow: v.$text-shadow ;
+  
     font-weight: 400 ;
     text-align: center;
     &___titel{
-     
+      text-shadow: v.$text-shadow-light;
       margin: 0;
   
      
       
-      font-size: clamp(1.6rem, 1vw + 1.2rem, 2.5rem) ;
+      font-size: clamp(1.2rem, .7vw + 1.1rem, 2.2rem) ;
       padding-bottom: 1rem !important;
  
  
@@ -42,10 +42,10 @@
     
     &___description{
       margin: 0;
-      font-size: clamp(0.8rem, 1vw + .5rem, 1rem) ;
-      line-height:clamp(1.6rem, 1vw + 1.2rem, 1.8rem);
-  
-
+      font-size: clamp(0.8rem, .5vw + .5rem, 1rem) ;
+      line-height:clamp(1.6rem, 1.1vw + 1.2rem, 1.8rem);
+  font-weight: 500;
+  text-shadow: v.$text-shadow-light;
     
     }
 
@@ -65,10 +65,11 @@
     
     &___imageContainer{
       border:1px dotted var(--color) ;
-    height: 80%;
+   
     width: 100%;
     margin-top: 2rem;
     overflow: hidden;
+    aspect-ratio: 16 / 9; 
     @include mixins.devices(desktop) {
       width: 50%;
     margin-top: 0;

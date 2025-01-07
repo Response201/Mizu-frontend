@@ -70,25 +70,31 @@
             font-size: clamp(3.5rem, 4vw + 1rem, 4.5rem);
             color: v.$text-header;
             font-family: "Montserrat Underline", sans-serif !important;
+            
         }
 
         p {
             max-width: 600px;
             font-family: "Montserrat", sans-serif !important;
             line-height: 1.75rem;
-            font-size: clamp(0.8rem, 1vw, 1rem);
+            font-size: clamp(0.8rem, 0.8vw + 1vw, 0.85rem);
             text-align: center;
+            color: v.$text-secondary-darker;
+           
+          font-weight: 500;
+            
+      
 
             span {
-                filter: brightness(98%);
-                text-shadow: 1px 0px 1px v.$shadow;
+          
+               
                 padding: 4px 0;
                 display: block;
-                color: v.$text-secondary;
+                color: v.$text-secondary-darker;
                 font-weight: 700;
                 letter-spacing: 0.13rem;
                 display: none;
-                font-size: clamp(0.9rem, 1vw, 1.1rem);
+                font-size: clamp(1rem, 1vw, 1.2rem);
 
                 @include mixins.devices(desktop) {
                     display: block;
