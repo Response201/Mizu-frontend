@@ -24,7 +24,7 @@ export const DisplayUniqueCategoriesAndProducts = ({ setNewUrl }) => {
 
 
   // Extract unique categories from the mixList only once
-  const uniqueCategories = [...new Set(pickAndmixProducts.map(product => product.category))];
+  const uniqueCategories = [...new Set(pickAndmixProducts.map(product => product.category))].sort();
 
 
 

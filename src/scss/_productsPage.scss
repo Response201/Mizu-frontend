@@ -3,7 +3,7 @@
 .productsContainer {
   @include mixins.article() {
  
-
+    min-height: 148vh !important;
    
     @include mixins.devices(desktop) {
    padding-bottom: 1.5rem !important;
@@ -164,6 +164,7 @@ min-height: fit-content;
 
 
     &___grid {
+   
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
       gap: 2rem;

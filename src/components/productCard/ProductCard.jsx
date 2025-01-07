@@ -2,15 +2,14 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import { useGlobalContext } from "../../context/GlobalContext";
 import { RatingComponent } from "./RatingComponent";
 import { useCartContext } from "../../context/CartContext";
-export const ProductCard = ({ item, setUrl, limit=3, searchQuery="", selectedSort= "averageRating:desc", selectedCategory="all", page=1, pickAndMix=false, setClick=false }) => {
+export const ProductCard = ({ item, setUrl, limit=3, searchQuery="", selectedSort= "averageRating:desc", selectedCategory="all", page=1, pickAndMix=false }) => {
   const { token, userId } = useGlobalContext();
   const {  handleFetch } = useCartContext();
 
 
   /* click function => add product to cart */
   const addItemToCart = (item) => {
-    if(setClick){
-    setClick(true)}
+   
       handleFetch(
         userId,
         item._id,
