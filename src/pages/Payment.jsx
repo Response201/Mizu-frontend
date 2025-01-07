@@ -55,7 +55,7 @@ export const Payment = () => {
                     </section>
 
                     
-                 {(!clientSecret || !stripePromise && firstLoader) && <section className="paymentLoader">    <section className="paymentLoaderContainer"> <BarLoader /> </section>
+                 {(!clientSecret || !stripePromise && firstLoader && !cart) && <section className="paymentLoader">    <section className="paymentLoaderContainer"> <BarLoader /> </section>
 </section>}
                     {clientSecret && stripePromise && (
                         <section className="form">
