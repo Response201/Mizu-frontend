@@ -9,7 +9,7 @@ import { LottieLoadingStar } from "./LottieLoadingRating";
 import { Fetch } from "../../services/Fetch";
 
 
-export const RatingComponent = ({ id, item, setUrl, limit=3, searchQuery="", selectedSort="averageRating:desc", selectedCategory="all", page=1, pickAndMix=false }) => {
+export const RatingComponent = ({ id, item, setUrl, limit=3, searchQuery="", selectedSort="averageRating:desc", selectedCategory="all", page=1, pickAndMix=false, showOneProduct=false }) => {
   const [hoveredStar, setHoveredStar] = useState(null); // Tracks hovered stars
   const [currentRating, setCurrentRating] = useState(Math.ceil(item.averageRating)); // Tracks displayed rating
   const { userId, token } = useGlobalContext();
@@ -18,6 +18,7 @@ export const RatingComponent = ({ id, item, setUrl, limit=3, searchQuery="", sel
   const { data, loading, error } = Fetch(urlRating, "PUT", body);
   const [target, setTarget] = useState();
   
+
 
   // Handle mouse hover over a star
   const handleMouseOver = (index) => setHoveredStar(index + 1);
@@ -32,25 +33,29 @@ export const RatingComponent = ({ id, item, setUrl, limit=3, searchQuery="", sel
 
     // Update rating locally for instant feedback
     setCurrentRating(newRating);
-
+ 
     setBody({
       id,
       userId,
       newRating,
     });
     setUrlRating("updateRating");
+   
   };
 
   // Update displayed rating when data changes
   useEffect(() => {
+
     if (data && urlRating) {
       setCurrentRating(Math.round(item.averageRating));
       setTarget(null); // Clear the target after update
-      setUrl(`sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=${page}&pickAndMix=${pickAndMix}`);
-    }
 
+      setUrl(`sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=${page}&pickAndMix=${pickAndMix}`);
+      if(showOneProduct){
+        setUrl(`product?id=${item._id}`);}
+      }
     setUrlRating("")
-  }, [data, item, setUrlRating]);
+  }, [data]);
 
   // Generate star elements
   const stars = Array.from({ length: 5 }, (_, index) => (

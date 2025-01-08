@@ -20,6 +20,7 @@
 @use 'pickAndMixPage';
 @use 'barLoader';
 @use 'aboutPage';
+@use 'productPage';
 
 
 * {
@@ -69,6 +70,20 @@ h1 {
 
 
 
+    
+.disabled{
+    background-color: rgba(220, 203, 184, 0.72) !important;
+    opacity: 0.6 !important;
+    filter: brightness(80%) !important;
+
+    &--opacity{
+
+        opacity: 0.5 !important;
+
+    }
+    
+    }
+        
 
 
 

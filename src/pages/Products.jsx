@@ -16,7 +16,7 @@ import { BarLoader } from "../components/barLoader/BarLoader";
 export const Products = () => {
   const { userId } = useGlobalContext();
   const { filtredProducts, setFiltredProducts, setUniqueCategories, totalPages, setTotalPages, searchQuery, setSearchQuery, selectedSort, setSelectedSort, selectedCategory, setSelectedCategory, pickAndMix, setPickAndMix, limit, setLimit } = useProductContext();
-  const { cart } = useCartContext()
+  const { cart,  setIsProcessing } = useCartContext()
   const [page, setPage] = useState()
   const [url, setUrl] = useState(``);
   const [newUrl, setNewUrl] = useState('')
@@ -105,7 +105,7 @@ export const Products = () => {
       setUrl('')
       setNewUrl("")
       setIsFirstRender(false);
-
+      setIsProcessing(false)
       if (myRef.current && !isFirstRender && url) {
         myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
 
@@ -181,7 +181,7 @@ export const Products = () => {
               pickAndMix={pickAndMix}
               setPickAndMix={setPickAndMix}
               page={page}
-              
+           
             />
           ))}
         </section>

@@ -12,6 +12,7 @@ import { SignIn } from "./pages/SignIn";
 import { CheckOut } from "./pages/CheckOut";
 import { Payment } from "./pages/Payment";
 import { PaymentComplete } from "./pages/PaymentComplete";
+import { Product } from "./pages/Product";
 
 
 
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: "/products",
         element: <Products />,
+      },
+      {
+        path: "/product/:id",
+        element: <Product />,
       },
       {
         path: "/mix",

@@ -27,6 +27,7 @@
 
             @include mixins.devices(desktop) {
                 max-height: 600px;
+               
             }
         }
     }
@@ -58,9 +59,11 @@
         flex-direction: column;
         color: v.$text-primary;
         margin-top: 7%;
-
+        min-height: 400px;
         @include mixins.devices(desktop) {
             margin-top: -8vh;
+            min-height: 400px;
+          
         }
 
         h1 {
@@ -104,12 +107,14 @@
             @include mixins.devices(desktop) {
                 max-width: none;
                 text-align: left;
+                
             }
         }
 
         @include mixins.devices(desktop) {
             width: 45%;
             align-items: start;
+            
         }
     }
 }

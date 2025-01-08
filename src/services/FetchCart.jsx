@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 // FetchCart är nu bara en vanlig funktion, utan hooks
-export const FetchCart = async (url, data, token, setError, setCartMessage) => {
-  console.log(url)
+export const FetchCart = async (url, data, token, setError, setCartMessage, setIsProcessing) => {
+  
     try {
         // Bygg options för förfrågan
         const options = {
@@ -16,12 +16,13 @@ export const FetchCart = async (url, data, token, setError, setCartMessage) => {
 
         // Vänta på att axios-ansökan ska slutföras
         const response = await axios({
-            url: `${import.meta.env.VITE_BASE_URL}/${url}`,
+            url: `http://localhost:27017/${url}`,
             ...options,
         });
-
+    
         // Returnera response.data när förfrågan lyckas
         return response.data;
+
 
     } catch (error) {
         // Hantera fel
@@ -33,8 +34,10 @@ export const FetchCart = async (url, data, token, setError, setCartMessage) => {
             } else {
                 setError('Something went wrong');
             }
+            setIsProcessing(false)
         } else {
             setError('Network error');
         }
+        setIsProcessing(false)
     } 
 };

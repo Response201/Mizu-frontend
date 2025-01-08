@@ -8,9 +8,9 @@ import { useCartContext } from "../../context/CartContext";
 export const TopRatedProducts = () => {
     const { userId} = useGlobalContext();
  
-    const {  topRatedProducts, setTopRatedProducts,   setBeforeFilteringProducts,
+    const {  topRatedProducts, setTopRatedProducts, setBeforeFilteringProducts,
       setTotalPages } = useProductContext();
-    const {cart} = useCartContext()
+    const {cart, setIsProcessing} = useCartContext()
   const [url, setUrl] = useState("sortProducts?limit=3&search=&sort=averageRating:desc");
   const { data } = Fetch(url);
 
@@ -22,9 +22,9 @@ export const TopRatedProducts = () => {
     if (data && data.products) {
       setTopRatedProducts([...data.products]);
       setUrl("");
-   
+      setIsProcessing(false)
     }
-  }, [data, setTopRatedProducts]);
+  }, [data, setTopRatedProducts, setIsProcessing]);
 
 
 
@@ -33,7 +33,7 @@ export const TopRatedProducts = () => {
   
       setUrl("sortProducts?limit=3&search=&sort=averageRating:desc"); 
       
-  }, [ cart]);
+  }, [cart]);
 
 
 
@@ -74,6 +74,7 @@ export const TopRatedProducts = () => {
                 item={item}
                 userId={userId}
                 setUrl={setUrl}
+               
               />
             ))}
           </section>

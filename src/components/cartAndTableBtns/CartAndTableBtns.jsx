@@ -7,7 +7,7 @@ import { Fetch } from "../../services/Fetch";
 
 // Komponentdefinitionen
 export const CartAndTableBtns = ({ item }) => {
-    const { handleFetch, cart } = useCartContext();
+    const { handleFetch, cart,setIsProcessing, isProcessing } = useCartContext();
     const { allProductsList, setAllProductsList } = useProductContext();
     const { userId } = useGlobalContext();
     const [url, setUrl] = useState("");
@@ -25,6 +25,7 @@ export const CartAndTableBtns = ({ item }) => {
         if (data && data.products) {
             setAllProductsList([...data.products]);
             setUrl("");
+            setIsProcessing(false)
         }
     }, [data]);
 
@@ -41,24 +42,24 @@ export const CartAndTableBtns = ({ item }) => {
         <div className="transparent btnContainer">
             <Button
                 size="sm"
-                className={`btn ${product?.stockLevel === 0 ? "disabled" : ""}`}
-                onClick={product?.stockLevel === 0 ? null : () => handleItemToCart(item, "add")}
+                className={`btn ${product?.stockLevel === 0 || isProcessing ? "disabled" : ""}`}
+                onClick={product?.stockLevel === 0 || isProcessing  ? null : () => handleItemToCart(item, "add")}
                 
             >
                 <i className="bi bi-plus-lg"></i>
             </Button>
             <Button
                 size="sm"
-                className={`btn ${item.quantity <= 1 ? "disabled" : ""}`}
-                onClick={item.quantity <= 1 ? null : () => handleItemToCart(item, "remove")}
+                className={`btn ${item.quantity <= 1 || isProcessing ? "disabled" : ""}`}
+                onClick={item.quantity <= 1 || isProcessing ? null : () => handleItemToCart(item, "remove")}
                
             >
                 <i className="bi bi-dash-lg"></i>
             </Button>
             <Button
                 size="sm"
-                className="btn"
-                onClick={() => handleItemToCart(item, "delete")}
+                className={ isProcessing ? "disabled btn" : "btn"}
+                onClick={ isProcessing ? null : () => handleItemToCart(item, "delete")}
             >
                 <i className="bi bi-trash3"></i>
             </Button>

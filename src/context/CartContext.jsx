@@ -9,7 +9,7 @@ export const CartProvider = ({ children }) => {
     const [discount, setDiscount] = useState(JSON.parse(localStorage.getItem("discount")) || 0);
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
     const [cartMessage, setCartMessage] = useState('')
-	
+	const [isProcessing, setIsProcessing] = useState(false)
 
 const [receipt, setReceipt] = useState(JSON.parse(localStorage.getItem("receipt")) || [])
 
@@ -24,13 +24,15 @@ const [receipt, setReceipt] = useState(JSON.parse(localStorage.getItem("receipt"
 
 
     const handleFetch = async (userId,  productId, actionType) => {
+        if (isProcessing) return;
+        setIsProcessing(true);
 const url = "cart"
         const data = {
             userId,
             productId,
             action: actionType,
         };
-        const response = await FetchCart(url, data, token, setError, setCartMessage);
+        const response = await FetchCart(url, data, token, setError, setCartMessage, setIsProcessing);
 
      
 
@@ -41,6 +43,7 @@ const url = "cart"
                 setCart(response.cart.products)
                 localStorage.setItem("cart", JSON.stringify(response.cart.products))
                 handleTotalPrice(userId)
+             
             }
          
           
@@ -80,7 +83,7 @@ const url = "cart"
             setTotalPrice,
             discount, setDiscount,
             handleFetch,
-            cart, setCart, cartMessage,  receipt, setReceipt
+            cart, setCart, cartMessage,  receipt, setReceipt, isProcessing, setIsProcessing
         }}>
             {children}
         </CartContext.Provider>

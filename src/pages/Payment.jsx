@@ -45,7 +45,7 @@ export const Payment = () => {
     const options = { clientSecret, appearance };
 
     return (
-        <article className="productsContainer">
+        <article className="paymentContainer">
             <section className="paymentContent">
                 <section className="payment">
                     <section className="paymentItems">

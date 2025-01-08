@@ -20,14 +20,15 @@ overflow: hidden;
   @include mixins.devices(desktop) {
     max-width: v.$max-width;
 }
-
+ }
 
   .productCard {
  
     justify-content: center;
         align-items: center;
      width: 100%;
-    background: #ffffff;;
+     background: linear-gradient(to bottom, rgba(155, 30, 30, 0) 0%, rgb(252, 252, 252,1) 50%);
+
 margin: 0px;
 height: 100%;
 
@@ -81,12 +82,13 @@ height: 100%;
         margin: 0;
       }
 
+ 
       p {
         margin: 0.625rem 0 1.25rem;
         color: #565656;
         background-color: #fff;
         font-size: clamp(0.75rem, 2vw, 1rem);
-        
+    
 
         display: -webkit-box;
         -webkit-line-clamp: 2; /* Begränsar texten till två rader */
@@ -138,7 +140,7 @@ box-shadow: v.$box-shadow-fade;
 
         overflow: hidden;
         background-color: var(--clr-tag);
-       
+border-radius: 5px;       
         border-bottom-right-radius: 20%;
 
         img {
@@ -209,7 +211,7 @@ box-shadow: v.$box-shadow-fade;
       }
     }
   }
-}
+
 
 .signIn_to_shop{
   
