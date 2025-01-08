@@ -39,13 +39,13 @@ export const ProductCard = ({ item, setUrl, limit = 3, searchQuery = "", selecte
 
 
 /*add to cart if showOneProduct is true and stock level is 1 or more */
-              <a onClick={ item.stockLevel >= 1 && !isProcessing ? () => addItemToCart(item):null} 
+              <a onClick={ item.stockLevel >= 1 && !isProcessing && userId && token ? () => addItemToCart(item):null} 
               className={!isProcessing && item.stockLevel >= 1 ? "iconBox": "iconBox disabled--opacity"} 
               style={{ '--clr-tag': `${item.primaryColor}` }}> 
               
               <span className="material-symbols-outlined">
                 {item.stockLevel >= 1 ?
-                <>    {isProcessing ? '...' :  <i className="bi bi-cart3"></i>  }        </>
+                <>    {isProcessing ? '...' : <> {token && userId ? <i className="bi bi-cart3"></i> : <i className="bi bi-lock-fill"></i> }      </>  }        </>
                
                :  <i className="bi bi-x-circle "></i>}
 
