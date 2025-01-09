@@ -4,6 +4,7 @@ import { TableListProducts } from "../components/TableListProducts/TableListProd
 import { useGlobalContext } from "../context/GlobalContext";
 import { FetchPaymentComplete } from "../services/FetchPaymentComplete";
 import { BarLoader } from "../components/barLoader/BarLoader";
+import { useRef } from "react";
 
 export const PaymentComplete = () => {
     const queryParams = new URLSearchParams(location.search);
@@ -16,13 +17,17 @@ export const PaymentComplete = () => {
         setCart([]);
         setTotalPrice("0");
     };
-
+    /* motverkar att två kvitton skapas om redirectStatus ändras okontrollerat */
+    const hasRun = useRef(false);
     const { handleReceipt,  error, loading } = FetchPaymentComplete(token, userId, totalPrice, discount, cart, setReceipt, resetCart);
 
     useEffect(() => {
       setReceipt({})
-        if (redirectStatus === "succeeded" && cart) {
+        if (redirectStatus === "succeeded" && cart && !hasRun.current) {
             handleReceipt();
+            hasRun.current = true;
+        }else{
+            return;
         }
     }, [redirectStatus]);
 

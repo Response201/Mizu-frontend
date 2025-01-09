@@ -37,7 +37,7 @@ export const Product = () => {
         <article className='productContainer'>
             <ParticleBackground />
             <section className='productContent'>
-                {error || product.length <= 0 && !loading && <p>Something Went wrong</p>}
+                {error  && <p>Something Went wrong</p>}
                 <section className='productContent___cardContainer'>
                     {loading && product.length <= 0 && <BarLoader />}
                     {!error && product && product.map((item) => (

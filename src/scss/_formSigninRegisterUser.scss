@@ -137,9 +137,10 @@ width: 100%;
 position: relative;
 
 p{
-
+background-color:var(--color) ;
 margin: 0;
-color: var(--color) !important;
+padding: 0 2px;
+color: white !important;
 }
 
 }

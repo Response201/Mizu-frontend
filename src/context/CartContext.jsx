@@ -10,7 +10,7 @@ export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
     const [cartMessage, setCartMessage] = useState('')
 	const [isProcessing, setIsProcessing] = useState(false)
-
+const [notify, setNotify] = useState('')
 const [receipt, setReceipt] = useState(JSON.parse(localStorage.getItem("receipt")) || [])
 
 
@@ -23,7 +23,7 @@ const [receipt, setReceipt] = useState(JSON.parse(localStorage.getItem("receipt"
     }, [receipt])
 
 
-    const handleFetch = async (userId,  productId, actionType) => {
+    const handleFetch = async (userId,  productId, actionType, showNotify) => {
         if (isProcessing) return;
         setIsProcessing(true);
 const url = "cart"
@@ -43,6 +43,9 @@ const url = "cart"
                 setCart(response.cart.products)
                 localStorage.setItem("cart", JSON.stringify(response.cart.products))
                 handleTotalPrice(userId)
+                if(showNotify){
+setNotify('added to cart')
+                }
              
             }
          
@@ -54,6 +57,7 @@ const url = "cart"
         const data = {
             userId
         };
+        setIsProcessing(true);
         const response = await FetchCart(url, data, token, setError, setCartMessage);
 
 
@@ -82,7 +86,7 @@ const url = "cart"
             totalPrice,
             setTotalPrice,
             discount, setDiscount,
-            handleFetch,
+            handleFetch, notify, setNotify,
             cart, setCart, cartMessage,  receipt, setReceipt, isProcessing, setIsProcessing
         }}>
             {children}

@@ -14,6 +14,7 @@ export const ProductCard = ({ item, setUrl, limit = 3, searchQuery = "", selecte
       userId,
       item._id,
       'add'
+      ,true
     );
   };
 

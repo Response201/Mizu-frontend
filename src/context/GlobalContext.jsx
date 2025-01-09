@@ -21,11 +21,11 @@ export const GlobalProvider = ({ children }) => {
 
 
 
-
+/* Hide the error message after 7 seconds */
 useEffect(() => {
     setTimeout(() => {
         setError('')
-       }, 3000)
+       }, 7000)
 }, [error])
 
     useEffect(() => {

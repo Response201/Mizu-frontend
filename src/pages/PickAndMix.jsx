@@ -15,7 +15,7 @@ import PickAndMixCategoryTitels from "../components/pickAndMix/PickAndMixCategor
 
 export const PickAndMix = () => {
   const { pickAndmixProducts, setPickAndmixProducts } = useProductContext()
-  const { cart, setIsProcessing } = useCartContext();
+  const { cart, setIsProcessing, notify } = useCartContext();
   const [url, setUrl] = useState("sortProducts?pickAndMix=true");
   const [newUrl, setNewUrl] = useState("");
   const { data } = Fetch(url || newUrl);
@@ -57,6 +57,7 @@ export const PickAndMix = () => {
         <DisplayUniqueCategoriesAndProducts setNewUrl={setNewUrl} />
 
 
+{/* Notify */}
 
 
         {/* if no products   */}

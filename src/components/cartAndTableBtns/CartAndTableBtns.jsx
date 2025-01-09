@@ -17,7 +17,7 @@ export const CartAndTableBtns = ({ item }) => {
 
     // Funktion för att hantera ändringar i varukorgen
     const handleItemToCart = (item, action) => {
-        handleFetch(userId, item.productId, action);
+        handleFetch(userId, item.productId, action, false);
     };
 
     // Uppdatera produktlistan när data hämtas

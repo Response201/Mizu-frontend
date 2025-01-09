@@ -3,6 +3,11 @@ import { useCartContext } from '../../../context/CartContext';
 import { CartAndTableBtns } from "../../cartAndTableBtns/CartAndTableBtns";
 export const Cart = () => {
   const { totalPrice, cart, discount } = useCartContext()
+
+
+
+
+  
   return (
     <Dropdown align="end" className='transparent '>
       <Dropdown.Toggle variant="light" id="dropdown-basic" className='transparent icons_nav_cart'>
