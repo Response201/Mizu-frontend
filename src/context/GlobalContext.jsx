@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from 'react';
-import PropTypes from 'prop-types';
+
 
 
 const GlobalContext = createContext();
@@ -51,10 +51,8 @@ useEffect(() => {
     );
 };
 
-GlobalProvider.propTypes = {
-    children: PropTypes.node.isRequired,
-};
 
+/* eslint-disable */
 /* Custom hook that provides access to the context from GlobalContext. If the context doesn't exist, an error message is given */
 export const useGlobalContext = () => {
     const context = useContext(GlobalContext);

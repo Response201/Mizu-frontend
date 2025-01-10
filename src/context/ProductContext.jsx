@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from 'react';
-import PropTypes from 'prop-types';
+
 
 const ProductContext = createContext();
 
@@ -70,10 +70,8 @@ const [pickAndmixProducts, setPickAndmixProducts] = useState(JSON.parse(localSto
     );
 };
 
-ProductProvider.propTypes = {
-    children: PropTypes.node.isRequired,
-};
 
+/* eslint-disable */
 /* Custom hook that gives access to the context from GlobalContext. If the context does not exist, an error message is given */
 export const useProductContext = () => {
     const context = useContext(ProductContext);

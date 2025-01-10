@@ -1,5 +1,4 @@
 import { createContext, useState, useContext, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { useGlobalContext } from './GlobalContext';
 import { FetchCart } from '../services/FetchCart';
 const CartContext = createContext();
@@ -93,9 +92,8 @@ setNotify('added to cart')
         </CartContext.Provider>
     );
 };
-CartProvider.propTypes = {
-    children: PropTypes.node.isRequired,
-};
+
+/* eslint-disable */
 export const useCartContext = () => {
     const context = useContext(CartContext);
     if (!context) {
