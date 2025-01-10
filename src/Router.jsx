@@ -4,7 +4,7 @@ import { Layout } from "./Layout";
 import { Home } from "./pages/Home";
 import { Products } from "./pages/Products";
 import { NotFound } from "./pages/NotFound";
-import {  Receipts } from "./pages/Receipts";
+import { Receipts } from "./pages/Receipts";
 import { PickAndMix } from "./pages/PickAndMix";
 import { About } from "./pages/About";
 import { Register } from "./pages/Register";

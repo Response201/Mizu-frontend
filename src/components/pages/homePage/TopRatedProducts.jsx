@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { ProductCard } from "../productCard/ProductCard";
-import { useGlobalContext } from "../../context/GlobalContext";
-import { Fetch } from "../../services/Fetch";
-import { useProductContext } from "../../context/ProductContext";
-import { useCartContext } from "../../context/CartContext";
+import { ProductCard } from "../../common/productCard/ProductCard";
+import { useGlobalContext } from "../../../context/GlobalContext";
+import { Fetch } from "../../../services/Fetch";
+import { useProductContext } from "../../../context/ProductContext";
+import { useCartContext } from "../../../context/CartContext";
 
 export const TopRatedProducts = () => {
     const { userId} = useGlobalContext();

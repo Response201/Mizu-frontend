@@ -5,11 +5,10 @@ import { useGlobalContext } from '../../../context/GlobalContext';
 import { Fetch } from "../../../services/Fetch";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UseCheckLoginStatus } from "../../../services/UseCheckLoginStatus";
 
 export const Navigation = () => {
- 
   const { userId, setUserId, token, setToken, error } = useGlobalContext();
- 
   const [url, setUrl] = useState('')
   const [body] = useState({})
   const { data } = Fetch(url, "post", body)
@@ -31,6 +30,22 @@ export const Navigation = () => {
     navigate("/")
     window.scrollTo(0, 0);
   }
+
+
+
+  
+ /* The `isProcessing` flag ensures that validation is completed before the user is considered logged in at app startup.
+   It checks if the user has a valid `userId` and `token`. If both are valid, it retrieves the user's cart data. */
+   
+const {isProcessing} = UseCheckLoginStatus();
+
+
+
+
+
+
+
+
   return (
     <>
       <Navbar expand="lg" className="navbar-container">
@@ -47,7 +62,7 @@ export const Navigation = () => {
               <Nav.Link href="/about" className='hover-target nav_link' >About</Nav.Link>
             </Nav>
             <Nav className="nav-right transparent">
-              {userId ? (
+              {userId && !isProcessing ? (
                 <>
                   {/* CART */}
                   <Cart />

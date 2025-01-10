@@ -4,12 +4,12 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
-import { useGlobalContext } from "../../context/GlobalContext";
+import { useGlobalContext } from "../../../context/GlobalContext";
 import { LottieLoadingStar } from "./LottieLoadingRating";
-import { Fetch } from "../../services/Fetch";
+import { Fetch } from "../../../services/Fetch";
 
 
-export const RatingComponent = ({ id, item, setUrl, limit=3, searchQuery="", selectedSort="averageRating:desc", selectedCategory="all", page=1, pickAndMix=false, showOneProduct=false }) => {
+export const RatingComponent = ({ id, item, setUrl, limit = 3, searchQuery = "", selectedSort = "averageRating:desc", selectedCategory = "all", page = 1, pickAndMix = false, showOneProduct = false }) => {
   const [hoveredStar, setHoveredStar] = useState(null); // Tracks hovered stars
   const [currentRating, setCurrentRating] = useState(Math.ceil(item.averageRating)); // Tracks displayed rating
   const { userId, token } = useGlobalContext();
@@ -17,7 +17,7 @@ export const RatingComponent = ({ id, item, setUrl, limit=3, searchQuery="", sel
   const [urlRating, setUrlRating] = useState("");
   const { data, loading, error } = Fetch(urlRating, "PUT", body);
   const [target, setTarget] = useState();
-  
+
 
 
   // Handle mouse hover over a star
@@ -33,14 +33,14 @@ export const RatingComponent = ({ id, item, setUrl, limit=3, searchQuery="", sel
 
     // Update rating locally for instant feedback
     setCurrentRating(newRating);
- 
+
     setBody({
       id,
       userId,
       newRating,
     });
     setUrlRating("updateRating");
-   
+
   };
 
   // Update displayed rating when data changes
@@ -51,9 +51,10 @@ export const RatingComponent = ({ id, item, setUrl, limit=3, searchQuery="", sel
       setTarget(null); // Clear the target after update
 
       setUrl(`sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=${page}&pickAndMix=${pickAndMix}`);
-      if(showOneProduct){
-        setUrl(`product?id=${item._id}`);}
+      if (showOneProduct) {
+        setUrl(`product?id=${item._id}`);
       }
+    }
     setUrlRating("")
   }, [data]);
 
@@ -73,14 +74,14 @@ export const RatingComponent = ({ id, item, setUrl, limit=3, searchQuery="", sel
 
 
 
-  
+
   // Generate star elements
   const noRatingStars = Array.from({ length: 5 }, (_, index) => (
     <FontAwesomeIcon
       key={index}
       icon={index < (currentRating) ? faStarSolid : faStarRegular}
       className="noRatingStars"
-      
+
     />
   ));
 
@@ -89,8 +90,8 @@ export const RatingComponent = ({ id, item, setUrl, limit=3, searchQuery="", sel
 
       {error && id === target && <p>Something went wrong</p>}
 
-{token && userId ? <div className="stars">{stars}</div>: <div className="stars">{noRatingStars}</div>    }
-      
+      {token && userId ? <div className="stars">{stars}</div> : <div className="stars">{noRatingStars}</div>}
+
 
       {loading && id === target && item ? <LottieLoadingStar /> : <p>
         {Math.round(item.averageRating * 2) / 2} {/* värde med en decimal */}

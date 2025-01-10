@@ -1,7 +1,7 @@
 
 import { useCartContext } from '../context/CartContext';
 import noProductsImg from "../assets/images/no-products-found.png"
-import { TableListProducts } from '../components/TableListProducts/TableListProducts';
+import { TableListProducts } from '../components/common/TableListProducts/TableListProducts';
 export const CheckOut = () => {
     const { cart, totalPrice } = useCartContext()
     const showButtons = true;

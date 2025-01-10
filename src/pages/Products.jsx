@@ -1,22 +1,24 @@
 import { useEffect, useRef, useState } from "react";
-import { ProductCard } from "../components/productCard/ProductCard";
+import { ProductCard } from "../components/common/productCard/ProductCard";
 import { useGlobalContext } from "../context/GlobalContext";
 import { Fetch } from "../services/Fetch";
-import { FilterComponents } from "../components/Products/FilterComponents";
-import { PageComponent } from "../components/Products/PageComponent";
+import { FilterComponents } from "../components/pages/productsPage/FilterComponents";
+import { PageComponent } from "../components/pages/productsPage/PageComponent";
 import { useProductContext } from "../context/ProductContext";
 import noProductsImg from "../assets/images/no-products-found.png"
 import { useCartContext } from "../context/CartContext";
 import { UseCheckLoginStatus } from "../services/UseCheckLoginStatus";
-import { ProductHeader } from "../components/Products/ProductHeader";
-import { BarLoader } from "../components/barLoader/BarLoader";
+
+import { BarLoader } from "../components/common/barLoader/BarLoader";
+import { ProductHeader } from "../components/pages/ProductsPage/ProductHeader";
+
 
 
 
 export const Products = () => {
   const { userId } = useGlobalContext();
   const { filtredProducts, setFiltredProducts, setUniqueCategories, totalPages, setTotalPages, searchQuery, setSearchQuery, selectedSort, setSelectedSort, selectedCategory, setSelectedCategory, pickAndMix, setPickAndMix, limit, setLimit } = useProductContext();
-  const { cart,  setIsProcessing } = useCartContext()
+  const { cart, setIsProcessing } = useCartContext()
   const [page, setPage] = useState()
   const [url, setUrl] = useState(``);
   const [newUrl, setNewUrl] = useState('')
@@ -26,23 +28,23 @@ export const Products = () => {
 
   /* ref used to locate where to scroll */
   const myRef = useRef(null);
-  
+
   /*isFirstRender  motverkar att loading syns vid start, productCartd action eller om cart ändras */
   const [isFirstRender, setIsFirstRender] = useState(true);
 
 
 
-   /* Check if the user has a valid userId and token. If true, fetch the cart */
+  /* Check if the user has a valid userId and token. If true, fetch the cart */
   UseCheckLoginStatus();
 
 
 
 
-/* 
-   Update the page number to 1 if any of the following changes:
-   - searchQuery, selectedSort, selectedCategory, limit
-   If totalPages is 0, set totalPages to 1 to avoid errors.
-*/
+  /* 
+     Update the page number to 1 if any of the following changes:
+     - searchQuery, selectedSort, selectedCategory, limit
+     If totalPages is 0, set totalPages to 1 to avoid errors.
+  */
   useEffect(() => {
 
     setPage(1)
@@ -55,11 +57,11 @@ export const Products = () => {
 
 
 
- /* 
-  when the filtering criteria change:
-   - Update the URL with the new parameters
- 
-*/
+  /* 
+   when the filtering criteria change:
+    - Update the URL with the new parameters
+  
+ */
   useEffect(() => {
 
     setUrl(`sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=1&pickAndMix=${pickAndMix}`);
@@ -67,21 +69,21 @@ export const Products = () => {
 
 
 
- /* 
-   On page changes:
-   - Update the URL with the new page
-*/
+  /* 
+    On page changes:
+    - Update the URL with the new page
+ */
   useEffect(() => {
     setUrl(`sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=${page}&pickAndMix=${pickAndMix}`);
   }, [page]);
 
 
 
- /* 
-   On changes to the cart:
-   - Update the URL to reload the products
-   - Prevent the loading indicator from showing (setIsFirstRender to true)
-*/
+  /* 
+    On changes to the cart:
+    - Update the URL to reload the products
+    - Prevent the loading indicator from showing (setIsFirstRender to true)
+ */
   useEffect(() => {
     setIsFirstRender(true)
     setNewUrl(`sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=${page}&pickAndMix=${pickAndMix}`);
@@ -89,16 +91,16 @@ export const Products = () => {
   }, [cart]);
 
 
-/* 
-   On receiving data:
-   - If ref and conditions are met, scroll to the top of the page
-   - Update filtered products, unique categories, and total number of pages
-   - Clear URL variables (to prevent repeated requests)
-   - Reset setIsFirstRender to false to allow the loading indicator for future requests
-*/
+  /* 
+     On receiving data:
+     - If ref and conditions are met, scroll to the top of the page
+     - Update filtered products, unique categories, and total number of pages
+     - Clear URL variables (to prevent repeated requests)
+     - Reset setIsFirstRender to false to allow the loading indicator for future requests
+  */
   useEffect(() => {
     if (data && data.products) {
-     
+
       setFiltredProducts([...data.products]);
       setUniqueCategories(data.categories);
       setTotalPages(Math.ceil(data.total / data.limit));
@@ -126,14 +128,14 @@ export const Products = () => {
     <article className="productsContainer" >
 
       <section className="productsContent" >
-  
+
         {/* Header */}
         <ProductHeader />
 
         {/* Ref for scroll */}
         <section ref={myRef} style={{ scrollMarginTop: "6rem" }}></section>
         {/* Top Filter Nav */}
-      
+
         <FilterComponents
           userId={userId}
           isFirstRender={isFirstRender}
@@ -156,8 +158,8 @@ export const Products = () => {
 
         {/* Loading Component */}
         <section className="productsContent___topFilterNav___loading">
-  
-          {loading && !isFirstRender &&  url && <BarLoader />}
+
+          {loading && !isFirstRender && url && <BarLoader />}
 
         </section>
 
@@ -181,7 +183,7 @@ export const Products = () => {
               pickAndMix={pickAndMix}
               setPickAndMix={setPickAndMix}
               page={page}
-           
+
             />
           ))}
         </section>

@@ -1,30 +1,15 @@
 import { useEffect } from "react";
-
-import { Header } from "../components/home/header";
-import { HappyHighlights } from "../components/home/HappyHighlights";
-import { TopRatedProducts } from "../components/home/TopRatedProducts";
 import { Fetch } from "../services/Fetch";
 import { useProductContext } from "../context/ProductContext";
-import { UseCheckLoginStatus } from "../services/UseCheckLoginStatus";
+import { Header } from "../components/pages/homePage/Header";
+import { HappyHighlights } from "../components/pages/homePage/HappyHighlights";
+import { TopRatedProducts } from "../components/pages/homePage/TopRatedProducts";
 
 
 
 
 export const Home = () => {
-  const {
-
-    allProductsList,
-    setAllProductsList
-  } = useProductContext();
-
-
-
-  /* Check if user have a valid userId && token, if true => get cart */
-  UseCheckLoginStatus()
-
-
-
-
+  const {allProductsList,setAllProductsList} = useProductContext();
 
 
   // Fetch för "allProductsList" used to check stock value(cart && TabelListProducts => CartAndTableBtns)

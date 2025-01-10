@@ -1,9 +1,10 @@
 
 
-import { MainButton } from '../lottieBtn/MainBtn.jsx';
-import { ParticleBackground } from '../particleBackground/ParticleBackground.jsx';
-import getAnimation from "../../assets/lotties/button.json";
+
+import { ParticleBackground } from '../../common/particleBackground/ParticleBackground.jsx';
+import getAnimation from "../../../assets/lotties/button.json";
 import { useEffect } from 'react';
+import { MainButton } from '../../common/lottieBtn/MainBtn.jsx';
 
 
 export const Header = () => {

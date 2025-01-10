@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import check from "../assets/lotties/404.json";
 import Lottie  from "lottie-react";
-import { ParticleBackground } from "../components/particleBackground/ParticleBackground";
+import { ParticleBackground } from "../components/common/particleBackground/ParticleBackground";
 
 export const NotFound = () => {
   const navigate = useNavigate()

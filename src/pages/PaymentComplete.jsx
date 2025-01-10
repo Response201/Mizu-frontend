@@ -1,9 +1,9 @@
 import  { useEffect } from "react";
 import { useCartContext } from "../context/CartContext";
-import { TableListProducts } from "../components/TableListProducts/TableListProducts";
+import { TableListProducts } from "../components/common/TableListProducts/TableListProducts";
 import { useGlobalContext } from "../context/GlobalContext";
 import { FetchPaymentComplete } from "../services/FetchPaymentComplete";
-import { BarLoader } from "../components/barLoader/BarLoader";
+import { BarLoader } from "../components/common/barLoader/BarLoader";
 import { useRef } from "react";
 
 export const PaymentComplete = () => {

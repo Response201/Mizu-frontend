@@ -1,4 +1,5 @@
-import { PagesHeaderComponents } from "../pagesHeaderComponent.jsx/PagesHeaderComponents";
+import { PagesHeaderComponents } from "../../common/pagesHeaderComponent/PagesHeaderComponents";
+
 
 
 export const PickAndMixHeader = () => {

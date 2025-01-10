@@ -1,9 +1,10 @@
 /* eslint-disable */
 
 
-import { Fetch } from "../../services/Fetch";
-import { useProductContext } from "../../context/ProductContext";
-import { BarLoader } from "../barLoader/BarLoader";
+
+import { Fetch } from "../../../services/Fetch";
+import { useProductContext } from "../../../context/ProductContext";
+
 export const FilterComponents = ({
     setUrl,
     page,

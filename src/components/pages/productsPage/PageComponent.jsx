@@ -1,5 +1,6 @@
-import { MainButton } from "../lottieBtn/MainBtn";
-import getAnimation from "../../assets/lotties/buttonOrange.json";
+
+import getAnimation from "../../../assets/lotties/buttonOrange.json";
+import { MainButton } from "../../common/lottieBtn/MainBtn";
 
 export const PageComponent = ({ page, setPage, totalPages }) => {
 

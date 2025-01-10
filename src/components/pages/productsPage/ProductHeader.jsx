@@ -1,5 +1,6 @@
+import { PagesHeaderComponents } from "../../common/pagesHeaderComponent/PagesHeaderComponents";
 
-import { PagesHeaderComponents } from '../pagesHeaderComponent.jsx/PagesHeaderComponents'
+
 
 export const ProductHeader = () => {
 

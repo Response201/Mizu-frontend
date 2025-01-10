@@ -3,10 +3,9 @@ import { Fetch } from "../services/Fetch";
 import { useProductContext } from "../context/ProductContext";
 import { useCartContext } from "../context/CartContext";
 import { UseCheckLoginStatus } from "../services/UseCheckLoginStatus";
-
-import { PickAndMixHeader } from "../components/pickAndMix/PickAndMixHeader";
-import { DisplayUniqueCategoriesAndProducts } from "../components/pickAndMix/DisplayUniqueCategoriesAndProducts";
-import PickAndMixCategoryTitels from "../components/pickAndMix/PickAndMixCategoryTitels";
+import { PickAndMixHeader } from "../components/pages/pickAndMixPage/PickAndMixHeader";
+import { DisplayUniqueCategoriesAndProducts } from "../components/pages/pickAndMixPage/DisplayUniqueCategoriesAndProducts";
+import PickAndMixCategoryTitels from "../components/pages/pickAndMixPage/PickAndMixCategoryTitels";
 
 
 
@@ -15,7 +14,7 @@ import PickAndMixCategoryTitels from "../components/pickAndMix/PickAndMixCategor
 
 export const PickAndMix = () => {
   const { pickAndmixProducts, setPickAndmixProducts } = useProductContext()
-  const { cart, setIsProcessing, notify } = useCartContext();
+  const { cart, setIsProcessing } = useCartContext();
   const [url, setUrl] = useState("sortProducts?pickAndMix=true");
   const [newUrl, setNewUrl] = useState("");
   const { data } = Fetch(url || newUrl);
@@ -57,7 +56,7 @@ export const PickAndMix = () => {
         <DisplayUniqueCategoriesAndProducts setNewUrl={setNewUrl} />
 
 
-{/* Notify */}
+        {/* Notify */}
 
 
         {/* if no products   */}

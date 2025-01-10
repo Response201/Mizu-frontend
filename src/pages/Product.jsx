@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { ProductCard } from '../components/productCard/ProductCard';
+import { ProductCard } from '../components/common/productCard/ProductCard';
 import { useGlobalContext } from '../context/GlobalContext';
 import { useCartContext } from '../context/CartContext';
-import { ParticleBackground } from '../components/particleBackground/ParticleBackground';
+import { ParticleBackground } from '../components/common/particleBackground/ParticleBackground';
 import { Fetch } from '../services/Fetch';
-import { BarLoader } from "../components/barLoader/BarLoader"
+import { BarLoader } from "../components/common/barLoader/BarLoader"
 export const Product = () => {
     const { id } = useParams();
     const { userId, error, loading } = useGlobalContext();

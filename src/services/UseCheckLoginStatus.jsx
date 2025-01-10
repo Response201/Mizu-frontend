@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { useCartContext } from "../context/CartContext";
 import { useGlobalContext } from "../context/GlobalContext";
@@ -7,7 +7,7 @@ import { FetchLogin } from "./FetchLogin";
 export const UseCheckLoginStatus = () => {
   const { userId, token, setUserId, setToken } = useGlobalContext();
 const {setCart} = useCartContext();
-
+const [isProcessing, setIsProcessing] = useState(true);
   useEffect(() => {
     const checkLoginStatus = async () => {
       if (!userId || !token) return;
@@ -29,12 +29,14 @@ const {setCart} = useCartContext();
         setToken("");
         setUserId("");
         console.error("Error checking login status:", error);
+      }finally {
+        setIsProcessing(false); 
       }
     };
 
     checkLoginStatus();
   }, [userId, token, setUserId, setToken, setCart]);
-
+  return isProcessing;
 };
 
 

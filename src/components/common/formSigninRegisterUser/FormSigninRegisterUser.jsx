@@ -1,7 +1,7 @@
 
 
 import { MainButton } from '../lottieBtn/MainBtn.jsx';
-import { useGlobalContext } from '../../context/GlobalContext.jsx';
+import { useGlobalContext } from '../../../context/GlobalContext.jsx';
 import { useEffect, useState } from 'react';
 import GoogleSignIn from '../Google/Google.jsx'
 import { BarLoader } from '../barLoader/BarLoader.jsx';
@@ -21,9 +21,9 @@ export const FormSigninRegisterUser = ({
     getAnimation,
     color = " #dd912e",
     textColorMainBtn = "#dd912e",
-    message='',
-    label="signin",
-    url, 
+    message = '',
+    label = "signin",
+    url,
     setUrl
 }) => {
 
@@ -62,12 +62,13 @@ export const FormSigninRegisterUser = ({
 
 
     useEffect(() => {
-        if(error){
-        setUrl('')
-        setEmail('')
-        setPassword('')}
-      
-      }, [error, setUrl, setEmail,setPassword])
+        if (error) {
+            setUrl('')
+            setEmail('')
+            setPassword('')
+        }
+
+    }, [error, setUrl, setEmail, setPassword])
 
 
 
@@ -128,7 +129,7 @@ export const FormSigninRegisterUser = ({
                 <section className='errorContainer'>
 
 
-                    {loading && !error && !message &&   <BarLoader /> }
+                    {loading && !error && !message && <BarLoader />}
 
 
 
@@ -142,11 +143,11 @@ export const FormSigninRegisterUser = ({
                         <MainButton text={firstBtnText} getAnimation={getAnimation} textColorMainBtn={textColorMainBtn} />
                     </button>
 
-                    <GoogleSignIn   
-                    url={url}
-                    label={label}
-        clientId= {`${import.meta.env.VITE_CLIENTID}`}
-         />
+                    <GoogleSignIn
+                        url={url}
+                        label={label}
+                        clientId={`${import.meta.env.VITE_CLIENTID}`}
+                    />
                 </section>
 
 
@@ -158,12 +159,12 @@ export const FormSigninRegisterUser = ({
                 <div>
                     <h2 style={{ '--color': `${color}` }}>{newHereText}</h2>
                     <a
-                    href={navigateTo}
+                        href={navigateTo}
                         className="hover-target"
-                       
+
                     >
                         <MainButton text={secondBtnText} getAnimation={getAnimation} textColorMainBtn={textColorMainBtn} />
-             
+
                     </a>
                 </div>
             </section>

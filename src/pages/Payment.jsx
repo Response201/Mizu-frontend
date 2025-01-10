@@ -3,12 +3,12 @@ import { useState } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import { useGlobalContext } from "../context/GlobalContext";
 import { useCartContext } from "../context/CartContext";
-import { TableListProducts } from "../components/TableListProducts/TableListProducts";
-import { CheckoutForm } from "../components/stripePaymentForm/CheckoutForm";
+import { TableListProducts } from "../components/common/TableListProducts/TableListProducts";
 import { useNavigate } from "react-router-dom";
 import { UseCheckLoginStatus } from "../services/UseCheckLoginStatus";
 import { FetchPayment } from "../services/FetchPayment";
-import { BarLoader } from "../components/barLoader/BarLoader";
+import { BarLoader } from "../components/common/barLoader/BarLoader";
+import { CheckoutForm } from "../components/pages/paymentPage/CheckoutForm";
 
 
 export const Payment = () => {
@@ -21,8 +21,6 @@ export const Payment = () => {
 
     UseCheckLoginStatus();
 
-		 
-  
         const fetchData = async () => {
 		
 

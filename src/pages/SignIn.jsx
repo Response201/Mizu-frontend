@@ -2,9 +2,8 @@ import { useState } from "react"
 import { useGlobalContext } from "../context/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import getAnimation from "../assets/lotties/buttonOrange.json";
-
 import { Fetch } from "../services/Fetch";
-import { FormSigninRegisterUser } from "../components/formSigninRegisterUser/FormSigninRegisterUser";
+import { FormSigninRegisterUser } from "../components/common/formSigninRegisterUser/FormSigninRegisterUser";
 
 
 
@@ -61,13 +60,9 @@ export const SignIn = () => {
         newHereText="Don't have an account?"
         firstBtnText="Sign in"
         secondBtnText="Register Now"
-
         getAnimation={getAnimation}
-
-
         label={"signin"}
         setUrl={setUrl}
-
         url="signin"
 
       />

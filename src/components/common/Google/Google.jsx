@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 
-import { useGlobalContext } from '../../context/GlobalContext';
-import { FetchLogin } from '../../services/FetchLogin';
+import { useGlobalContext } from '../../../context/GlobalContext';
+import { FetchLogin } from '../../../services/FetchLogin';
 
 const loadScript = (src, onLoad) => {
     const script = document.createElement("script");
@@ -86,8 +86,8 @@ const GoogleSignIn = ({ label, url, clientId }) => {
                     size: "medium",
                     text: label,
                     shape: "pill",
-                  
-               
+
+
                 });
             } else {
                 console.error('Element with id "signInGoogle" not found.');

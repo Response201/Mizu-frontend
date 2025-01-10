@@ -2,8 +2,10 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { Fetch } from "../services/Fetch";
 import { useGlobalContext } from "../context/GlobalContext";
-import { PageComponent } from "../components/Products/PageComponent";
+import { PageComponent } from "../components/pages/productsPage/PageComponent";
 import noReceiptsImg from "../assets/images/receipt.png"
+import { ShowOneReceipt } from "../components/pages/receiptsPage/ShowOneReceipt";
+import { TabelReceiptsList } from "../components/pages/receiptsPage/TabelReceiptsList";
 export const Receipts = () => {
   const { userId } = useGlobalContext()
   const [receipts, setReceipts] = useState([])
@@ -15,9 +17,8 @@ export const Receipts = () => {
   const { data } = Fetch(url, "POST", { userId })
 
 
-
   useEffect(() => {
-  
+
     if (data) {
       setReceipts(data.receiptsList)
       setTotalPages(data.totalPages)
@@ -26,139 +27,52 @@ export const Receipts = () => {
     }
   }, [data])
 
+
+
   useEffect(() => {
     setUrl(`getReceipts?page=${page}`)
   }, [page])
 
-  console.log(receipt)
+
+
+
+
 
   return (
     <article className="receiptsContainer">
-
       <section className="receiptsContent">
-
-
         <h1> {receipt ? "Receipt" : "Receipts"}</h1>
 
-
-
-
-
-
         {receipt ?
-
-          <section className="receiptsContent___receipt">
-
-
-            <div className="orderDetails">
-              <section className="orderDetails___btnContainer">
-
-                <button onClick={() => setReceipt(null)}>  <i className="bi bi-x-lg"></i>
-                </button>
-              </section>
-
-              <h2 className="orderDetails___title">Order Information</h2>
-              <p className="orderDetails___info">
-                <strong>Receipt ID:</strong> #{receipt._id.slice(17, -1)}
-              </p>
-              <p className="orderDetails___info">
-                <strong>Order Created At:</strong> {new Date(receipt.createdAt).toLocaleString().slice(0, -3)}
-              </p>
-
-              <h3 className="orderDetails___productsTitle">Products:</h3>
-              <ul className="orderDetails___productsList">
-                {receipt.products.map((product, index) => (
-                  <li className="orderDetails___product" key={index}>
-                    <section>   {product.name}      </section>
-                    <section>   {product.pickAndMix ? 'mix': '-'}      </section>
-                    <section>      {product.price} kr  x  {product.quantity}</section>
-                    <section>  {product.price * product.quantity} kr </section>
-                  </li>
-                ))}
-              </ul>
-
-              <p className="orderDetails___discount">
-                <strong>Discount:</strong> {receipt.discount}kr
-              </p>
-              <p className="orderDetails___totalPrice">
-                <strong>Total:</strong> {receipt.totalPrice}kr
-              </p>
-            </div>
-
-
-          </section>
-
-
-
+          /* show singel receipt */
+          <ShowOneReceipt receipt={receipt} setReceipt={setReceipt} />
           :
 
           <section className="receiptsContent___receiptsList">
-
-
             {receipts.length >= 1 ?
-
-              <table >
-                <thead>
-                  <tr>
-                    <th>Created</th>
-                    <th>Products</th>
-                    <th>Total</th>
-                    <th>Discount</th>
-                    <th>Receipt</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {receipts && receipts.map((receipt, index) => (
-                    <tr key={index} onClick={() => setReceipt(receipt)} >
-                      {/* Skapad Tid */}
-                      <td>{new Date(receipt.createdAt).toLocaleString().slice(0, -8)}</td>
-
-                      {/* Antal Produkter */}
-                 <td>{receipt.products.reduce((total, product) => total + product.quantity, 0)}</td>
-
-
-                      {/* Totalpris */}
-                      <td>{receipt.totalPrice}</td>
-
-                      {/* Rabatt */}
-                      <td>{receipt.discount}</td>
-
-                      {/* Förkortat Produkt-ID */}
-                      <td>
-                        {receipt.products.length > 0 && `#${receipt._id.slice(17, -1)}`}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              /* show tabel - receipt list */
+              <TabelReceiptsList receipts={receipts} setReceipt={setReceipt} />
 
               : <section className="receiptsContent___receiptsList___noReceipts">
                 {isFirstRender && <div>
                   <h2> No Receipts </h2>
-
                   <img src={noReceiptsImg} alt="no receipt" />
                 </div>}
-
               </section>
             }
-
-
-
-
-
           </section>
-
         }
 
         {receipts.length >= 1 && !receipt &&
           <section className="productsContent___pageContainer">
+            {/* page component => button to change page  */}
             <PageComponent page={page} setPage={setPage} totalPages={totalPages} />
           </section>
         }
       </section>
 
+      {/* page background image */}
       <img src="https://i.ibb.co/sRxRDnJ/Product1.png" alt="background" className='receiptsContainer___backgroundImg' />
-
 
     </article>
   )

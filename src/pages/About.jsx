@@ -1,5 +1,5 @@
-import { AboutQuote } from "../components/aboutPage/AboutQuote"
-import {AboutStory } from "../components/aboutPage/AboutStory"
+import { AboutQuote } from "../components/pages/aboutPage/AboutQuote"
+import {AboutStory } from "../components/pages/aboutPage/AboutStory"
 
 
 export const About = () => {

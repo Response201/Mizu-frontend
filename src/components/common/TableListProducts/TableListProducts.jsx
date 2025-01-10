@@ -1,6 +1,6 @@
-import { useCartContext } from '../../context/CartContext'
+import { useCartContext } from '../../../context/CartContext'
 
-import getAnimation from "../../assets/lotties/buttonOrange.json";
+import getAnimation from "../../../assets/lotties/buttonOrange.json";
 import { MainButton } from '../lottieBtn/MainBtn';
 import { CartAndTableBtns } from '../cartAndTableBtns/CartAndTableBtns';
 

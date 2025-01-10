@@ -1,9 +1,9 @@
 import { Button } from "react-bootstrap";
-import { useCartContext } from "../../context/CartContext";
-import { useProductContext } from "../../context/ProductContext";
-import { useGlobalContext } from "../../context/GlobalContext";
+import { useCartContext } from "../../../context/CartContext";
+import { useProductContext } from "../../../context/ProductContext";
+import { useGlobalContext } from "../../../context/GlobalContext";
 import { useEffect, useState } from "react";
-import { Fetch } from "../../services/Fetch";
+import { Fetch } from "../../../services/Fetch";
 
 // Komponentdefinitionen
 export const CartAndTableBtns = ({ item }) => {
