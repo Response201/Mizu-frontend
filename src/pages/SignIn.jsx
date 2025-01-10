@@ -47,7 +47,7 @@ export const SignIn = () => {
   };
 
   return (
-    <article className="signInContainer">
+    <article className="signInRegFormContainer">
       <FormSigninRegisterUser
 
         email={email}
@@ -56,7 +56,7 @@ export const SignIn = () => {
         setPassword={setPassword}
         handleSubmit={handleSubmit}
         navigateTo="/register"
-        signInImage="https://i.ibb.co/sRxRDnJ/Product1.png"
+        image="https://i.ibb.co/sRxRDnJ/Product1.png"
         title="Sign in"
         newHereText="Don't have an account?"
         firstBtnText="Sign in"

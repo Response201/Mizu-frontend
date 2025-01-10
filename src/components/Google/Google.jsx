@@ -42,7 +42,6 @@ const GoogleSignIn = ({ label, url, clientId }) => {
 
 
                     if (data.message === "Registration successful!" && label === "signup_with") {
-                        console.log("Registration successful!");
                         setLoading(false)
                         setError("Registration successful!")
                         setTimeout(() => {
@@ -72,7 +71,7 @@ const GoogleSignIn = ({ label, url, clientId }) => {
             }
         }
 
-        loadScript("https://accounts.google.com/gsi/client", () => {
+        loadScript("https://accounts.google.com/gsi/client?hl=en", () => {
             google.accounts.id.initialize({
                 client_id: clientId,
                 callback: handleCallbackResponse,
@@ -87,6 +86,8 @@ const GoogleSignIn = ({ label, url, clientId }) => {
                     size: "medium",
                     text: label,
                     shape: "pill",
+                  
+               
                 });
             } else {
                 console.error('Element with id "signInGoogle" not found.');

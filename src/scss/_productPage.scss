@@ -5,7 +5,7 @@
 .productContainer{
     @include mixins.article(){
 
-
+min-height: auto;
 padding-bottom: 0 !important;
 
     }
@@ -73,7 +73,12 @@ h3 {
 .card___inner {
   
 
-  height: 20.75em;
+ 
+height: 15rem;
+
+  @include mixins.devices(desktop) {
+    height: 21.75em;
+      }
 
  }
 

@@ -50,7 +50,7 @@ export const Register = () => {
   };
 
   return (
-    <article className="signInContainer">
+    <article className="signInRegFormContainer">
       <FormSigninRegisterUser
 
         email={email}
@@ -59,7 +59,7 @@ export const Register = () => {
         setPassword={setPassword}
         handleSubmit={handleSubmit}
         navigateTo="/signin"
-        signInImage="https://i.ibb.co/qrGk06H/12.png"
+        image="https://i.ibb.co/qrGk06H/12.png"
         title="Create account"
         newHereText="All ready have an account?"
         firstBtnText="Register"

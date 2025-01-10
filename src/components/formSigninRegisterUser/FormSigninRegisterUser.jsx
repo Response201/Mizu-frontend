@@ -14,7 +14,7 @@ export const FormSigninRegisterUser = ({
     setPassword,
     handleSubmit,
     navigateTo,
-    signInImage = "https://i.ibb.co/sRxRDnJ/Product1.png",
+    image = "https://i.ibb.co/sRxRDnJ/Product1.png",
     newHereText = "New here?",
     firstBtnText = "",
     secondBtnText = "",
@@ -73,13 +73,13 @@ export const FormSigninRegisterUser = ({
 
 
     return (
-        <section className="signInContent">
+        <section className="signInRegFormContent">
             <form onSubmit={isEmailValid && isPasswordValid ? handleSubmit : (e) => { e.preventDefault(), setError("Fill out form") }}>
-                <img src={signInImage} alt="Sign In" />
+                <img src={image} alt="Sign In" />
                 <div className="overlay"></div>
 
                 <h1 style={{ '--color': `${color}` }}>{title}</h1>
-                <section className="signin___content">
+                <section className="signInRegFormContent___content">
                     <label style={{ '--color': `${color}` }}>
                         <span>Email</span>
                         <input
@@ -137,7 +137,7 @@ export const FormSigninRegisterUser = ({
                     {error && <p style={{ '--color': `${color}` }}> {error}   </p>}
                     {message && <p style={{ '--color': `${color}` }}> {message}   </p>}
                 </section>
-                <section className="signin___btn">
+                <section className="signInRegFormContent___btn">
                     <button className="hover-target" type="submit">
                         <MainButton text={firstBtnText} getAnimation={getAnimation} textColorMainBtn={textColorMainBtn} />
                     </button>
@@ -152,8 +152,8 @@ export const FormSigninRegisterUser = ({
 
             </form>
 
-            <section className="signInContent___imgContainer" style={{ '--color': `${color}` }}>
-                <img src={signInImage} alt="image text" />
+            <section className="signInRegFormContent___imgContainer" style={{ '--color': `${color}` }}>
+                <img src={image} alt="image text" />
                 <div className="overlay"></div>
                 <div>
                     <h2 style={{ '--color': `${color}` }}>{newHereText}</h2>

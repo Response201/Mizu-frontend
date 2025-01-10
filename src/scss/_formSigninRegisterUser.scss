@@ -1,12 +1,12 @@
 @use 'variables' as v;
 @use 'mixins';
 
-.signInContainer {
+.signInRegFormContainer {
     @include mixins.article() {
   
     }
 
-    .signInContent {
+    .signInRegFormContent {
         @include mixins.section() {
             height: 100%;
             width: 100%;
@@ -184,7 +184,7 @@ color: white !important;
                 }
             }
 
-            .signin___content {
+            .signInRegFormContent___content {
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-end;
@@ -237,16 +237,17 @@ filter: brightness(75%) opacity(50%);
               }
 
 
-            .signin___btn {
+            .signInRegFormContent___btn {
                 width: 100%;
                
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
 
                 button {
                     border: none;
-                
+                margin-bottom: 1rem;
 background-color: transparent;
                 }
             }
