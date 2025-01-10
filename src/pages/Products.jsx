@@ -8,9 +8,9 @@ import { useProductContext } from "../context/ProductContext";
 import noProductsImg from "../assets/images/no-products-found.png"
 import { useCartContext } from "../context/CartContext";
 import { UseCheckLoginStatus } from "../services/UseCheckLoginStatus";
-
 import { BarLoader } from "../components/common/barLoader/BarLoader";
-import { ProductHeader } from "../components/pages/ProductsPage/ProductHeader";
+import { ProductHeader } from "../components/pages/productsPage/ProductHeader";
+
 
 
 
