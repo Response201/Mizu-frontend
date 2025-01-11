@@ -13,7 +13,7 @@ export const DisplayUniqueCategoriesAndProducts = ({ setNewUrl }) => {
   const pickAndMix = true;
 
 
-  /* background after category names */
+  // Background images associated with specific categories
   const categoryBackgrounds = {
     "face cream": "https://i.ibb.co/dfSJHFH/Product2.png",
     "serum": "https://i.ibb.co/sRxRDnJ/Product1.png",
@@ -24,7 +24,7 @@ export const DisplayUniqueCategoriesAndProducts = ({ setNewUrl }) => {
 
 
 
-  // Extract unique categories from the mixList only once
+  // Extract unique categories from the list pickAndmixProducts
   const uniqueCategories = [...new Set(pickAndmixProducts.map(product => product.category))].sort();
 
 
@@ -36,21 +36,26 @@ export const DisplayUniqueCategoriesAndProducts = ({ setNewUrl }) => {
         // Filter products for the current category
         const filteredProducts = pickAndmixProducts.filter(item => item.category === category);
 
-        // If there are no products in this category, skip rendering this category
+        // Skip rendering this category if there are no products
         if (filteredProducts.length === 0) {
-          return null; // You can also show a message or image for empty categories here
+          return null;
         }
-        /* if category name dont match any background titels use default image*/
+
+
+        // Assign a background image to the category, using a default if none is provided
         const backgroundUrl = categoryBackgrounds[category] || "https://i.ibb.co/dfSJHFH/Product2.png";
+
+
+
 
         return (
           <section key={category} className="pickAndMix">
 
-            {/* Titel component */}
+            {/* Render the category title with the background image */}
             <PickAndMixCategoryTitels titel={category} background={backgroundUrl} />
 
             <section className={filteredProducts.length >= 3 ? "ProductCard___container pickAndMix___grid" : "ProductCard___container pickAndMix___smallGrid"} >
-              {/* Map products - productCard */}
+              {/* map filtered products and render a ProductCard for each */}
               {filteredProducts.map(item => {
                 return (
                   <ProductCard

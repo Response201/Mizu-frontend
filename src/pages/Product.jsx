@@ -18,13 +18,19 @@ export const Product = () => {
 
     useEffect(() => {
         if (data && data.product) {
-            setProduct([...data.product])
-            setUrl("");
-            setIsProcessing(false)
-        }
+            setProduct([data.product])// Store the fetched product
+            setUrl(""); // Clear the URL 
+            setIsProcessing(false); // Prevent multiple requests and re-enable cart actions (add, remove, delete) by setting processing to false
+
+        } else {
+           
+            setProduct([]); // If no product data found, clear the product state
+
+             }
+        
     }, [data]);
 
-
+ // Trigger a fetch whenever the cart changes
     useEffect(() => {
         setUrl(`product?id=${id}`)
     }, [cart]);
@@ -35,11 +41,17 @@ export const Product = () => {
 
     return (
         <article className='productContainer'>
+             {/*  Particle background */}
             <ParticleBackground />
             <section className='productContent'>
+                  {/* Display error message if there is an error */}
                 {error  && <p>Something Went wrong</p>}
                 <section className='productContent___cardContainer'>
+                       {/* Bar loader*/}
                     {loading && product.length <= 0 && <BarLoader />}
+
+
+                      {/* Display product details if available */}
                     {!error && product && product.map((item) => (
                         <ProductCard
                             key={`${item._id}-${item.averageRating}`}
@@ -49,6 +61,9 @@ export const Product = () => {
                             showOneProduct={true}
                         />
                     ))}
+
+
+
                 </section>
             </section>
         </article>

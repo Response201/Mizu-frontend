@@ -3,7 +3,7 @@ import { ProductCard } from "../components/common/productCard/ProductCard";
 import { useGlobalContext } from "../context/GlobalContext";
 import { Fetch } from "../services/Fetch";
 import { FilterComponents } from "../components/pages/productsPage/FilterComponents";
-import { PageComponent } from "../components/pages/productsPage/PageComponent";
+import { PageComponent } from "../components/common/barLoader/PageComponent";
 import { useProductContext } from "../context/ProductContext";
 import noProductsImg from "../assets/images/no-products-found.png"
 import { useCartContext } from "../context/CartContext";
@@ -26,27 +26,27 @@ export const Products = () => {
 
 
 
-  /* ref used to locate where to scroll */
+ // Ref for smooth scrolling
   const myRef = useRef(null);
 
-  /*isFirstRender  motverkar att loading syns vid start, productCartd action eller om cart ändras */
+
+
+// isFirstRender -> prevent the loading animation from showing at the initial load, product card actions, or if cart changes
   const [isFirstRender, setIsFirstRender] = useState(true);
 
 
 
-  /* Check if the user has a valid userId and token. If true, fetch the cart */
-  UseCheckLoginStatus();
+  
+  UseCheckLoginStatus(); // Check if the user has a valid userId and token 
 
 
 
 
   /* 
-     Update the page number to 1 if any of the following changes:
-     - searchQuery, selectedSort, selectedCategory, limit
+     Update page number to 1 if: searchQuery, selectedSort, selectedCategory, limit changes.
      If totalPages is 0, set totalPages to 1 to avoid errors.
   */
   useEffect(() => {
-
     setPage(1)
     if (totalPages === 0) {
       setTotalPages(1)
@@ -57,11 +57,7 @@ export const Products = () => {
 
 
 
-  /* 
-   when the filtering criteria change:
-    - Update the URL with the new parameters
-  
- */
+// Update the URL with filter parameters whenever filters or page change
   useEffect(() => {
 
     setUrl(`sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=1&pickAndMix=${pickAndMix}`);
@@ -69,10 +65,7 @@ export const Products = () => {
 
 
 
-  /* 
-    On page changes:
-    - Update the URL with the new page
- */
+  // Update the URL when the page number changes
   useEffect(() => {
     setUrl(`sortProducts?limit=${limit}&search=${searchQuery}&sort=${selectedSort}&category=${selectedCategory}&page=${page}&pickAndMix=${pickAndMix}`);
   }, [page]);
@@ -80,7 +73,7 @@ export const Products = () => {
 
 
   /* 
-    On changes to the cart:
+    cart changes:
     - Update the URL to reload the products
     - Prevent the loading indicator from showing (setIsFirstRender to true)
  */
@@ -104,10 +97,10 @@ export const Products = () => {
       setFiltredProducts([...data.products]);
       setUniqueCategories(data.categories);
       setTotalPages(Math.ceil(data.total / data.limit));
-      setUrl('')
-      setNewUrl("")
+      setUrl('') // Clear the URL 
+      setNewUrl("")  // Clear the URL 
       setIsFirstRender(false);
-      setIsProcessing(false)
+      setIsProcessing(false) // Prevent multiple requests and re-enable cart actions (add, remove, delete) by setting processing to false
       if (myRef.current && !isFirstRender && url) {
         myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
 
@@ -132,10 +125,10 @@ export const Products = () => {
         {/* Header */}
         <ProductHeader />
 
-        {/* Ref for scroll */}
+        {/* Scroll reference point */}
         <section ref={myRef} style={{ scrollMarginTop: "6rem" }}></section>
-        {/* Top Filter Nav */}
 
+           {/* Filter and Sorting Component */}
         <FilterComponents
           userId={userId}
           isFirstRender={isFirstRender}
@@ -164,10 +157,12 @@ export const Products = () => {
         </section>
 
 
-        {/* Products List */}
+        {/* No products found image */}
         {filtredProducts.length <= 0 && <section className="productsContent___noProductsFound">
           <img src={noProductsImg} alt="No products found" />
         </section>}
+
+           {/* Display products */}
         <section className={filtredProducts.length >= 3 ? "ProductCard___container productsContent___grid " : "ProductCard___container  productsContent___grid productsContent___smallGrid "} >
           {filtredProducts.map((item) => (
             <ProductCard
@@ -189,7 +184,7 @@ export const Products = () => {
         </section>
 
 
-        {/* Pagination Control */}
+        {/* Pagination Component */}
         <section className="productsContent___pageContainer">
           <PageComponent page={page} setPage={setPage} totalPages={totalPages} />
         </section>

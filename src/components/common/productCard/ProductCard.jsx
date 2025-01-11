@@ -7,14 +7,13 @@ export const ProductCard = ({ item, setUrl, limit = 3, searchQuery = "", selecte
   const { handleFetch, isProcessing } = useCartContext();
 
 
-  /* click function => add product to cart */
+  /* Click function to add product to cart. The 'true' value triggers a notification-message <Notify /> */
   const addItemToCart = (item) => {
-
     handleFetch(
       userId,
       item._id,
       'add'
-      ,true
+      , true
     );
   };
 
@@ -24,9 +23,11 @@ export const ProductCard = ({ item, setUrl, limit = 3, searchQuery = "", selecte
       <div className="card___inner" style={{ '--clr': "#fff" }}>
         <div className="box">
 
+          {/* Display if user is not logged in */}
           {!userId && !token &&
             <p>Sign in to buy</p>}
 
+          {/* Display product image */}
           <div className="imgBox" style={{ '--clr-tag': `${item.primaryColor}` }}>
             <img src="https://images.unsplash.com/photo-1601049676869-702ea24cfd58?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="product" />
           </div>
@@ -36,42 +37,27 @@ export const ProductCard = ({ item, setUrl, limit = 3, searchQuery = "", selecte
 
 
 
+              /*add to cart if showOneProduct is true and stock level is 1 or more */
+              <a onClick={item.stockLevel >= 1 && !isProcessing && userId && token ? () => addItemToCart(item) : null}
+                className={!isProcessing && item.stockLevel >= 1 ? "iconBox" : "iconBox disabled--opacity"}
+                style={{ '--clr-tag': `${item.primaryColor}` }}>
 
+                <span className="material-symbols-outlined">
+                  {item.stockLevel >= 1 ?
+                    <>    {isProcessing ? '...' : <> {token && userId ? <i className="bi bi-cart3"></i> : <i className="bi bi-lock-fill"></i>}      </>}        </>
 
+                    : <i className="bi bi-x-circle "></i>}
 
-/*add to cart if showOneProduct is true and stock level is 1 or more */
-              <a onClick={ item.stockLevel >= 1 && !isProcessing && userId && token ? () => addItemToCart(item):null} 
-              className={!isProcessing && item.stockLevel >= 1 ? "iconBox": "iconBox disabled--opacity"} 
-              style={{ '--clr-tag': `${item.primaryColor}` }}> 
-              
-              <span className="material-symbols-outlined">
-                {item.stockLevel >= 1 ?
-                <>    {isProcessing ? '...' : <> {token && userId ? <i className="bi bi-cart3"></i> : <i className="bi bi-lock-fill"></i> }      </>  }        </>
-               
-               :  <i className="bi bi-x-circle "></i>}
-
-              </span></a>
-
-
-
-
-
-
-
+                </span></a>
 
 
               :
 
 
-
-/* go to product-page  */
-
+              /* Go to product page if showOneProduct is false */
               <a href={`/product/${item._id}`} className="iconBox " style={{ '--clr-tag': `${item.primaryColor}` }}> <span className="material-symbols-outlined">
-              <i className="bi bi-arrow-up-right"></i>
+                <i className="bi bi-arrow-up-right"></i>
               </span></a>
-
-
-
 
 
 
@@ -86,6 +72,8 @@ export const ProductCard = ({ item, setUrl, limit = 3, searchQuery = "", selecte
           <h3>  {item.name} </h3>    <section className="ratingContainer">
             <div className="stars">
 
+
+              {/* rating component  */}
               <RatingComponent
                 item={item}
                 inRating={item.rating}
@@ -110,23 +98,33 @@ export const ProductCard = ({ item, setUrl, limit = 3, searchQuery = "", selecte
             <li style={{ '--clr-tag': `${item.primaryColor}` }} >{item.category}</li>
             {item?.pickAndMix ? <li style={{ '--clr-tag': `${item.primaryColor}` }} >mix</li> : ""}
           </ul>
+
+
+
           {userId && token ?
             <>
 
+              {/* Show product price and add to cart button if stock level is 1 or more */}
               {item.stockLevel >= 1 ?
-                <div className={!isProcessing || showOneProduct ? "categoryAndBuyBtnPrice___buyBtn_price": " categoryAndBuyBtnPrice___buyBtn_price disabled"} style={{ '--clr-tag': `${item.primaryColor}` }} onClick={!showOneProduct && !isProcessing ? () => addItemToCart(item) : null} >
+                <div className={!isProcessing || showOneProduct ? "categoryAndBuyBtnPrice___buyBtn_price" : " categoryAndBuyBtnPrice___buyBtn_price disabled"} style={{ '--clr-tag': `${item.primaryColor}` }} onClick={!showOneProduct && !isProcessing ? () => addItemToCart(item) : null} >
                   <p> {item.price}kr </p>
-                  {/* Show if cart icon if !showOneProduct  */}
+                  {/* Show cart-icon if !showOneProduct  */}
                   {!showOneProduct &&
                     <> <button > <i className="bi bi-bag-plus"></i></button> </>} {item.stockLevel === 1 && <p>1 left</p>}       </div>
                 :
-                /* if products is Out of stock && showOneProduct is true */
+                /* if products is out of stock && showOneProduct is true */
                 <div className="categoryAndBuyBtnPrice___buyBtn_price" style={{ '--clr-tag': `${item.primaryColor}` }}     > <p > {item.price}kr </p> <button > <p>Out of stock</p> </button>        </div>
 
-              } </>
+              } 
+              
+              </>
             :
-              /* if user/token is missing */
-            <div className="categoryAndBuyBtnPrice___buyBtn_price" style={{ '--clr-tag': `${item.primaryColor}` }}>  <p > {item.price}kr </p></div>}
+            /* if user/token is missing */
+            <div className="categoryAndBuyBtnPrice___buyBtn_price" style={{ '--clr-tag': `${item.primaryColor}` }}> 
+             <p > {item.price}kr </p>
+             </div>
+             
+             }
         </div>
       </div>
     </div>

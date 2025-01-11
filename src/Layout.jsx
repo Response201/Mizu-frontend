@@ -13,14 +13,28 @@ export const Layout = () => {
 
   return (
     <article>
+      {/* Custom cursor */}
       <CustomCursors />
+
+
       <header>
+
+        {/* Navbar */}
         <Navigation />
+
       </header>
+
+
       <main>
+
+        {/* Renders child route content dynamically based on the current route */}
         <Outlet />
+
+        {/* Notification component -> display messages */}
         <Notify />
       </main>
+
+
 
     </article>
   );

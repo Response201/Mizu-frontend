@@ -16,6 +16,7 @@ import { Product } from "./pages/Product";
 
 
 
+// Create and export the router configuration using the Browser Router
 export const router = createBrowserRouter([
   {
     path: "/",

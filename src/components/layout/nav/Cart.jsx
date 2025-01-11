@@ -4,9 +4,6 @@ import { CartAndTableBtns } from "../../common/cartAndTableBtns/CartAndTableBtns
 export const Cart = () => {
   const { totalPrice, cart, discount } = useCartContext()
 
-
-
-
   
   return (
     <Dropdown align="end" className='transparent '>
@@ -33,7 +30,7 @@ export const Cart = () => {
                 <span>
                   {item.quantity}</span>
                 <>
-                  <CartAndTableBtns item={item} />
+                  <CartAndTableBtns item={item} /> {/* Render buttons for each cart item */}
                 </>
               </ListGroup.Item>
             ))
@@ -42,18 +39,18 @@ export const Cart = () => {
             <>
               {discount !== 0 && <ListGroup.Item className="d-flex align-items-center justify-content-end item border_bottom transparent ">
                 <section className='price'>
-                  <p >Discount:</p>  <p>{discount}kr</p>
+                  <p >Discount:</p>  <p>{discount}kr</p>  {/* Display discount */}
                 </section>
               </ListGroup.Item>}
               <ListGroup.Item className="d-flex justify-content-end align-items-center item border_bottom transparent ">
                 <section className='price'>
                   <p>Totalt:</p>
-                  <p >{totalPrice}kr </p>
+                  <p >{totalPrice}kr </p> {/* Display total price */}
                 </section>
               </ListGroup.Item >
               <section className="checkout hover-target" >
                 <a href="/checkout">
-                  <Button className="checkout___btn hover-target">
+                  <Button className="checkout___btn hover-target">  {/* Checkout button */}
                     checkout
                   </Button>
                 </a>

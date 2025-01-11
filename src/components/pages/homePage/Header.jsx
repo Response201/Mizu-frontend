@@ -9,9 +9,10 @@ import { MainButton } from '../../common/lottieBtn/MainBtn.jsx';
 
 export const Header = () => {
 
- useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    // Ensures the page scrolls to the top when the component is mounted
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []); // Empty dependency array ensures it runs only once when the component mounts
 
 
     return (
@@ -19,28 +20,27 @@ export const Header = () => {
 
             <section className='headerContainer___section'>
 
-                <section className='header'>   <h1>Mizu <span> : skin</span></h1>
+                {/* Main header section with title and description */}
+                <section className='header'>
+                    <h1>Mizu <span> : skin</span></h1>
 
                     <p><span>  Naturla inner beauty </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, explicabo. Aspernatur tempora sunt totam consequuntur quisquam ratione !</p>
-                    <a className="hover-target" href='/products' >        
-<MainButton text="See products" getAnimation={getAnimation}       />
-</a>
+
+                    {/* Button to navigate to the products page */}
+                    <a className="hover-target" href='/products' >
+                        <MainButton text="See products" getAnimation={getAnimation} />
+                    </a>
                 </section>
 
 
-
-
+                {/* Spline viewer displaying a 3D scene */}
                 <section className="spline">
-
-
-
                     <spline-viewer className="spline-front" url="https://prod.spline.design/8i4EwewFzI4y1f0Q/scene.splinecode"></spline-viewer>
-
                 </section>
-
-
-
             </section>
+
+
+            {/* Particle background component */}
             <ParticleBackground />
 
         </article>

@@ -1,7 +1,8 @@
 
-
+// bar-style loader 
 export const BarLoader = () => {
   return (
+   
         <section className="loadingContent">
             <div className="bar1"></div>
             <div className="bar2"></div>

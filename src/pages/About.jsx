@@ -1,5 +1,5 @@
 import { AboutQuote } from "../components/pages/aboutPage/AboutQuote"
-import {AboutStory } from "../components/pages/aboutPage/AboutStory"
+import { AboutStory } from "../components/pages/aboutPage/AboutStory"
 
 
 export const About = () => {
@@ -12,21 +12,16 @@ export const About = () => {
 
   return (
     <article className="aboutPageContainer">
-<section className="aboutPageContent">
+      <section className="aboutPageContent">
+
+        {/* Component displaying information about Mizu Skin */}
+        <AboutStory />
 
 
-<AboutStory />
+        {/* Component displaying a quote and image*/}
+        <AboutQuote />
 
-
-
-
-
-
-<AboutQuote />
-
-
-
-</section>
+      </section>
 
 
 

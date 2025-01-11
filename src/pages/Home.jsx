@@ -9,12 +9,13 @@ import { TopRatedProducts } from "../components/pages/homePage/TopRatedProducts"
 
 
 export const Home = () => {
-  const {allProductsList,setAllProductsList} = useProductContext();
+  const { allProductsList, setAllProductsList } = useProductContext();
 
 
-  // Fetch för "allProductsList" used to check stock value(cart && TabelListProducts => CartAndTableBtns)
+  // Fetch "allProductsList" data, used to check stock value(cart && TabelListProducts => CartAndTableBtns)
   const { data: allProductsData } = Fetch("allProducts");
 
+  // Update allProductsList with fetched data if it is not already set
   useEffect(() => {
     if (allProductsData && allProductsData.products && !allProductsList) {
       setAllProductsList(allProductsData.products);
@@ -25,11 +26,21 @@ export const Home = () => {
 
   return (
     <>
+
+      {/* Header component for displaying the main banner */}
       <Header />
+
+
+      {/* Highlights section */}
       <section className="dottedBorder">
         <HappyHighlights />
       </section>
+
+
+      {/* top-rated products section */}
       <TopRatedProducts />
+
+
     </>
   );
 };

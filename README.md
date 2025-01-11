@@ -17,10 +17,8 @@ Efter köp kan kunder enkelt få tillgång till sina kvitton för en smidig öve
 
 
 
-``` ```
 
 
-``` ```
 
 ![App Screenshot](https://i.ibb.co/n0m8trM/gffgd.jpg) 
 |✨| [![MySQL badge](https://img.shields.io/badge/se%20Live-fff?style=for-the-badge&logo=&logoColor=white)](https://mizu-skin.vercel.app) |✨
@@ -31,7 +29,7 @@ Efter köp kan kunder enkelt få tillgång till sina kvitton för en smidig öve
 
 
 
-``` ```
+
 
 ## 🚀 Kom igång   
 
@@ -66,7 +64,6 @@ Efter köp kan kunder enkelt få tillgång till sina kvitton för en smidig öve
 
 
 
-``` ```
 
 ##  ⚙ Beroenden 
 
@@ -121,11 +118,10 @@ Efter köp kan kunder enkelt få tillgång till sina kvitton för en smidig öve
 -  Mozilla Firefox: 78+
 -  Safari: 14.1+
 -  Microsoft Edge: 90+
-```
-```
+
 
 ## 🗂️ Kodstruktur
- ### src/
+ #### src/
 
 **├─ assets/**          
  - **images**: Bilder
@@ -154,7 +150,7 @@ Efter köp kan kunder enkelt få tillgång till sina kvitton för en smidig öve
 
 
 
-``` ```
+
  
 
 

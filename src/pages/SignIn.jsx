@@ -20,13 +20,12 @@ export const SignIn = () => {
   const { data } = Fetch(url, "POST", body)
 
 
-
+  // When sign-in is successful, set the userId and token, then redirect to the homepage
   if (data && data.token && data.userId) {
-
-    setUserId(data.userId)
-    setToken(data.token)
-    navigate("/")
-    navigate(0)
+    setUserId(data.userId);  // Set the user ID globally
+    setToken(data.token);  // Set the authentication token globally
+    navigate("/");  // Redirect to homepage after sign-in
+    navigate(0);  // Reload the page
 
   }
 
@@ -35,9 +34,9 @@ export const SignIn = () => {
 
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-
-    setUrl("signin");
+    e.preventDefault();// Prevent the default form submission behavior
+    setUrl("signin");  // Set URL for the sign-in API endpoint
+    // Send the email and password in the body of the request
     setBody({
       email,
       password,
@@ -47,8 +46,8 @@ export const SignIn = () => {
 
   return (
     <article className="signInRegFormContainer">
+      {/* Render the form component for sign-in */}
       <FormSigninRegisterUser
-
         email={email}
         setEmail={setEmail}
         password={password}

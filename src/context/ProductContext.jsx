@@ -1,19 +1,16 @@
 import { createContext, useState, useContext, useEffect } from 'react';
 
-
+// Create a new context to manage global state
 const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-
-    /* States as in GlobalProvider */
-
     const [beforeFilteringProducts, setBeforeFilteringProducts] = useState(JSON.parse(localStorage.getItem("beforeFilteringProducts")) || []);
     const [filtredProducts, setFiltredProducts] = useState(JSON.parse(localStorage.getItem("beforeFilteringProducts")) || []);
     const [topRatedProducts, setTopRatedProducts] = useState(JSON.parse(localStorage.getItem("topRated")) || []);
     const [totalPages, setTotalPages] = useState(JSON.parse(localStorage.getItem("totalPages")) || "1");
     const [uniqueCategories, setUniqueCategories] = useState(JSON.parse(localStorage.getItem("uniqueCategories")) || []);
-const [allProductsList, setAllProductsList] = useState(JSON.parse(localStorage.getItem("allProductsList")) || []);
-const [pickAndmixProducts, setPickAndmixProducts] = useState(JSON.parse(localStorage.getItem("pickAndmixProducts")) || []);
+    const [allProductsList, setAllProductsList] = useState(JSON.parse(localStorage.getItem("allProductsList")) || []);
+    const [pickAndmixProducts, setPickAndmixProducts] = useState(JSON.parse(localStorage.getItem("pickAndmixProducts")) || []);
 
     const [page, setPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
@@ -22,7 +19,10 @@ const [pickAndmixProducts, setPickAndmixProducts] = useState(JSON.parse(localSto
     const [pickAndMix, setPickAndMix] = useState(false);
     const [limit, setLimit] = useState(9);
 
-    /* LocalStorage handling for changes */
+
+
+    // LocalStorage handling: Whenever these states change, update the corresponding LocalStorage values
+
     useEffect(() => {
         localStorage.setItem("uniqueCategories", JSON.stringify(uniqueCategories));
     }, [uniqueCategories]);
@@ -48,7 +48,9 @@ const [pickAndmixProducts, setPickAndmixProducts] = useState(JSON.parse(localSto
     }, [pickAndmixProducts]);
 
 
-    /* States sent to all children within context */
+
+
+    // Global state is provided to all children components that use this context
     return (
         <ProductContext.Provider value={{
             beforeFilteringProducts, setBeforeFilteringProducts,
@@ -72,7 +74,7 @@ const [pickAndmixProducts, setPickAndmixProducts] = useState(JSON.parse(localSto
 
 
 /* eslint-disable */
-/* Custom hook that gives access to the context from GlobalContext. If the context does not exist, an error message is given */
+// Create custom hook to access Product Context
 export const useProductContext = () => {
     const context = useContext(ProductContext);
     if (!context) {

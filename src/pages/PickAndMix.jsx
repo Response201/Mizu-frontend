@@ -21,23 +21,22 @@ export const PickAndMix = () => {
 
 
 
-  // Check if user is logged in and has valid token
-  UseCheckLoginStatus();
+  UseCheckLoginStatus();  // Check if user is logged in and has valid token
 
 
 
-  /* if data chnges */
+  // Update pick-and-mix products when data changes
   useEffect(() => {
     if (data && data.products) {
-      setPickAndmixProducts(data.products);
-      setUrl("");
-      setNewUrl("");
-      setIsProcessing(false)
+      setPickAndmixProducts(data.products); // Set products in context
+      setUrl(""); // Clear the URL after processing
+      setNewUrl(""); // Reset newUrl to prevent duplicate fetches
+      setIsProcessing(false); // Prevent multiple requests and re-enable cart actions (add, remove, delete) by setting processing to false
     }
   }, [data]);
 
 
-  /* If cart changes */
+  // Trigger a fetch whenever the cart changes
   useEffect(() => {
     setUrl(`sortProducts?pickAndMix=true`);
   }, [cart]);
@@ -49,17 +48,14 @@ export const PickAndMix = () => {
       <section className="pickAndMixContent">
 
 
-        {/* Header component */}
+        {/* Header section */}
         <PickAndMixHeader />
 
-        {/* Display category titel and productCard */}
+        {/* Display category-titel and productCard */}
         <DisplayUniqueCategoriesAndProducts setNewUrl={setNewUrl} />
 
 
-        {/* Notify */}
-
-
-        {/* if no products   */}
+        {/* Display message when no products are available */}
         {pickAndmixProducts <= 0 && <section className="pickAndMix">
           <PickAndMixCategoryTitels titel="No products" background="https://i.ibb.co/dfSJHFH/Product2.png" />
         </section>}

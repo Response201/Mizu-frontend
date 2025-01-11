@@ -15,20 +15,20 @@ export const TabelReceiptsList = ({receipts, setReceipt}) => {
     <tbody>
       {receipts && receipts.map((receipt, index) => (
         <tr key={index} onClick={() => setReceipt(receipt)} >
-          {/* Skapad Tid */}
+          {/*  Creation date */}
           <td>{new Date(receipt.createdAt).toLocaleString().slice(0, -8)}</td>
 
-          {/* Antal Produkter */}
+          {/* Aumber of products */}
           <td>{receipt.products.reduce((total, product) => total + product.quantity, 0)}</td>
 
 
-          {/* Totalpris */}
+          {/* Total pric */}
           <td>{receipt.totalPrice}</td>
 
-          {/* Rabatt */}
+          {/* Discount  */}
           <td>{receipt.discount}</td>
 
-          {/* Förkortat Produkt-ID */}
+          {/*  Receipt id */}
           <td>
             {receipt.products.length > 0 && `#${receipt._id.slice(17, -1)}`}
           </td>

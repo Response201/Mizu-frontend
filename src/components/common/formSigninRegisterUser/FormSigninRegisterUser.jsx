@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import GoogleSignIn from '../Google/Google.jsx'
 import { BarLoader } from '../barLoader/BarLoader.jsx';
 
+/*  A reusable component that renders either a sign-in or sign-up form based on the provided props */
 export const FormSigninRegisterUser = ({
     title = "Sign in",
     email,
@@ -32,14 +33,17 @@ export const FormSigninRegisterUser = ({
     const [isEmailValid, setIsEmailValid] = useState(false);
 
 
-    // validera epost
+    // Validate email format
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
 
-    // validera lösenord: minst en stor bokstav, ett specialtecken 
-    // och vara mellan 6 och 10 tecken lång
+    // Validate password: at least one uppercase letter, one special character, and 6-10 characters long
     const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{6,10}$/;
 
+
+
+
+    // Validate password whenever it changes
     useEffect(() => {
 
         if (passwordRegex.test(password)) {
@@ -50,7 +54,7 @@ export const FormSigninRegisterUser = ({
     }, [password]);
 
 
-
+    // Validate email whenever it changes
     useEffect(() => {
 
         if (emailRegex.test(email)) {
@@ -61,6 +65,7 @@ export const FormSigninRegisterUser = ({
     }, [email]);
 
 
+    // Clear form fields if there is an error
     useEffect(() => {
         if (error) {
             setUrl('')
@@ -92,6 +97,7 @@ export const FormSigninRegisterUser = ({
                             required
                         />
                         <span className="icon" style={{ '--color': `${color}` }}>
+                            {/* Show validation icon based on email validity */}
                             {email.length >= 1 && <>{!isEmailValid ? <i className="bi bi-x"></i> : <i className="bi bi-check"></i>}
 
                             </>}
@@ -116,6 +122,7 @@ export const FormSigninRegisterUser = ({
                             required
                         />
                         <span className="icon" style={{ '--color': `${color}` }}>
+                            {/* Show validation icon based on password validity */}
                             {password.length >= 1 && <>
                                 {!isPasswordValid ? <i className="bi bi-x"></i> : <i className="bi bi-check"></i>}</>
                             }
@@ -126,48 +133,61 @@ export const FormSigninRegisterUser = ({
 
                     </label>
                 </section>
+
+
+
                 <section className='errorContainer'>
 
-
+                    {/* Show loading spinner while submitting */}
                     {loading && !error && !message && <BarLoader />}
 
-
-
-
-
+                    {/* Display error or success message */}
                     {error && <p style={{ '--color': `${color}` }}> {error}   </p>}
+
                     {message && <p style={{ '--color': `${color}` }}> {message}   </p>}
+
                 </section>
+
+
+
+
                 <section className="signInRegFormContent___btn">
+
+
+                    {/* Main submit button */}
                     <button className="hover-target" type="submit">
                         <MainButton text={firstBtnText} getAnimation={getAnimation} textColorMainBtn={textColorMainBtn} />
                     </button>
 
+
+                    {/* Google Sign-In button */}
                     <GoogleSignIn
                         url={url}
                         label={label}
                         clientId={`${import.meta.env.VITE_CLIENTID}`}
                     />
+
                 </section>
-
-
             </form>
+
+
 
             <section className="signInRegFormContent___imgContainer" style={{ '--color': `${color}` }}>
                 <img src={image} alt="image text" />
                 <div className="overlay"></div>
                 <div>
                     <h2 style={{ '--color': `${color}` }}>{newHereText}</h2>
-                    <a
-                        href={navigateTo}
-                        className="hover-target"
 
-                    >
+                    {/* Link to navigate to sign-up page for new users */}
+                    <a href={navigateTo} className="hover-target">
                         <MainButton text={secondBtnText} getAnimation={getAnimation} textColorMainBtn={textColorMainBtn} />
-
                     </a>
                 </div>
             </section>
+
+
+
+
         </section>
     );
 };

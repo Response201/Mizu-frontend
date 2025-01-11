@@ -4,27 +4,32 @@ import { useCartContext } from '../../context/CartContext'
 
 export const Notify = () => {
   const { notify, setNotify } = useCartContext();
-  const [message, setMessage] = useState(null); // Lokal state för att hantera visningen av meddelandet
+  const [message, setMessage] = useState(null); // Local state to manage message visibility
 
   useEffect(() => {
     if (notify) {
       setMessage(notify);
 
-      // Ta bort meddelandet efter 1 sekunder
+      // Remove the message after 2 seconds
       const timeout = setTimeout(() => {
-        setNotify('')
-        setMessage(null);
+        setNotify('')  // Reset notify state
+        setMessage(null);  // Hide the message
       }, 2000);
 
-      return () => clearTimeout(timeout); // Rensa timeout vid avmontering eller ny uppdatering
+      return () => clearTimeout(timeout); // Clear timeout on component unmount or re-update
     }
-  }, [notify]); // Kör när `notify` ändras
+  }, [notify]); // Run when `notify` changes
 
   return (
     <section className='notifyContainer'>
+
+       {/* Display the notification icon */}
       {message && (
-        <p className="notifyContainer___message"><i className="bi bi-cart3"></i> </p>
+        <p className="notifyContainer___message"><i className="bi bi-cart3"></i> </p>   
       )}
+
+
+
     </section>
   );
 };

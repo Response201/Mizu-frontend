@@ -6,8 +6,6 @@ import { FormSigninRegisterUser } from "../components/common/formSigninRegisterU
 
 
 export const Register = () => {
-
-
   const navigate = useNavigate()
   const [url, setUrl] = useState('')
   const [body, setBody] = useState({})
@@ -16,16 +14,13 @@ export const Register = () => {
   const { data } = Fetch(url, "POST", body)
   const [message, setMessage] = useState('')
 
-
+  // When registration is successful, navigate to sign-in page after a delay
   if (data && data.message === "Registration successful!") {
-
-
     if (!message) {
       setMessage("Registration successful!")
 
-
       setTimeout(() => {
-        navigate("/signin")
+        navigate("/signin") // Redirect to sign-in page after 7 seconds
       }, 7000)
     }
 
@@ -35,8 +30,9 @@ export const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const provider = "default"
-    setUrl("createUser");
+    const provider = "default";  // Default provider
+    setUrl("createUser");       // Set URL for creating the user
+    // Send the email and password in the body of the request
     setBody({
       email,
       password,
@@ -46,8 +42,8 @@ export const Register = () => {
 
   return (
     <article className="signInRegFormContainer">
+      {/* Render the form component for sign-up */}
       <FormSigninRegisterUser
-
         email={email}
         setEmail={setEmail}
         password={password}

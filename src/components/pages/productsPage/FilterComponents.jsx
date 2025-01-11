@@ -20,12 +20,14 @@ export const FilterComponents = ({
     setLimit,
     isFirstRender
 }) => {
+
+    /*  list of unique product categories -> drop down options (selectedCategory) */
     const { uniqueCategories } = useProductContext();
-    const { loading } = Fetch();
+ 
 
-
+// Handle search input change
     const handleSearchChange = (e) => {
-        setSearchQuery(e.target.value);
+        setSearchQuery(e.target.value); // Update search query
     };
 
     return (
@@ -36,7 +38,7 @@ export const FilterComponents = ({
                 {/* Sorting */}
                 <select
                     value={selectedSort}
-                    onChange={(e) => setSelectedSort(e.target.value)}
+                    onChange={(e) => setSelectedSort(e.target.value)} // Update sorting 
                 >
                     <option value="averageRating:desc">Rating: High to Low</option>
                     <option value="averageRating:asc">Rating: Low to High</option>
@@ -49,7 +51,7 @@ export const FilterComponents = ({
                     <select
                         id="categoryFilter"
                         value={selectedCategory}
-                        onChange={(e) => setSelectedCategory(e.target.value)}
+                        onChange={(e) => setSelectedCategory(e.target.value)} // Update category 
                     >
                         <option value="all">All</option>
                         {uniqueCategories &&
@@ -66,7 +68,7 @@ export const FilterComponents = ({
                     <input
                         type="checkbox"
                         checked={pickAndMix}
-                        onChange={() => setPickAndMix((prev) => !prev)}
+                        onChange={() => setPickAndMix((prev) => !prev)} // Toggle Pick and Mix filter
                     />
                 </section>
                 {/* Limit */}
@@ -75,7 +77,7 @@ export const FilterComponents = ({
                     <select
                         id="limitFilter"
                         value={limit}
-                        onChange={(e) => setLimit(e.target.value)}
+                        onChange={(e) => setLimit(e.target.value)} // Update limit
                     >
                         <option value={6}>6</option>
                         <option value={9}>9</option>
@@ -88,7 +90,7 @@ export const FilterComponents = ({
                         type="text"
                         placeholder="Search products..."
                         value={searchQuery}
-                        onChange={handleSearchChange}
+                        onChange={handleSearchChange}  // Update search 
                     />
                 </section>
             </section>

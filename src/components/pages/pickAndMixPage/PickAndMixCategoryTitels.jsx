@@ -1,10 +1,13 @@
- const PickAndMixCategoryTitels = ({titel, background}) => {
-    return (
-      <section className="pickAndMix___pickAndMixTitels">
+const PickAndMixCategoryTitels = ({ titel, background }) => {
+  return (
+    <section className="pickAndMix___pickAndMixTitels">
+      {/* Render background image for the category */}
       <img src={background} alt="backgroun" />
-        <h2>{titel}</h2>
-      </section>
-    )
-  }
-  
-  export default PickAndMixCategoryTitels
+
+      {/* Display the category title */}
+      <h2>{titel}</h2>
+    </section>
+  )
+}
+
+export default PickAndMixCategoryTitels

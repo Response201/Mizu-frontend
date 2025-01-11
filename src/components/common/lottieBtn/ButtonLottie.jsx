@@ -1,29 +1,27 @@
 import { useEffect, useRef, useState } from "react";
-
-
 import Lottie from "lottie-react";
 
 const ButtonLottie = ({ clickLottie, setClickLottie, getAnimation }) => {
 
   const [isFirstRun, setisFirstRun] = useState(true);
-  const [animation, setAnimation] = useState(getAnimation);
+  const animation = getAnimation;
   const lottieRef = useRef();
 
 
-  /* useEffect för att stoppa 'ny' animation ifrån att köras vid ändring av mode */
+ // useEffect to stop the "new" animation from running when the mode changes
   useEffect(() => {
-    lottieRef.current.goToAndStop(0, 3);
+    lottieRef.current.goToAndStop(0, 3); // Reset animation to initial frame
     setisFirstRun(false);
   }, [animation]);
 
-  /* kör animation vid händelse */
+    // useEffect to trigger the animation event
   useEffect(() => {
     if (isFirstRun && !clickLottie) {
-      lottieRef.current.goToAndStop(3, 3);
+      lottieRef.current.goToAndStop(3, 3); // Set animation to a specific frame on first run
       setisFirstRun(false);
     } else {
       if (!isFirstRun && clickLottie) {
-        lottieRef.current.playSegments([4, 51], true);
+        lottieRef.current.playSegments([4, 51], true);  // Play animation segment
         setClickLottie(false);
       }
     }
