@@ -4,18 +4,19 @@
 
 .table {
   
+  width: 100%;
     &__content {
       width: 100%;
       border-collapse: collapse;
       margin: 20px 0;
-     
-     
+  
      
       th, td {
         border: 1px solid #bd57044f;
         text-align: left;
         padding: 8px;
-        font-size: 0.9rem;
+ font-size: 50%;
+      overflow: hidden;
         @include mixins.devices(desktop) {
           font-size: 1rem;
          

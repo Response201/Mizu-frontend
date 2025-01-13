@@ -3,13 +3,13 @@
 
 .checkoutContainer{
     @include mixins.article() {
-        padding: v.$padding  !important;
+        padding: v.$padding 0 !important;
 position: relative;
-     
+     width: 100vw !important;
         @include mixins.devices(desktop) {
        padding-bottom: 1.5rem !important;
     
-       padding: v.$padding  !important;
+       padding: v.$padding  0 !important;
         }
       }
 
@@ -34,8 +34,8 @@ position: relative;
 display: flex;
 align-items: center;
 justify-content: center;
-
-padding: v.$padding-komponents !important;
+width: 100% !important;
+padding: v.$padding-komponents 0 !important;
 
 
     }
@@ -48,6 +48,7 @@ z-index: 1;
 max-height: calc(95vh - 1.5rem)!important;
 overflow-y: scroll;
 padding-top: 1.5rem;
+
        
         &___noProductsImgContainer{
            
