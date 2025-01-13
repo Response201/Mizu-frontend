@@ -50,7 +50,7 @@ export const Cart = () => {
               </ListGroup.Item >
 
 
-              {cart && cart.length >= 11      &&
+              {cart && cart.length >= 10      &&
                 <section className='maxAmountOffProducts'>
                   <p >Maximum number of different product types</p>  {/* Display discount */}
                 </section>

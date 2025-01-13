@@ -21,13 +21,15 @@ const [addNoMoreToCart, setAddNoMoreToCart] = useState(false)
   // if cart have more than 10 products this disabel "addItemToCart"
 useEffect(() => {
   if(cart){
-setAddNoMoreToCart(cart.length <= 10)  
+setAddNoMoreToCart(cart.length <= 9)  
 }
 }, [cart])
 
+console.log(cart)
 
+const finProductInCart = cart.some(product => item._id === product.productId);
 
-
+console.log(finProductInCart)
   return (
     <div className="productCard" style={{ '--clr-tag': `${item.primaryColor}` }}>
       <div className="card___inner" style={{ '--clr': "#fff" }}>
@@ -36,6 +38,11 @@ setAddNoMoreToCart(cart.length <= 10)
           {/* Display if user is not logged in */}
           {!userId && !token &&
             <p>Sign in to buy</p>}
+
+
+{!finProductInCart && !addNoMoreToCart   && userId && token &&
+            <p>Cart item limit</p>    }
+
 
           {/* Display product image */}
           <div className="imgBox" style={{ '--clr-tag': `${item.primaryColor}` }}>
@@ -48,8 +55,8 @@ setAddNoMoreToCart(cart.length <= 10)
 
 
               /*add to cart if showOneProduct is true and stock level is 1 or more */
-              <a onClick={item.stockLevel >= 1 && !isProcessing && userId && token ? () => addItemToCart(item) : null}
-                className={!isProcessing && item.stockLevel >= 1 ? "iconBox" : "iconBox disabled--opacity"}
+              <a onClick={item.stockLevel >= 1 && !isProcessing && addNoMoreToCart || finProductInCart  && userId && token ? () => addItemToCart(item) : null}
+                className={!isProcessing && addNoMoreToCart || finProductInCart  && item.stockLevel >= 1 ? "iconBox" : "iconBox disabled--opacity"}
                 style={{ '--clr-tag': `${item.primaryColor}` }}>
 
                 <span className="material-symbols-outlined">
@@ -116,7 +123,7 @@ setAddNoMoreToCart(cart.length <= 10)
 
               {/* Show product price and add to cart button if stock level is 1 or more */}
               {item.stockLevel >= 1 ?
-                <div className={addNoMoreToCart && !isProcessing  || showOneProduct   ? "categoryAndBuyBtnPrice___buyBtn_price" : " categoryAndBuyBtnPrice___buyBtn_price disabled"} style={{ '--clr-tag': `${item.primaryColor}` }} onClick={!showOneProduct && !isProcessing && addNoMoreToCart ? () => addItemToCart(item) : null} >
+                <div className={addNoMoreToCart && !isProcessing  || showOneProduct || finProductInCart   ? "categoryAndBuyBtnPrice___buyBtn_price" : " categoryAndBuyBtnPrice___buyBtn_price disabled"} style={{ '--clr-tag': `${item.primaryColor}` }} onClick={!showOneProduct && !isProcessing && addNoMoreToCart || finProductInCart ? () => addItemToCart(item) : null} >
                   <p> {item.price}kr </p>
                   {/* Show cart-icon if !showOneProduct  */}
                   {!showOneProduct &&
