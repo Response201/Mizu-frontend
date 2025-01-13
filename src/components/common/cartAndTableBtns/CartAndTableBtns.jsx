@@ -62,7 +62,7 @@ export const CartAndTableBtns = ({ item }) => {
             {/* Button to add an item to the cart */}
             <Button
                 size="sm"
-                className={`btn ${product?.stockLevel === 0 || isProcessing ? "disabled" : ""}`} // Disable the button if the product is out of stock (stockLevel === 0) or if processing is ongoing
+                className={`btn ${product?.stockLevel === 0 || isProcessing  ? "disabled" : ""}`} // Disable the button if the product is out of stock (stockLevel === 0) or if processing is ongoing
                 onClick={product?.stockLevel === 0 || isProcessing ? null : () => handleItemToCart(item, "add")} // Prevent adding to the cart if the product is out of stock or if processing is true
             >
                 <i className="bi bi-plus-lg"></i>

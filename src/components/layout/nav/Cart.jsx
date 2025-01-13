@@ -48,6 +48,18 @@ export const Cart = () => {
                   <p >{totalPrice}kr </p> {/* Display total price */}
                 </section>
               </ListGroup.Item >
+
+
+              {cart && cart.length >= 11      &&
+                <section className='maxAmountOffProducts'>
+                  <p >Maximum number of different product types</p>  {/* Display discount */}
+                </section>
+                              }
+
+
+
+
+
               <section className="checkout hover-target" >
                 <a href="/checkout">
                   <Button className="checkout___btn hover-target">  {/* Checkout button */}

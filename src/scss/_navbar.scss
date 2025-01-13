@@ -115,6 +115,25 @@
 
 }
 
+.maxAmountOffProducts{
+
+
+height: 100%;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 0.5rem 0;
+p{
+    border-radius: 1rem;
+background-color: rgba(236, 181, 129, 0.836);
+padding:  0.5rem;
+margin: 0;
+font-size: 0.7rem;
+
+}
+
+}
 
 .icons_nav_cart{font-size: 1.19rem !important;}
 .icons_nav{font-size: 1.25rem !important;}

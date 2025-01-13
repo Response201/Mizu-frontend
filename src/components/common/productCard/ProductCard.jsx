@@ -2,11 +2,12 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import { useGlobalContext } from "../../../context/GlobalContext";
 import { RatingComponent } from "./RatingComponent";
 import { useCartContext } from "../../../context/CartContext";
+import { useEffect, useState } from "react";
 export const ProductCard = ({ item, setUrl, limit = 3, searchQuery = "", selectedSort = "averageRating:desc", selectedCategory = "all", page = 1, pickAndMix = false, showOneProduct = false }) => {
   const { token, userId } = useGlobalContext();
-  const { handleFetch, isProcessing } = useCartContext();
+  const { handleFetch, isProcessing, cart,  } = useCartContext();
 
-
+const [addNoMoreToCart, setAddNoMoreToCart] = useState(false)
   /* Click function to add product to cart. The 'true' value triggers a notification-message <Notify /> */
   const addItemToCart = (item) => {
     handleFetch(
@@ -16,6 +17,15 @@ export const ProductCard = ({ item, setUrl, limit = 3, searchQuery = "", selecte
       , true
     );
   };
+
+  // if cart have more than 10 products this disabel "addItemToCart"
+useEffect(() => {
+  if(cart){
+setAddNoMoreToCart(cart.length <= 10)  
+}
+}, [cart])
+
+
 
 
   return (
@@ -106,7 +116,7 @@ export const ProductCard = ({ item, setUrl, limit = 3, searchQuery = "", selecte
 
               {/* Show product price and add to cart button if stock level is 1 or more */}
               {item.stockLevel >= 1 ?
-                <div className={!isProcessing || showOneProduct ? "categoryAndBuyBtnPrice___buyBtn_price" : " categoryAndBuyBtnPrice___buyBtn_price disabled"} style={{ '--clr-tag': `${item.primaryColor}` }} onClick={!showOneProduct && !isProcessing ? () => addItemToCart(item) : null} >
+                <div className={addNoMoreToCart && !isProcessing  || showOneProduct   ? "categoryAndBuyBtnPrice___buyBtn_price" : " categoryAndBuyBtnPrice___buyBtn_price disabled"} style={{ '--clr-tag': `${item.primaryColor}` }} onClick={!showOneProduct && !isProcessing && addNoMoreToCart ? () => addItemToCart(item) : null} >
                   <p> {item.price}kr </p>
                   {/* Show cart-icon if !showOneProduct  */}
                   {!showOneProduct &&
