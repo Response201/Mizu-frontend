@@ -3,6 +3,9 @@
 
 .signInRegFormContainer {
     @include mixins.article() {
+        padding: 3rem 0 1rem 0;
+
+     
   
     }
 
@@ -14,15 +17,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 3rem 0 0 0;
-
+            height: 60vh;
             min-height: fit-content;
 
             @include mixins.devices(tablet) {
                 height: 100%;
-                max-height: 580px;
+             
+                max-height: 550px;
             }
         }
+
 
         &___imgContainer {
             display: none;
@@ -71,6 +75,7 @@
                 position: absolute;
             }
 
+            
             @include mixins.devices(tablet) {
 
                 overflow: hidden;
@@ -88,7 +93,6 @@
                 border: 1.5px inset  var(--color) !important;;
             }
         }
-
         form {
             padding: v.$padding-komponents 0;
             max-height: 600px;
@@ -134,13 +138,12 @@ align-items: center;
 justify-content: center;
 height: 4rem;
 width: 100%;
-position: relative;
+
 
 p{
-background-color:var(--color) ;
+
 margin: 0;
-padding: 0 2px;
-color: white !important;
+color: var(--color) !important;
 }
 
 }
@@ -184,6 +187,7 @@ color: white !important;
                 }
             }
 
+
             .signInRegFormContent___content {
                 display: flex;
                 flex-direction: column;
@@ -191,6 +195,7 @@ color: white !important;
                 align-items: center;
                 min-height: 50%;
                 width: 100%;
+             
             }
 
             label {
@@ -236,14 +241,22 @@ filter: brightness(75%) opacity(50%);
                 white-space: nowrap;
               }
 
-
             .signInRegFormContent___btn {
                 width: 100%;
-               
+             
                 display: flex;
-                flex-direction: column;
                 justify-content: center;
                 align-items: center;
+flex-direction: column;
+padding-bottom: 3rem;
+
+@include mixins.devices(tablet) {
+    @include mixins.home-headings-h2() {
+        padding-bottom: 0;
+        
+    }
+}
+
 
                 button {
                     border: none;

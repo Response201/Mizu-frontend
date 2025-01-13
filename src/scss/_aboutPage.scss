@@ -5,7 +5,17 @@
 
 .aboutPageContainer {
 
-  @include mixins.article() {}
+  @include mixins.article() {
+
+
+    padding-top: 3rem;
+
+    @include mixins.devices(desktop) {
+      padding-top: 6rem;
+      padding-bottom: 1rem;
+    }
+
+  }
 
 
 
@@ -15,7 +25,7 @@
 .aboutPageContent {
 
   @include mixins.section() {
-    padding-top: 3rem;
+
     padding-bottom: 5rem;
     position: relative;
     background-color: transparent;

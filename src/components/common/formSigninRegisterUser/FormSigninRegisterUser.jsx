@@ -175,11 +175,11 @@ export const FormSigninRegisterUser = ({
             <section className="signInRegFormContent___imgContainer" style={{ '--color': `${color}` }}>
                 <img src={image} alt="image text" />
                 <div className="overlay"></div>
-                <div>
+                <div className='sidBarContainer'>
                     <h2 style={{ '--color': `${color}` }}>{newHereText}</h2>
 
                     {/* Link to navigate to sign-up page for new users */}
-                    <a href={navigateTo} className="hover-target">
+                    <a href={navigateTo} className="hover-target linkBtnContainer">
                         <MainButton text={secondBtnText} getAnimation={getAnimation} textColorMainBtn={textColorMainBtn} />
                     </a>
                 </div>
