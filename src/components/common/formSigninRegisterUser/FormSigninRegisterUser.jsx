@@ -142,7 +142,7 @@ export const FormSigninRegisterUser = ({
                     {loading && !error && !message && <BarLoader />}
 
                     {/* Display error or success message */}
-                    {error && <p style={{ '--color': `${color}` }}>  {/* {error}  */}  </p>}
+                    {error && <p style={{ '--color': `${color}` }}>  {{error}    </p>}
 
                     {message && <p style={{ '--color': `${color}` }}>  {message}  </p>}
 
