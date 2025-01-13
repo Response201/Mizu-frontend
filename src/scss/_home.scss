@@ -60,9 +60,17 @@
         color: v.$text-primary;
         margin-top: 7%;
         min-height: 400px;
+
+
+        @include mixins.devices(tablet) {
+            margin-top: -5%;
+            min-height: 500px;
+          
+        }
+
         @include mixins.devices(desktop) {
-            margin-top: -8vh;
-            min-height: 400px;
+            margin-top: -7%;
+            min-height: 500px;
           
         }
 
