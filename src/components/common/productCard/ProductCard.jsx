@@ -55,7 +55,7 @@ console.log(finProductInCart)
 
 
               /*add to cart if showOneProduct is true and stock level is 1 or more */
-              <a onClick={item.stockLevel >= 1 && !isProcessing && addNoMoreToCart || finProductInCart  && userId && token ? () => addItemToCart(item) : null}
+              <a onClick={item.stockLevel >= 1 && !isProcessing && addNoMoreToCart || !isProcessing && finProductInCart  && userId && token ? () => addItemToCart(item) : null}
                 className={!isProcessing && addNoMoreToCart || finProductInCart  && item.stockLevel >= 1 ? "iconBox" : "iconBox disabled--opacity"}
                 style={{ '--clr-tag': `${item.primaryColor}` }}>
 
@@ -123,7 +123,7 @@ console.log(finProductInCart)
 
               {/* Show product price and add to cart button if stock level is 1 or more */}
               {item.stockLevel >= 1 ?
-                <div className={addNoMoreToCart && !isProcessing  || showOneProduct || finProductInCart   ? "categoryAndBuyBtnPrice___buyBtn_price" : " categoryAndBuyBtnPrice___buyBtn_price disabled"} style={{ '--clr-tag': `${item.primaryColor}` }} onClick={!showOneProduct && !isProcessing && addNoMoreToCart || finProductInCart ? () => addItemToCart(item) : null} >
+                <div className={finProductInCart && !isProcessing  || addNoMoreToCart && !isProcessing  || showOneProduct   ? "categoryAndBuyBtnPrice___buyBtn_price" : " categoryAndBuyBtnPrice___buyBtn_price disabled"} style={{ '--clr-tag': `${item.primaryColor}` }} onClick={ !showOneProduct && !isProcessing && addNoMoreToCart || !isProcessing && finProductInCart ? () => addItemToCart(item) : null} >
                   <p> {item.price}kr </p>
                   {/* Show cart-icon if !showOneProduct  */}
                   {!showOneProduct &&
