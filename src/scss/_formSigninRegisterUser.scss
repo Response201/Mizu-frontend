@@ -97,7 +97,7 @@
             padding: v.$padding-komponents 0;
             max-height: 600px;
             height: 100%;
-            min-height: 450px;
+            min-height: 460px;
             width: 95%;
             max-width: 500px !important;
             display: flex;
@@ -139,11 +139,16 @@ justify-content: center;
 height: 4rem;
 width: 100%;
 
-
+.loadingContent{
+margin-top: -1rem;
+    
+}
 p{
-
+background-color: var(--color);
 margin: 0;
-color: var(--color) !important;
+padding: 0 1rem;
+border-radius: 1rem;
+color: white !important;
 }
 
 }
@@ -154,7 +159,6 @@ color: var(--color) !important;
                 background-color: v.$background-secondary !important;
 
                 width: 90%;
-
                 border: none;
             }
 
