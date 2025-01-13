@@ -97,7 +97,7 @@
             padding: v.$padding-komponents 0;
             max-height: 600px;
             height: 100%;
-            min-height: 460px;
+            min-height: 450px;
             width: 95%;
             max-width: 500px !important;
             display: flex;
@@ -136,13 +136,11 @@
 display: flex;
 align-items: center;
 justify-content: center;
-height: 4rem;
+height: 2rem;
 width: 100%;
-
-.loadingContent{
-margin-top: -1rem;
-    
-}
+position: relative;
+padding: 1rem 0;
+margin-top: 0.5rem;
 p{
 background-color: var(--color);
 margin: 0;
@@ -207,7 +205,7 @@ color: white !important;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                margin: 3rem 0 0 0;
+                margin: 3rem 0 0rem 0;
                 color:  var(--color) ;
                 text-shadow: v.$text-shadow;
                 position: relative;
@@ -222,7 +220,7 @@ color: white !important;
                 text-shadow: v.$text-shadow;
                 background-color: transparent !important;
                 color: var(--color) !important ;
-                
+           
             &::placeholder{
 font-size: clamp(.4rem, .5vw + .5rem, .7rem);
                 color: var(--color) !important ;
@@ -264,7 +262,7 @@ padding-bottom: 3rem;
 
                 button {
                     border: none;
-                margin-bottom: 1rem;
+                margin: 0.5rem 0;
 background-color: transparent;
                 }
             }
