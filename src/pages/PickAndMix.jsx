@@ -15,7 +15,7 @@ import PickAndMixCategoryTitels from "../components/pages/pickAndMixPage/PickAnd
 export const PickAndMix = () => {
   const { pickAndmixProducts, setPickAndmixProducts } = useProductContext()
   const { cart, setIsProcessing } = useCartContext();
-  const [url, setUrl] = useState("sortProducts?pickAndMix=true");
+  const [url, setUrl] = useState("sortProducts?pickAndMix=true&limit=100");
   const [newUrl, setNewUrl] = useState("");
   const { data } = Fetch(url || newUrl);
 
@@ -36,9 +36,9 @@ export const PickAndMix = () => {
   }, [data]);
 
 
-  // Trigger a fetch whenever the cart changes
+  // Trigger a fetch whenever the cart changes - limit 100 products
   useEffect(() => {
-    setUrl(`sortProducts?pickAndMix=true`);
+    setUrl(`sortProducts?pickAndMix=true&limit=100`);
   }, [cart]);
 
 

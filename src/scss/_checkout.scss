@@ -3,24 +3,26 @@
 
 .checkoutContainer{
     @include mixins.article() {
- 
-
-   
+        padding: v.$padding  !important;
+position: relative;
+     
         @include mixins.devices(desktop) {
        padding-bottom: 1.5rem !important;
-      
+    
+       padding: v.$padding  !important;
         }
       }
 
 
 &___backgroundImg{
-height: 90%;
-width: 100%;
-position: absolute;
-z-index: 0;
-object-fit: cover;
-filter: opacity(25%) blur(10px) ;
-margin-top: -10vh;
+    height: 90%;
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+    
+    object-fit: cover;
+    filter: opacity(25%) blur(20px) ;
+    margin-top: -10vh;
 }
 
 }
@@ -33,7 +35,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 
-
+padding: v.$padding-komponents !important;
 
 
     }

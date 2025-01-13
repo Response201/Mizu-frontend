@@ -19,9 +19,9 @@ export const ProductCard = ({ item, setUrl, limit = 3, searchQuery = "", selecte
 
 
   return (
-    <div className="productCard">
+    <div className="productCard" style={{ '--clr-tag': `${item.primaryColor}` }}>
       <div className="card___inner" style={{ '--clr': "#fff" }}>
-        <div className="box">
+        <div className="box"  style={{ '--clr-tag': `${item.primaryColor}` }}>
 
           {/* Display if user is not logged in */}
           {!userId && !token &&
@@ -29,7 +29,7 @@ export const ProductCard = ({ item, setUrl, limit = 3, searchQuery = "", selecte
 
           {/* Display product image */}
           <div className="imgBox" style={{ '--clr-tag': `${item.primaryColor}` }}>
-            <img src="https://images.unsplash.com/photo-1601049676869-702ea24cfd58?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="product" />
+            <img src={item.image} alt="product" />
           </div>
           <div className="icon  " style={{ '--clr': "#fff" }}>
 
@@ -67,7 +67,7 @@ export const ProductCard = ({ item, setUrl, limit = 3, searchQuery = "", selecte
           </div>
         </div>
       </div>
-      <div className="content">
+      <div className="content" style={{ '--clr-tag': `${item.primaryColor}` }}>
         <div className="ProductsTitleAndRatingContainer">
           <h3>  {item.name} </h3>    <section className="ratingContainer">
             <div className="stars">
@@ -92,7 +92,7 @@ export const ProductCard = ({ item, setUrl, limit = 3, searchQuery = "", selecte
             </div>
           </section>
         </div>
-        <p >{item.description}</p>
+        <p className="description" >{item.description}</p>
         <div className="categoryAndBuyBtnPrice">
           <ul>
             <li style={{ '--clr-tag': `${item.primaryColor}` }} >{item.category}</li>

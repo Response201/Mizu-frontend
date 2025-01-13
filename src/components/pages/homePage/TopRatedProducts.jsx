@@ -58,7 +58,10 @@ export const TopRatedProducts = () => {
       {/* Display the top-rated products section only if there are top-rated products */}
       {topRatedProducts.length > 0 && (
         <article className="topRatedProductsContainer">
-          <section className="topRatedProductsContainer___text">
+            <section className="topRatedProductsContent">
+              
+               
+          <section className="topRatedProductsContent___text">
             <h2>TOP RATED</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto assumenda, magnam,
@@ -77,6 +80,7 @@ export const TopRatedProducts = () => {
                 setUrl={setUrl}  // Pass the setUrl function to ProductCard
               />
             ))}
+          </section>
           </section>
         </article>
       )}

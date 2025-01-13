@@ -28,14 +28,15 @@ export const HappyHighlights = () => {
 
   return (
 
+    <article className="HappyHighlightsContainer">     
 
-    <section className="HappyHighlightsContainer">
+    <section className="HappyHighlightsContent">
 
       {/* Loop through the data array to display each item */}
       {highlights.map(item => {
 
         return (
-          <div className="HappyHighlightsContent" key={item.titel}>
+          <div className="HappyHighlights" key={item.titel}>
 
 
             <h2>
@@ -55,5 +56,6 @@ export const HappyHighlights = () => {
 
 
     </section>
+    </article>
   )
 }

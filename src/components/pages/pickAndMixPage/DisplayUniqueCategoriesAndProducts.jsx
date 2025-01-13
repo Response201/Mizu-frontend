@@ -15,13 +15,15 @@ export const DisplayUniqueCategoriesAndProducts = ({ setNewUrl }) => {
 
   // Background images associated with specific categories
   const categoryBackgrounds = {
-    "face cream": "https://i.ibb.co/dfSJHFH/Product2.png",
+    "face cream": "https://cdn.discordapp.com/attachments/1053759995776352326/1328118066978099351/jsfrulle_turquoise_green__tiny_flowers_background_organic_feel__c5606540-ecee-4a95-af29-1bbfa964e809.png?ex=678589d6&is=67843856&hm=c58fc19766740c3f281b441e816154b6c6be8f40ff51f64aa206f748b89f9317&",
     "serum": "https://i.ibb.co/sRxRDnJ/Product1.png",
-    "face mask": "https://i.ibb.co/dfSJHFH/Product2.png",
+    "face mask": "https://cdn.discordapp.com/attachments/1053759995776352326/1328122990088552458/jsfrulle_green__tiny_flowers_background_organic_feel_white_back_a28da43f-a1cc-4306-b899-6eb1b978fde9.png?ex=67858e6c&is=67843cec&hm=b6f320bdd1b6d4770565426bc5223e7a3c572cc129db9411d7f74a2df34bfff9&",
 
 
   };
-
+  
+  
+  
 
 
   // Extract unique categories from the list pickAndmixProducts

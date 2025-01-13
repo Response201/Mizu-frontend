@@ -7,9 +7,9 @@
     @include mixins.article() {
  
 
-   
+      padding-bottom: 2.5rem !important;
         @include mixins.devices(desktop) {
-       padding-bottom: 1.5rem !important;
+       padding-bottom: 2.5rem !important;
       
         }
       }
@@ -21,6 +21,7 @@
     @include mixins.section() {
 
         background-color: transparent;
+      
     
     }
 
@@ -35,7 +36,7 @@
 }
 .pickAndMixProducts{
   width: 100%;
-  
+ ;
  }
 .pickAndMix{
  
@@ -46,7 +47,7 @@ justify-content: center;
 margin: 3rem 0 ;
 
     &___pickAndMixTitels{
-margin: 1rem 0 3rem 0;
+margin: 1.5rem 0 0.5rem 0;
         position: relative;
         height: 4rem;
 width: 100%;
@@ -61,13 +62,31 @@ border: 1px solid rgba(128, 74, 9, 0.192);
 
     h2{
         padding: .5rem 2rem;
-       color: v.$text-secondary;
+       
         margin: 0;
         text-shadow: v.$text-shadow;
         font-family: "Montserrat", sans-serif !important;
         font-weight: 400;
         font-size: clamp(1.2rem, 1vw + 1.25rem, 2.3rem);
     }
+
+
+    .serum{
+      color: v.$text-secondary;
+
+    }
+    .facecream{
+      color: rgb(95, 145, 139) !important;
+ 
+    
+    }
+    .facemask{
+      color: rgb(133, 143, 108) !important;
+    
+    }
+
+
+
         @include mixins.devices(desktop) {
           width: 100%;
 
@@ -107,15 +126,6 @@ border: 1px solid rgba(128, 74, 9, 0.192);
 
 
 
-
-
-
-
-
-
-
-
-
         &___grid {
          
             display: grid;
@@ -127,13 +137,14 @@ border: 1px solid rgba(128, 74, 9, 0.192);
             justify-content: space-around;
             align-items: center;
             background-color: #ffffff;
-            padding: 0 !important;
+            padding: 0.5rem !important;
             overflow: hidden;
             
 
 
             @include mixins.devices(desktop) {
               max-width: v.$max-width;
+              padding-bottom: 0rem;
             }
 
 
@@ -146,14 +157,15 @@ border: 1px solid rgba(128, 74, 9, 0.192);
 
 
           &___smallGrid {
-
+      padding-bottom: 0rem;
 
             @include mixins.devices(desktop) {
               justify-content: start;
               grid-template-columns: repeat(auto-fit, minmax(25rem, 0.32fr));
+              padding-bottom: 0rem;
             }
 
-
+        
 
 
 
@@ -175,9 +187,15 @@ border: 1px solid rgba(128, 74, 9, 0.192);
 margin-top: 0rem;
 margin-bottom: 3rem;
 
+
+ 
+
 }
 .pickAndMix:last-child{
     margin-top: 3rem;
     margin-bottom: 0rem;
+ 
     
     }
+
+    

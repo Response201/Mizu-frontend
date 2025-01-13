@@ -16,7 +16,7 @@
 
     background-color: transparent;
 
-padding-bottom: 0;
+padding-bottom: 0rem;
 
 
 
@@ -48,7 +48,7 @@ min-height: fit-content;
      
         position: relative;
         margin: 0rem  !important;
-        padding: .5rem !important;
+        padding: .5rem 0 !important;
         height: 3rem;
         min-height: 230px;
         width: 100%;
@@ -174,10 +174,11 @@ min-height: fit-content;
       justify-content: space-around;
       align-items: center;
       background-color: #ffffff;
-      padding: 0 !important;
+      padding-bottom: 2.5rem;
       overflow: hidden;
       @include mixins.devices(desktop) {
         max-width: v.$max-width;
+        padding-bottom: 2.5rem;
       }
     }
     &___smallGrid {
@@ -217,8 +218,6 @@ min-height: fit-content;
         right: .5rem;
         top: unset;
         left: unset;
-        -webkit-backdrop-filter: blur(15px);
-        backdrop-filter: blur(15px);
         width: 300px !important;
       }
       &___pageContent {

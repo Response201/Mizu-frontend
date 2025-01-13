@@ -40,6 +40,8 @@ export const PaymentComplete = () => {
 
     return (
         <article className="paymentContainer">
+              {/* Background image for the checkout page */}
+              <img src="https://i.ibb.co/sRxRDnJ/Product1.png" alt="background" className='paymentContainer___backgroundImg' />
             <section className="paymentContent">
                 <div className="payment">
 

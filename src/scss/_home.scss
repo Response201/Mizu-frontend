@@ -22,7 +22,7 @@
             width: 100%;
             position: relative;
             max-height: 500px;
-            padding: 0 v.$padding-komponents;
+           
             overflow: hidden;
 
             @include mixins.devices(desktop) {
@@ -125,20 +125,34 @@
 
 .HappyHighlightsContainer {
     
+    @include mixins.article() {
+        height: fit-content;
+padding-bottom: 0 !important;
+  padding-top: 0 !important;
+    }
+
+
+
+
+
+
+.HappyHighlightsContent {
+
     @include mixins.section() {
         background-color: transparent !important;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: clamp(1rem, 5vw, 2.5rem) 0px clamp(0.7rem, 4vw, 2rem) 0px;
-        
+        padding-top: clamp(1rem, 5vw, 2.5rem) !important  ;
+        padding-bottom:clamp(0.7rem, 4vw, 2rem)  !important ;
     }
-}
 
-.HappyHighlightsContent {
+.HappyHighlights{   
+
     width: 100%;
     text-align: center;
 
+width: fit-content;
     h2 {
         padding: 0;
         margin: 0;
@@ -158,19 +172,35 @@
         }
     }
 }
-
+}
+}
 /* topRated Products */
+
+
+
+
+
 .topRatedProductsContainer {
-    @include mixins.section() {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-color: transparent !important;
-        padding: clamp(4rem, 5vw + 1rem, 7rem) v.$padding-komponents  ;
+    @include mixins.article() {
+      
+       height: fit-content;
+    
         
     }
 
+    .topRatedProductsContent{
+        @include mixins.section() {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent !important;
+    
+           
+        
+            
+        }
+    
     &___text {
         padding: 0;
         padding-bottom: clamp(0rem, 0.5vw + 0.5rem, 2rem); 
@@ -189,7 +219,7 @@
         p {
             @include mixins.home-sub-p()
         }
-    }
+    }}
 }
 
 
@@ -203,8 +233,6 @@
     border-bottom: v.$dotted-line;
     margin: 0;
 
-        padding: 0 v.$padding-komponents;
-        padding-top: 0;
-        padding-bottom: 0;
+  
    
     }
