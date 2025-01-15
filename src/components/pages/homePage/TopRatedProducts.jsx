@@ -64,8 +64,7 @@ export const TopRatedProducts = () => {
           <section className="topRatedProductsContent___text">
             <h2>TOP RATED</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto assumenda, magnam,
-              voluptates. Ipsum cumque, si sint!
+            Discover top picks for glowing skin. Expert-approved favorites that hydrate, protect, rejuvenate, and enhance your natural radiance.
             </p>
           </section>
           

@@ -24,7 +24,9 @@ export const Header = () => {
                 <section className='header'>
                     <h1>Mizu <span> : skin</span></h1>
 
-                    <p><span>  Naturla inner beauty </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, explicabo. Aspernatur tempora sunt totam consequuntur quisquam ratione !</p>
+                    <p><span>  Naturla inner beauty </span>
+                    Discover true radiance with products that nourish, restore, enhance, elevate, and support your natural glow. Reveal your healthiest, most vibrant skin yet.
+                    </p>
 
                     {/* Button to navigate to the products page */}
                     <a className="hover-target" href='/products' >

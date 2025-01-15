@@ -14,7 +14,6 @@ export const Navigation = () => {
   const { data } = Fetch(url, "post", body)
   const navigate = useNavigate()
 
-
   useEffect(() => {
     // If an error occurs with status 403, navigate to sign-in page
     if (error === "Request failed with status code 403") {
@@ -36,19 +35,7 @@ export const Navigation = () => {
   }
 
 
-
-
-  /* The `isProcessing` flag ensures that validation is completed before the user is considered logged in at app startup.
-    It checks if the user has a valid `userId` and `token`. If both are valid, it retrieves the user's cart data. */
-
-  const { isProcessing } = UseCheckLoginStatus();
-
-
-
-
-
-
-
+ UseCheckLoginStatus();
 
   return (
     <>
@@ -66,7 +53,7 @@ export const Navigation = () => {
               <Nav.Link href="/about" className='hover-target nav_link' >About</Nav.Link>
             </Nav>
             <Nav className="nav-right transparent">
-              {userId && !isProcessing ? (  // If user is logged in, show cart and profile options
+              {userId  ? (  // If user is logged in, show cart and profile options
                 <>
                   {/* CART */}
                   <Cart />

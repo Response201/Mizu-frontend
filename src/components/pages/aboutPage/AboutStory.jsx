@@ -1,4 +1,4 @@
-
+import image from "../../../assets/images/aboutheader.png"
 
 export const AboutStory = () => {
 
@@ -46,8 +46,7 @@ Our products are more than just skincare – they are an invitation to slow down
 
 
 
-  // Image 
-  const image = "https://cdn.discordapp.com/attachments/1053759995776352326/1328125234137796681/jsfrulle_Organic_moisturizer_product_with_morning_dew_drops_nat_1136502a-e80f-4f93-a68a-681464f445af.png?ex=67859083&is=67843f03&hm=97cdcbc5f324843db2b6dfad6bcce638871fb58ca063b6a1393ecd5420311ee9&"
+
 
 
 

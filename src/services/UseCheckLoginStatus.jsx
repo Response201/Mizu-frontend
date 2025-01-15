@@ -31,12 +31,12 @@ import { FetchLogin } from "./FetchLogin";
 export const UseCheckLoginStatus = () => {
   const { userId, token, setUserId, setToken } = useGlobalContext();  // Access global context values
   const { setCart } = useCartContext();  // Access cart context to update the cart
-  const [isProcessing, setIsProcessing] = useState(true);  // State to track if login check is in progress
+
 
   // Effect hook to check login status on userId or token change
   useEffect(() => {
     const checkLoginStatus = async () => {
-      if (!userId || !token) return; // If no userId or token, skip the request
+      if (!userId || !token)return; 
 
       try {
         // Verify login status with FetchLogin 
@@ -45,28 +45,25 @@ export const UseCheckLoginStatus = () => {
         if (response.message === "Request failed with status code 403") {
           setToken("");
           setUserId("");
+         
         } else {
           // If login is successful, fetch the user's cart
           const cartResponse = await FetchLogin("getCart", { userId }, token);
           if (cartResponse.cart?.products) {
             // If cart products exist, update localStorage and global cart state
             localStorage.setItem("cart", JSON.stringify(cartResponse.cart.products))
-            setCart(cartResponse.cart.products);
-          }
+          }   
         }
       } catch (error) {
         // Handle any errors by clearing user data
         setToken("");
         setUserId("");
         console.error("Error checking login status:", error);
-      } finally {
-        setIsProcessing(false); // Prevent multiple requests and re-enable cart actions (add, remove, delete) by setting processing to false
-      }
+      } 
     };
 
     checkLoginStatus();
-  }, [userId, token, setUserId, setToken, setCart]);  // Re-run the effect if userId or token changes
-  return isProcessing;  // Return the processing state to indicate if the check is still in progress (used when app starts to validate login status in navbar)
+  }, [userId, token, setUserId, setToken, setCart]);  
 
 };
 

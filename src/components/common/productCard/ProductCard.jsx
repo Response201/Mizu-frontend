@@ -25,11 +25,10 @@ setAddNoMoreToCart(cart.length <= 9)
 }
 }, [cart])
 
-console.log(cart)
+
 
 const finProductInCart = cart.some(product => item._id === product.productId);
 
-console.log(finProductInCart)
   return (
     <div className="productCard" style={{ '--clr-tag': `${item.primaryColor}` }}>
       <div className="card___inner" style={{ '--clr': "#fff" }}>
