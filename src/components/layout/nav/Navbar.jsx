@@ -29,6 +29,7 @@ export const Navigation = () => {
   if (data && data.message === "Logged out successfully" && token && userId) {
     setToken('')  // Clear token
     setUserId('')  // Clear userId
+    localStorage.removeItem("sessionStartTime"); 
     Cookies.remove("jwtToken");  // Remove JWT token from cookies
     navigate("/")  // Redirect to home page
     window.scrollTo(0, 0);  // Scroll to the top of the page
