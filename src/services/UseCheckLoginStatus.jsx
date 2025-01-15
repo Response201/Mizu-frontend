@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useCartContext } from "../context/CartContext";
 import { useGlobalContext } from "../context/GlobalContext";
 import { FetchLogin } from "./FetchLogin";
@@ -21,11 +21,6 @@ import { FetchLogin } from "./FetchLogin";
  * **Note:** This hook is used to maintain the login status and synchronize the cart across sessions. It ensures the user remains logged in and keeps the cart up to date after page reloads or when the session status changes.
              It is used especially during app initialization to validate login status.  
 */
-
-
-
-
-
 
 
 export const UseCheckLoginStatus = () => {
