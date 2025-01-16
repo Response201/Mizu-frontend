@@ -141,7 +141,7 @@
         overflow: hidden;
        
 
-        @include mixins.devices(desktop) {
+        @include mixins.devices(tablet) {
              
             min-height: fit-content !important;
         }
