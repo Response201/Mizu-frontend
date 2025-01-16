@@ -137,7 +137,7 @@
     @include mixins.article() {
       
         height: 40vh;
-        min-height: fit-content;
+        min-height: fit-content !important;
         overflow: hidden;
        
 
@@ -152,7 +152,7 @@
                 background-color: transparent !important;
                 flex-direction: column;
                 padding-top: 2rem !important;
-                min-height: fit-content;
+                min-height: fit-content !important;
                 min-height: 800px;
             
             }
