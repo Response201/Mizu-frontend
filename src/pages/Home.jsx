@@ -4,6 +4,7 @@ import { useProductContext } from "../context/ProductContext";
 import { Header } from "../components/pages/homePage/Header";
 import { HappyHighlights } from "../components/pages/homePage/HappyHighlights";
 import { TopRatedProducts } from "../components/pages/homePage/TopRatedProducts";
+import { MixSection } from "../components/pages/homePage/MixSection";
 
 
 
@@ -31,14 +32,33 @@ export const Home = () => {
       <Header />
 
 
+
+
       {/* Highlights section */}
       <section className="dottedBorder">
         <HappyHighlights />
       </section>
 
 
+
+
+
+      <MixSection />
+
+
+
       {/* top-rated products section */}
       <TopRatedProducts />
+
+
+
+
+
+
+
+
+
+
 
 
     </>
