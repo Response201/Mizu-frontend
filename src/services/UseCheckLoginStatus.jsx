@@ -47,6 +47,7 @@ export const UseCheckLoginStatus = () => {
           if (cartResponse.cart?.products) {
             // If cart products exist, update localStorage and global cart state
             localStorage.setItem("cart", JSON.stringify(cartResponse.cart.products))
+            setCart(cartResponse.cart.products)
           }   
         }
       } catch (error) {

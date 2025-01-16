@@ -30,6 +30,7 @@ export const Navigation = () => {
     setToken('')  // Clear token
     setUserId('')  // Clear userId
     localStorage.removeItem("sessionStartTime"); 
+    localStorage.removeItem("cart")
     Cookies.remove("jwtToken");  // Remove JWT token from cookies
     navigate("/")  // Redirect to home page
     window.scrollTo(0, 0);  // Scroll to the top of the page
