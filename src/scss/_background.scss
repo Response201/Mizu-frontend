@@ -45,12 +45,12 @@ z-index: 1;
 @for $i from 1 through 15 {
   @keyframes particle-animation-#{$i} {
     100% {
-      transform: translate3d((random(210) *  2vw ), (random(10) * -1vh + (-120vh)), (random(100) * 1px));
+      transform: translate3d((random(120) *  2vw ), (random(10) * -1vh + (-100vh)), (random(100) * 1px));
     }
   }
 
   .particle:nth-child(#{$i}) {
-    animation: particle-animation-#{$i} 30s linear  infinite;
+    animation: particle-animation-#{$i} 32s linear  infinite;
     $size: random(20) + 15 + rem;
     height: $size;
     width: $size;
@@ -59,14 +59,20 @@ z-index: 1;
   }
 
   .particle:nth-child(1) {
-   
+    animation-delay: 0;
     $size: 20rem;
     height: $size;
     width: $size;
-    transform: translate3d(-10vw, 20vh, 10px);
+    transform: translate3d(-20vw, 20vh, 10px);
   }
 
-
+  .particle:nth-child(2) {
+    animation-delay: 0;
+    $size: 15rem;
+    height: $size;
+    width: $size;
+    transform: translate3d(-15vw, 80vh, 10px);
+  }
 
 
 }
