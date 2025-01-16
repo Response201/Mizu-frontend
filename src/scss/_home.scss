@@ -137,10 +137,14 @@
     @include mixins.article() {
       
         height: 40vh;
-        min-height: fit-content !important;
+        min-height: 800px !important;
         overflow: hidden;
        
 
+        @include mixins.devices(desktop) {
+             
+            min-height: fit-content !important;
+        }
          
      }
 }
@@ -153,7 +157,7 @@
                 flex-direction: column;
                 padding-top: 2rem !important;
                 min-height: fit-content !important;
-                min-height: 800px;
+           
             
             }
 
