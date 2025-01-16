@@ -54,7 +54,7 @@ const finProductInCart = cart.some(product => item._id === product.productId);
 
 
               /*add to cart if showOneProduct is true and stock level is 1 or more */
-              <a onClick={item.stockLevel >= 1 && !isProcessing && addNoMoreToCart || !isProcessing && finProductInCart  && userId && token ? () => addItemToCart(item) : null}
+              <a onClick={item.stockLevel >= 1 && !isProcessing && addNoMoreToCart && userId && token || item.stockLevel >= 1 && !isProcessing && finProductInCart  && userId && token ? () => addItemToCart(item) : null}
                 className={!isProcessing && addNoMoreToCart || finProductInCart  && item.stockLevel >= 1 ? "iconBox" : "iconBox disabled--opacity"}
                 style={{ '--clr-tag': `${item.primaryColor}` }}>
 
