@@ -7,7 +7,7 @@
         position: relative;
         height: 75vh;
         overflow: hidden;
-        min-height: fit-content;
+        min-height: 500px;
         background-color: transparent;
   
     }
@@ -140,7 +140,7 @@
         min-height: fit-content;
         overflow: hidden;
        
-
+min-height: fit-content;
          
      }
 }
@@ -152,6 +152,7 @@
                 background-color: transparent !important;
                 flex-direction: column;
                 padding-top: 2rem !important;
+                
             
             }
 
