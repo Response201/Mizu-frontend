@@ -30,7 +30,7 @@ export const Cart = () => {
               >
                 <p>    {item.name}    </p>
                 <p className="productdicountItems">    {item.price}    </p>
-                <p className="productdicountItems"> {product ?` ${product.quantity} items 10%` : ''}  </p>
+               {discountProducts.length >= 1 &&  <p className="productdicountItems"> {product ?` ${product.quantity} items 10%` : ''}  </p>}
                 <span>
                   {item.quantity}</span>
                 <>
