@@ -25,7 +25,7 @@ import { FetchLogin } from "./FetchLogin";
 
 export const UseCheckLoginStatus = () => {
   const { userId, token, setUserId, setToken } = useGlobalContext();  // Access global context values
-  const { setCart } = useCartContext();  // Access cart context to update the cart
+  const { setCart, handleTotalPrice } = useCartContext();  // Access cart context to update the cart
 
 
   // Effect hook to check login status on userId or token change
@@ -48,6 +48,7 @@ export const UseCheckLoginStatus = () => {
             // If cart products exist, update localStorage and global cart state
             localStorage.setItem("cart", JSON.stringify(cartResponse.cart.products))
             setCart(cartResponse.cart.products)
+            handleTotalPrice(userId)
           }   
         }
       } catch (error) {

@@ -2,9 +2,9 @@ import { Dropdown, Badge, Button, ListGroup } from "react-bootstrap";
 import { useCartContext } from '../../../context/CartContext';
 import { CartAndTableBtns } from "../../common/cartAndTableBtns/CartAndTableBtns";
 export const Cart = () => {
-  const { totalPrice, cart, discount } = useCartContext()
+  const { totalPrice, cart, discount,discountProducts } = useCartContext()
 
-  
+
   return (
     <Dropdown align="end" className='transparent '>
       <Dropdown.Toggle variant="light" id="dropdown-basic" className='transparent icons_nav_cart'>
@@ -21,19 +21,23 @@ export const Cart = () => {
           {cart && cart.length === 0 ? (
             <ListGroup.Item className='emtpyList transparent'>Varukorgen är tom</ListGroup.Item>
           ) : (
-            cart.map((item) => (
+            cart.map((item) => {     
+              const product = discountProducts.find(product => product.productId === item.productId);
+              return ( 
               <ListGroup.Item
                 key={item.productId}
                 className="d-flex justify-content-between align-items-center item border_bottom transparent productName"
               >
                 <p>    {item.name}    </p>
+                <p className="productdicountItems">    {item.price}    </p>
+                <p className="productdicountItems"> {product ?` ${product.quantity} items 10%` : ''}  </p>
                 <span>
                   {item.quantity}</span>
                 <>
                   <CartAndTableBtns item={item} /> {/* Render buttons for each cart item */}
                 </>
               </ListGroup.Item>
-            ))
+            )})
           )}
           {cart && cart.length !== 0 && (
             <>

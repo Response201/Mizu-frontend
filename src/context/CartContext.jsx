@@ -20,7 +20,7 @@ export const CartProvider = ({ children }) => {
     const [isProcessing, setIsProcessing] = useState(false)
     const [notify, setNotify] = useState('')
     const [receipt, setReceipt] = useState(JSON.parse(localStorage.getItem("receipt")) || [])
-
+const [discountProducts, setDiscountProducts] = useState(JSON.parse(localStorage.getItem("dicountProducts")) || [])
 
     // Store receipt in localStorage whenever it changes
     useEffect(() => {
@@ -67,8 +67,20 @@ export const CartProvider = ({ children }) => {
             const discount = Math.round(Number(response.discount) * 2) / 2; // Round total price to nearest 0.5
             setTotalPrice(totalprice) // Update totalPrice state
             setDiscount(discount) // Update discount state
+       
             localStorage.setItem("totalPrice", JSON.stringify(totalprice)) // set totalPrice localStorage
             localStorage.setItem("discount", JSON.stringify(discount)) // set discount  localStorage
+       
+
+            if (response.groups && Array.isArray(response.groups)) {
+                console.log("Groups from backend:", response.groups);
+                setDiscountProducts(response.groups);
+                localStorage.setItem("discountProducts", JSON.stringify(response.groups));
+                console.log("Stored in localStorage:", localStorage.getItem("discountProducts"));
+            } else {
+                console.error("Invalid groups format:", response.groups);
+            }
+
         }
 
     };
@@ -80,7 +92,7 @@ export const CartProvider = ({ children }) => {
             setTotalPrice,
             discount, setDiscount,
             handleFetch, notify, setNotify,
-            cart, setCart, cartMessage, receipt, setReceipt, isProcessing, setIsProcessing
+            cart, setCart, cartMessage, receipt, setReceipt, isProcessing, setIsProcessing, discountProducts, setDiscountProducts, handleTotalPrice
         }}>
             {children}
         </CartContext.Provider>

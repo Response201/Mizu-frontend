@@ -7,7 +7,7 @@ import { CartAndTableBtns } from '../cartAndTableBtns/CartAndTableBtns';
 
 /* Table displaying cart products, pricing, and actions */
 export const TableListProducts = ({ showButtons, cart, totalPrice }) => {
-  const {   discount } = useCartContext();
+  const {   discount, discountProducts } = useCartContext();
 
 
   return (
@@ -23,10 +23,17 @@ export const TableListProducts = ({ showButtons, cart, totalPrice }) => {
           </tr>
         </thead>
         <tbody>
-          {cart && cart.map((item) => (
+          {cart && cart.map((item) =>{ 
+
+
+const product = discountProducts.find(product => product.productId === item.productId);
+
+
+
+            return(
             <tr key={item.productId}>
               <td>{item.name}</td>
-              <td>{item.pickAndMix ? 'yes': 'no'}</td>
+              <td>{product ?` ${product.quantity} items 10%` : ''}</td>
               <td className='td___quantity'>{item.quantity}</td>
               <td>{(item.price * item.quantity).toFixed(2)}</td>
               {showButtons && (
@@ -36,7 +43,7 @@ export const TableListProducts = ({ showButtons, cart, totalPrice }) => {
                 </td>
               )}
             </tr>
-          ))}
+          )})}
         </tbody>
         <tfoot>
         <tr>
