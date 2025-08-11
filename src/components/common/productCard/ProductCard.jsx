@@ -36,7 +36,7 @@ const finProductInCart = cart.some(product => item._id === product.productId);
 
           {/* Display if user is not logged in */}
           {!userId && !token &&
-            <p>Sign in to buy</p>}
+            <p>Sign in and buy</p>}
 
 
 {!finProductInCart && !addNoMoreToCart   && userId && token &&
@@ -60,7 +60,7 @@ const finProductInCart = cart.some(product => item._id === product.productId);
 
                 <span className="material-symbols-outlined">
                   {item.stockLevel >= 1 ?
-                    <>    {isProcessing ? '...' : <> {token && userId ? <i className="bi bi-cart3"></i> : <i className="bi bi-lock-fill"></i>}      </>}        </>
+                    <>    {isProcessing ? '...' : <> {token && userId ? <i className="bi bi-cart3"></i> :<div > <i className="bi bi-lock-fill " ></i>  <p className="hide"  style={{ '--clr-tag': `${item.primaryColor}` }}>Sign in & buy</p>    </div>}      </>}        </>
 
                     : <i className="bi bi-x-circle "></i>}
 
